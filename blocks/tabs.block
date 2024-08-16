@@ -1,0 +1,22 @@
+<section class="tabs tabs-style-component" data-start="1">
+   <div class="tablist-style-full" role="tablist" aria-orientation="horizontal" aria-label="Horizontal Tabs">
+      <button id="tab-1" aria-controls="tabpanel-1" role="tab">
+         Tab 1
+      </button>
+      <button id="tab-2" aria-controls="tabpanel-2" role="tab">
+         Tab 2
+      </button>
+      <button id="tab-3" aria-controls="tabpanel-3" role="tab">
+         Tab 3
+      </button>
+   </div>
+   <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">
+      Tab 1 stuff.
+   </div>
+   <div id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">
+      Tab 2 stuff. <br>
+      There's another line!
+   </div>
+   <div id="tabpanel-3" role="tabpanel" aria-labelledby="tab-3">
+   </div>
+</section>

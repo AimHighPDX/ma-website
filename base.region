@@ -2,20 +2,17 @@
 <html>
 
 <head>
-   
    {squarespace-headers}
 </head>
 
 <body>
-   <header>
-      <nav>Main Nav</nav>
-   </header>
+   {@|apply header.block}
    <main>
       <!-- Main image Banner -->
       <section>
          <img src="" alt=""> <!-- Refer to page image -->
          <div>
-            <!-- Editable blocks here -->
+            <squarespace:block-field id="hero-text" columns="1"/>
          </div>
       </section>
 
@@ -32,14 +29,16 @@
       {@|apply ma-section.block}
 
       <!-- Aim High PDX -->
-      <section></section>
+      <section>
+         <squarespace:block-field id="ahpdx-about" columns="2"/>
+      </section>
       <!-- Hiring -->
-      <section></section>
+      <section>
+         <squarespace:block-field id="ahpdx-hiring" columns="12"/>
+      </section>
    </main>
 
-   <footer>
-      Footer
-   </footer>
+   {@|apply footer.block}
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <section>
    <div>
-         <!-- Editable text block-->
+      <squarespace:block-field id="announcement-text" columns="1"/>
    </div>
 </section>

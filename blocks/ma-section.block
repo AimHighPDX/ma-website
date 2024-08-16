@@ -2,8 +2,7 @@
    <div>
       <img> <!-- Editable image block-->
       <div>
-         <!-- Editable text block-->
-         <p></p>
+         <squarespace:block-field id="section-text" columns="1"/>
       </div>
    </div>
 </section>
