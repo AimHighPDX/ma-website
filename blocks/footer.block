@@ -1,18 +1,26 @@
 <footer>
    <div>
-      <section>
-         <img src="" alt=""> <!-- Logo -->
+      <section class="contact-block">
+         <img class="logo" src="{website.logoImageUrl}?width=200" alt="{website.siteTitle}">
          <address>
-            <p>Address</p><!-- Physical address -->
-            <div>
-               <img role="presentation" src="">
-               <a href="">PHONE</a>
-            </div>
-            <div>
-               <img role="presentation" src="">
-               <a href="">EMAIL</a>
-            </div>
-         </address>
+            {.section website.location}
+               <p>
+                  {addressTitle}<br>
+                  {addressLine1}<br>
+                  {addressLine2}
+               </p>
+            {.end}
+            {.section websiteSettings}
+               <div>
+                  <img role="presentation" src="">
+                  <a href="tel:{contactPhoneNumber}">{contactPhoneNumber}</a>
+               </div>
+               <div>
+                  <img role="presentation" src="">
+                  <a href="mailto:{contactEmail}">{contactEmail}</a>
+               </div>
+            {.end}
+         </address>  
          <ul>
             <!-- social media links-->
          </ul>
@@ -32,7 +40,8 @@
       </section>
    </div>
    <div>
-      <!--Hours-->
-      <p></p>
+      {.section websiteSettings.businessHours}
+         <p></p>
+      {.end}
    </div>
 </footer>

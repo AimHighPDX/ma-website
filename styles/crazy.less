@@ -1,15 +1,28 @@
 /* This is my crazy colors css meant to help distinguish where html classes/tags are.
 
 Do not use this for production  */
+body {
+   box-sizing: border-box;
+   display: grid;
+}
 
 header, footer {
    background: pink;
 }
 
+img {
+   max-width: 500px;
+}
+
 main {
+   padding: 1rem;
    background: lightblue;
 }
 
 section:nth-of-type(2n) {
    background: beige;
+}
+
+[class^="sqs"]:not(:has([class^="sqs"])) { //editable blocks
+   border: 3px solid red;
 }

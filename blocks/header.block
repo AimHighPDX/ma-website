@@ -1,8 +1,8 @@
 <header>
    <nav>
       ...
-      <a href="/" aria-label="Aim High Academy of Martial Arts">
-         <img src="" alt=""><!-- Logo -->
+      <a href="/" aria-label="{website.siteTitle}">
+         <img src="{website.logoImageUrl}?width=200" alt="{website.siteTitle}">
       </a>
    </nav>
 </header>

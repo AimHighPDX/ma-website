@@ -1,0 +1,123 @@
+/**
+ * Sets some defaults for text and spacing.
+ * Implements the correct overrides for some attributes.
+**/
+
+:root {
+   font-size: 100%;
+   font-family: 'Arial', 'sans-serif';
+
+   --padding: 1.5rem;
+   --text-padding: .5em 1em;
+
+   --radius: 1rem;
+   --button-radius: .5rem;
+
+   --lightbox-height: calc(100vh - calc(2 * var(--padding)));
+   --lightbox-width: calc(100vw - calc(2 * var(--padding)));
+}
+
+
+/* Typical accessibility settings */
+@media (prefers-reduced-motion) {
+   * {
+      transition: 0s !important;
+   }
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   scroll-margin: var(--padding);
+}
+
+[hidden] {
+   display: none;
+   visibility: hidden !important;
+}
+
+.visually-hidden {
+   clip: rect(0 0 0 0);
+   clip-path: inset(50%);
+   height: 1px;
+   overflow: hidden;
+   position: absolute;
+   white-space: nowrap;
+   width: 1px;
+}
+
+:focus-visible {
+   outline: .1rem solid var(--focus-color);
+   outline-offset: .2rem;
+}
+
+body {
+   padding: 1rem;
+}
+
+
+/* Text defaults */
+
+h1, h2, h3, h4, h5, h6 {
+   font-family: 'Arial', 'sans-serif';
+   line-height: 1.2em;
+   color: var(--text-color);
+}
+ 
+p {
+   font-family: 'Arial', 'sans-serif';
+   font-size: 1rem;
+   line-height: 1.5em;
+   color: var(--text-color);
+}
+
+img {
+   max-height: 100%;
+   max-width: 100%;
+   object-fit: contain;
+   object-position: center;
+}
+
+
+a {
+   color: var(--action-color);
+   text-decoration: underline;
+   border-radius: 1px;
+}
+
+a:hover {
+   --action-color-l: calc(var(--action-color-l) + var(--interactive-adjustment));
+}
+
+a:focus-visible {
+   outline-offset: 2px;
+}
+
+
+/* Separating semantics from style (heading levels, etc.) */
+
+.small-text {
+   font-size: .8rem;
+}
+
+.heading-level4 {
+   font-size: 1.2rem;
+   margin-bottom: .1em;
+}
+
+.heading-level3 {
+   font-size: 1.4rem;
+   margin-bottom: .1em;
+}
+
+.heading-level2 {
+   font-size: 1.8rem;
+   margin-bottom: .1em;
+}
+
+
+.heading-level1 {
+   font-size: 2.5rem;
+   margin-bottom: .2em;
+}

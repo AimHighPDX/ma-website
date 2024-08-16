@@ -1,0 +1,87 @@
+/* These are the names and variations of colors you will need in order to use the 
+ * rest of the components in this document.
+ * They encompass light mode, dark mode, high-contrast, etc.
+ * 
+ * This should also enable overrides based on selection.
+ */
+
+
+ :root {
+   --modifer-s: 0%;
+   --modifer-l: 0%;
+
+   /* for animation, what is the default step size */
+   --interactive-adjustment: 5%; 
+
+   /* 
+      Default color scheme.
+      Default is light scheme.
+
+      Use HSL color format for any UI elements. 
+      Define the hue and the default saturation and lightness levels.
+   */
+   --neutral-h: 250;
+   --neutral-s: 5%;
+
+   --white: hsl(var(--neutral-h), var(--neutral-s), 95%);
+   --black: hsl(var(--neutral-h), var(--neutral-s), 5%);
+
+   --primary-color-h: 315;
+   --primary-color-s: 65%;
+   --primary-color-l: 50%;
+   --primary-color-a: 100%;
+   --primary-color: hsl(var(--primary-color-h), var(--primary-color-s), var(--primary-color-l), var(--primary-color-a));
+   
+   --action-color-h: 150;
+   --action-color-s: 75%;
+   --action-color-l: 35%;
+
+   --action-color: hsl(var(--action-color-h), var(--action-color-s), var(--action-color-l));
+   --action-color-lighter: hsl(var(--action-color-h), var(--action-color-s), calc(var(--action-color-l) + var(--interactive-adjustment)));
+   --action-color-darker: hsl(var(--action-color-h), var(--action-color-s), calc(var(--action-color-l) - var(--interactive-adjustment)));
+   --action-color-disabled: hsl(var(--action-color-h), 25%, var(--action-color-l), 50%);
+
+   /* The focus color MUST be contrast-y enough to be clearly visible in all contexts. DO NOT try to hide it. */
+   --focus-color-l: 60%;
+   --focus-color: hsl(250, 90%, var(--focus-color-l));
+
+   --error-color: hsl(0, 75%, 50%);
+
+   --shadow-color-l: 5%;
+   --shadow-color-a: 30%;
+   --shadow-color: hsl(var(--neutral-h), var(--neutral-s), var(--shadow-color-l), var(--shadow-color-a));
+
+   --shadow: 1px 1px 6px var(--shadow-color);
+   --shadow-hover: 1px 1px 9px var(--shadow-color);
+   --shadow-pressed: inset 1px 1px 5px var(--shadow-color);
+
+   --background: var(--white);
+   --text-color: var(--black);
+   --disabled-color: hsl(var(--neutral-h), var(--neutral-s), 30%, 80%);
+}
+
+html {
+   background: var(--background);
+ }
+
+
+@media (prefers-color-scheme:dark) {
+   :root {
+      --background: var(--black);
+      --text-color: var(--white);
+   }
+}
+
+@media (prefers-contrast:less) {
+   :root {}
+}
+
+@media (prefers-contrast:more) {
+   :root {
+      --interactive-adjustment: 10%; 
+      --action-color-a: 100% !important;
+      --primary-color-a: 100% !important;
+
+      --shadow-color-a: 50%;
+   }
+}
