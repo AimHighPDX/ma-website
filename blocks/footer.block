@@ -1,0 +1,38 @@
+<footer>
+   <div>
+      <section>
+         <img src="" alt=""> <!-- Logo -->
+         <address>
+            <p>Address</p><!-- Physical address -->
+            <div>
+               <img role="presentation" src="">
+               <a href="">PHONE</a>
+            </div>
+            <div>
+               <img role="presentation" src="">
+               <a href="">EMAIL</a>
+            </div>
+         </address>
+         <ul>
+            <!-- social media links-->
+         </ul>
+      </section>
+      <section>
+         <h2>Sitemap</h2> <!-- Uses page nav -->
+         <div>
+            <h3>Martial Arts</h3>
+            <h4>Folder name (if multiple)</h4>
+            <ul>
+               <li></li>
+               ...
+            </ul>
+            ...
+         </div>
+         ...
+      </section>
+   </div>
+   <div>
+      <!--Hours-->
+      <p></p>
+   </div>
+</footer>

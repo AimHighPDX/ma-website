@@ -32,7 +32,6 @@
       <footer class="site-footer">
         <squarespace:block-field id="footerBlocks" columns="12" />
       </footer>
-
     </div>
 
     <!-- combo and minify scripts when not logged in -->

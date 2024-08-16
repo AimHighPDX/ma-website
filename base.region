@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+   {squarespace-headers}
+</head>
+
+<body>
+   <header>
+      <nav>Main Nav</nav>
+   </header>
+   <main>
+      <!-- Main image Banner -->
+      <section>
+         <img src="" alt=""> <!-- Refer to page image -->
+         <div>
+            <!-- Editable blocks here -->
+         </div>
+      </section>
+
+      <!-- Summer camps announcement -->
+      {@|apply announcement.block}
+
+      <!-- MA Summary -->
+      {@|apply ma-section.block}
+
+      <!-- Program Tabs -->
+      {@|apply tabs.block}
+
+      <!-- Events callout -->
+      {@|apply ma-section.block}
+
+      <!-- Aim High PDX -->
+      <section></section>
+      <!-- Hiring -->
+      <section></section>
+   </main>
+
+   <footer>
+      Footer
+   </footer>
+</body>
+
+</html>

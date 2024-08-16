@@ -1,0 +1,8 @@
+<header>
+   <nav>
+      ...
+      <a href="/" aria-label="Aim High Academy of Martial Arts">
+         <img src="" alt=""><!-- Logo -->
+      </a>
+   </nav>
+</header>
