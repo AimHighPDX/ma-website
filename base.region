@@ -22,14 +22,7 @@
       <!-- MA Summary -->
       <section class="full-section">
          <div>
-            <div>
-               <h2>Section 1</h2>
-               <squarespace:block-field id="ma-summary-left" columns="1"/>
-            </div>
-            <div>
-               <h2>Section 2</h2>
-               <squarespace:block-field id="ma-summary-right" columns="1"/>
-            </div>
+            <squarespace:block-field id="ma-summary" label="MA Summary" columns="2"/>
          </div>
       </section>
 
@@ -39,14 +32,7 @@
       <!-- Events callout -->
       <section class="full-section">
          <div>
-            <div>
-               <h2>Section 1</h2>
-               <squarespace:block-field id="events-summary-left" columns="1"/>
-            </div>
-            <div>
-               <h2>Section 2</h2>
-               <squarespace:block-field id="events-summary-right" columns="1"/>
-            </div>
+            <squarespace:block-field id="events-summary" label="Events Summary" columns="2"/>
          </div>
       </section>
 
