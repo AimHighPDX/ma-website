@@ -27,8 +27,8 @@
          </div>
       </section>
 
-      <!-- Program Tabs -->
-      {@|apply tabs.block}
+      <!-- Program Tabs 
+      {@|apply tabs.block}-->
 
       <!-- Events callout -->
       <section class="full-section">
