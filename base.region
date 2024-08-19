@@ -22,8 +22,7 @@
       <!-- MA Summary -->
       <section class="full-section">
          <div>
-            <h2>Foo</h2>
-            <squarespace:block-field id="ma-summary" label="MA Summary" columns="1"/>
+            <squarespace:block-field id="ma-summary" label="MA Summary" columns="2"/>
          </div>
       </section>
 
