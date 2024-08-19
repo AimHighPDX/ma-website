@@ -7,7 +7,7 @@
 
 <body>
    {@|apply header.block}
-   <main>
+   <main data-content-field="main-content">
       <!-- Main image Banner -->
       <section>
          <img src="" alt=""> <!-- Refer to page image -->
