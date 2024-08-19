@@ -20,17 +20,18 @@
       {@|apply announcement.block}
 
       <!-- MA Summary -->
-      {@|apply ma-section.block}
+      {@|apply section.block}
 
       <!-- Program Tabs -->
       {@|apply tabs.block}
 
       <!-- Events callout -->
-      {@|apply ma-section.block}
+      {@|apply section.block}
 
       <!-- Aim High PDX -->
       <section>
          <squarespace:block-field id="ahpdx-about" columns="2"/>
+         <button class="secondary">Testing</button>
       </section>
       <!-- Hiring -->
       <section>

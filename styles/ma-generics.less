@@ -1,0 +1,19 @@
+/* These are ma-specific styles.
+Not for color changes; these are for structural changes.
+ */
+
+.full-section {
+   width: 100%;
+   border-top: max(2px, .08rem) solid @primary-color;
+   background: red;
+
+   grid-column: 1 / -1;
+   display: grid;
+   grid-template-columns: inherit;
+
+   > div {
+      grid-column: 2;
+      display: flex;
+      flex-wrap: wrap;
+   }
+}

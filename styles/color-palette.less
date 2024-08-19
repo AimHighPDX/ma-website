@@ -14,28 +14,25 @@
 @interactive-color-adjustment: 5%;
 @color-contrast-adjustment: 10%;
 
-@gray: hsl(250, 5%, 50%);
-@white: hsl(250, 5%, 95%);
-@black: hsl(250, 5%, 5%);
+@gray: hsl(217, 5%, 50%);
+@white: hsl(217, 5%, 95%);
+@black: hsl(217, 5%, 5%);
 
-@primary: hsl(315, 75%, 78%);
+@primary: hsl(217, 80%, 38%);
 
-@action: hsl(150, 79%, 61%);
-@action-lighter: lighten(@action, @color-contrast-adjustment);
-@action-darker: darken(@action, @color-contrast-adjustment);
-@action-disabled: desaturate(@action, @color-contrast-adjustment);
+@action: hsl(191, 70%, 65%);
 
 /* The focus color MUST be contrast-y enough to be clearly visible in all contexts. DO NOT try to hide it. */
 @focus-color: hsl(250, 90%, 60%);
 
 @error-color: hsl(0, 75%, 50%);
 
-@shadow-color: hsla(250, 5%, 5%, 30%);
+@shadow-color: hsla(217, 5%, 5%, 30%);
 @shadow-offset: 1px 1px;
 @shadow-size: 6px;
 @shadow: @shadow-offset @shadow-size @shadow-color;
 @shadow-hover: @shadow-offset (@shadow-size * 1.5) @shadow-color;
-@shadow-hover: inset @shadow-offset @shadow-size @shadow-color;
+@shadow-pressed: inset @shadow-offset @shadow-size @shadow-color;
 
 @background: @black;
 @text-color: @white;
@@ -49,7 +46,7 @@
 @media screen and (prefers-contrast:more) {
    @color-contrast-adjustment: 15%;
    @interactive-color-adjustment: 10%;
-   @shadow-color: hsla(250, 5%, 5%, 50%);
+   @shadow-color: hsla(217, 5%, 5%, 50%);
 }
 
 html {

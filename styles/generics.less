@@ -8,6 +8,8 @@
 @radius: 1rem;
 @button-radius: .5rem;
 
+@main-content-width: min(800px, 100vw);
+
 @lightbox-height: (100vh - (2 * @padding));
 @lightbox-width: (100vw - (2 * @padding));
 
@@ -23,11 +25,18 @@
    scroll-margin: @padding;
 }
 
-
 /* Typical accessibility settings */
 @media (prefers-reduced-motion) {
    * {
       transition: 0s !important;
+   }
+}
+
+main {
+   display: grid;
+   grid-template-columns: 1fr @main-content-width 1fr;
+   > * {
+      grid-column: 2;
    }
 }
 
@@ -91,7 +100,7 @@ a {
 }
 
 a:hover {
-   color: @action-lighter;
+   color: lighten(@action, @color-contrast-adjustment);
 }
 
 a:focus-visible {
@@ -121,4 +130,75 @@ h2, .heading-level2 {
 h1, .heading-level1 {
    font-size: 2.5rem;
    margin-bottom: .2em;
+}
+
+/* Buttons */
+button {
+   font: inherit;
+   width: fit-content;
+   min-width: 48px;
+   min-height: 48px;
+   
+   cursor: pointer;
+   
+   display: flex;
+   align-items: center;
+
+   background-color: @action;
+   color: inherit;
+
+   padding: @text-padding;
+   border-radius: @button-radius;
+   border: none;
+   box-shadow: @shadow;
+   
+   transition: .2s ease-out;
+
+   &:not([disabled]):not([aria-disabled]) {
+      &:hover {
+         background-color: lighten(@action, @color-contrast-adjustment);
+         box-shadow: @shadow-hover;
+         color: inherit;
+      }
+   
+      &:active {
+         background-color: darken(@action, @color-contrast-adjustment);
+         box-shadow: @shadow-pressed;
+         color: inherit;
+      }
+   }
+
+   &[disabled], &[aria-disabled] {
+      pointer-events: none;
+      background-color: desaturate(@action, @color-contrast-adjustment);
+      box-shadow: none;
+      transition: 0s;
+   }
+
+   &.secondary {
+      background-color: transparent;
+      color: @action;
+      box-shadow: inset 0 0 0 max(2px, .08em) @action;
+   }
+
+   &.icon-button {
+      padding: 0;
+      justify-content: left;
+
+      .icon {
+         font-family: system-ui;
+         display: flex;
+
+         align-items: center;
+         justify-content: center;
+
+         margin: .5rem;
+         min-width: calc(48px - 1rem);
+      }
+
+      .text {
+         margin: @text-padding;
+         margin-left: 0;
+      }
+   }
 }
