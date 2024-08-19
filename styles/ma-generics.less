@@ -18,22 +18,42 @@ Not for color changes; these are for structural changes.
    display: grid;
    grid-template-columns: inherit;
    padding: 0;
+   margin: @padding 0;
 
    > div {
       grid-column: 2;
       display: grid;
       justify-content: center;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fill, max(15rem, 45%));
+      grid-template-columns: repeat(auto-fill, max(18rem, 45%));
+
+      > div:not(:has(.image-block)) {
+         padding: @padding;
+      }
+
+      > div:has(.image-block) * {
+         height: 100%;
+      }
       
-      @media only screen and (max-width:31rem) {
+      @media only screen and (max-width:40rem) {
          display: flex;
          flex-direction: column;
          align-items: center;
 
          > div:has(.image-block) {
             order: 0;
+            * {
+               max-height: 15rem;
+            }
          }
       }
    }
+
+   /* Unset some padding */
+   .sqs-image-shape-container-element {
+      padding-bottom: 0 !important;
+      img {
+         position: static !important;
+      }
+   }
 }
+

@@ -8,7 +8,7 @@
 @radius: 1rem;
 @button-radius: .5rem;
 
-@main-content-width: min(800px, 100vw);
+@main-content-width: min(800px, 100%);
 
 @lightbox-height: (100vh - (2 * @padding));
 @lightbox-width: (100vw - (2 * @padding));
@@ -37,6 +37,7 @@ main {
    grid-template-columns: 1fr @main-content-width 1fr;
    > * {
       grid-column: 2;
+      padding: @padding;
    }
 }
 
@@ -60,11 +61,6 @@ main {
    outline: .1rem solid @focus-color;
    outline-offset: .2rem;
 }
-
-main > * {
-   padding: @padding;
-}
-
 
 /* Text defaults */
 
