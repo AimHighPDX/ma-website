@@ -1,0 +1,58 @@
+/* These are the names and variations of colors you will need in order to use the 
+ * rest of the components in this document.
+ * They encompass light mode, dark mode, high-contrast, etc.
+ * 
+ * This should also enable overrides based on selection.
+ */
+/* 
+      Default color scheme.
+      Default is light scheme.
+
+      Use HSL color format for any UI elements. 
+      Define the hue and the default saturation and lightness levels.
+   */
+@interactive-color-adjustment: 5%;
+@color-contrast-adjustment: 10%;
+
+@gray: hsl(250, 5%, 50%);
+@white: hsl(250, 5%, 95%);
+@black: hsl(250, 5%, 5%);
+
+@primary: hsl(315, 75%, 78%);
+
+@action: hsl(150, 79%, 61%);
+@action-lighter: lighten(@action, @color-contrast-adjustment);
+@action-darker: darken(@action, @color-contrast-adjustment);
+@action-disabled: desaturate(@action, @color-contrast-adjustment);
+
+/* The focus color MUST be contrast-y enough to be clearly visible in all contexts. DO NOT try to hide it. */
+@focus-color: hsl(250, 90%, 60%);
+
+@error-color: hsl(0, 75%, 50%);
+
+@shadow-color: hsla(250, 5%, 5%, 30%);
+@shadow-offset: 1px 1px;
+@shadow-size: 6px;
+@shadow: @shadow-offset @shadow-size @shadow-color;
+@shadow-hover: @shadow-offset (@shadow-size * 1.5) @shadow-color;
+@shadow-hover: inset @shadow-offset @shadow-size @shadow-color;
+
+@background: @black;
+@text-color: @white;
+
+/* preference stuff */
+@media screen and (prefers-color-scheme:light) {
+   @background: @white;
+   @text-color: @black;
+}
+
+@media screen and (prefers-contrast:more) {
+   @color-contrast-adjustment: 15%;
+   @interactive-color-adjustment: 10%;
+   @shadow-color: hsla(250, 5%, 5%, 50%);
+}
+
+html {
+   background: @background;
+   color: @text-color;
+}

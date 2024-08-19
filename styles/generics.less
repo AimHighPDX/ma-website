@@ -2,19 +2,25 @@
  * Sets some defaults for text and spacing.
  * Implements the correct overrides for some attributes.
 **/
+@padding: 1.5rem;
+@text-padding: .5em 1em;
+
+@radius: 1rem;
+@button-radius: .5rem;
+
+@lightbox-height: (100vh - (2 * @padding));
+@lightbox-width: (100vw - (2 * @padding));
 
 :root {
    font-size: 100%;
    font-family: 'Arial', 'sans-serif';
+}
 
-   --padding: 1.5rem;
-   --text-padding: .5em 1em;
-
-   --radius: 1rem;
-   --button-radius: .5rem;
-
-   --lightbox-height: calc(100vh - calc(2 * var(--padding)));
-   --lightbox-width: calc(100vw - calc(2 * var(--padding)));
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   scroll-margin: @padding;
 }
 
 
@@ -25,12 +31,6 @@
    }
 }
 
-* {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   scroll-margin: var(--padding);
-}
 
 [hidden] {
    display: none;
@@ -48,7 +48,7 @@
 }
 
 :focus-visible {
-   outline: .1rem solid var(--focus-color);
+   outline: .1rem solid @focus-color;
    outline-offset: .2rem;
 }
 
@@ -62,14 +62,18 @@ body {
 h1, h2, h3, h4, h5, h6 {
    font-family: 'Arial', 'sans-serif';
    line-height: 1.2em;
-   color: var(--text-color);
+   color: @text-color;
 }
  
 p {
    font-family: 'Arial', 'sans-serif';
    font-size: 1rem;
    line-height: 1.5em;
-   color: var(--text-color);
+   color: @text-color;
+}
+
+address {
+   font-style: normal;
 }
 
 img {
@@ -81,43 +85,40 @@ img {
 
 
 a {
-   color: var(--action-color);
+   color: @action;
    text-decoration: underline;
    border-radius: 1px;
 }
 
 a:hover {
-   --action-color-l: calc(var(--action-color-l) + var(--interactive-adjustment));
+   color: @action-lighter;
 }
 
 a:focus-visible {
    outline-offset: 2px;
 }
 
-
-/* Separating semantics from style (heading levels, etc.) */
-
+/* Heading classes. Meant to emulate a different heading size, if needed. */
 .small-text {
    font-size: .8rem;
 }
 
-.heading-level4 {
+h4, .heading-level4 {
    font-size: 1.2rem;
    margin-bottom: .1em;
 }
 
-.heading-level3 {
+h3, .heading-level3 {
    font-size: 1.4rem;
    margin-bottom: .1em;
 }
 
-.heading-level2 {
+h2, .heading-level2 {
    font-size: 1.8rem;
    margin-bottom: .1em;
 }
 
-
-.heading-level1 {
+h1, .heading-level1 {
    font-size: 2.5rem;
    margin-bottom: .2em;
 }
