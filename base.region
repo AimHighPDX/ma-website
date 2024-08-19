@@ -23,7 +23,7 @@
       <section class="full-section">
          <div>
             <h2>Foo</h2>
-            <squarespace:block-field id="ma-summary" label="MA Summary" columns="2"/>
+            <squarespace:block-field id="ma-summary" label="MA Summary" columns="1"/>
          </div>
       </section>
 
@@ -34,18 +34,18 @@
       <section class="full-section">
          <div>
             <h2>Something</h2>
-            <squarespace:block-field id="events-summary" label="Events Summary" columns="2"/>
+            <squarespace:block-field id="events-summary" label="Events Summary" columns="1"/>
          </div>
       </section>
 
       <!-- Aim High PDX -->
       <section>
-         <squarespace:block-field id="ahpdx-about" columns="2"/>
+         <squarespace:block-field id="ahpdx-about" columns="1"/>
          <button class="secondary">Testing</button>
       </section>
       <!-- Hiring -->
       <section>
-         <squarespace:block-field id="ahpdx-hiring" columns="12"/>
+         <squarespace:block-field id="ahpdx-hiring" columns="1"/>
       </section>
    </main>
 
