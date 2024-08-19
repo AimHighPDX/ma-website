@@ -16,9 +16,10 @@
 
 @gray: hsl(217, 5%, 50%);
 @white: hsl(217, 5%, 95%);
-@black: hsl(217, 5%, 5%);
+@black: hsl(217, 5%, 3%);
 
 @primary: hsl(217, 80%, 38%);
+@primary-dark: darken(@primary, (5% + @color-contrast-adjustment));
 
 @action: hsl(191, 70%, 65%);
 
@@ -34,7 +35,7 @@
 @shadow-hover: @shadow-offset (@shadow-size * 1.5) @shadow-color;
 @shadow-pressed: inset @shadow-offset @shadow-size @shadow-color;
 
-@background: @black;
+@background: darken(@primary, 32%);
 @text-color: @white;
 
 /* preference stuff */

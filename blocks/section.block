@@ -1,8 +1,12 @@
 <section class="full-section">
    <div>
-      <img> <!-- Editable image block-->
       <div>
-         <squarespace:block-field id="section-text" columns="1"/>
+         <h2>Section 1</h2>
+         <squarespace:block-field id="section-one" columns="1"/>
+      </div>
+      <div>
+         <h2>Section 2</h2>
+         <squarespace:block-field id="section-two" columns="1"/>
       </div>
    </div>
 </section>
