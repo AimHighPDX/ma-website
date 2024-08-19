@@ -22,7 +22,8 @@
       <!-- MA Summary -->
       <section class="full-section">
          <div>
-            <squarespace:block-field id="ma-summary" label="MA Summary" columns="2"/>
+            <squarespace:block-field id="ma-summary-image" label="MA Summary Image" columns="1"/>
+            <squarespace:block-field id="ma-summary" label="MA Summary" columns="1"/>
          </div>
       </section>
 
@@ -33,6 +34,7 @@
       <section class="full-section">
          <div>
             <h2>Something</h2>
+            <squarespace:block-field id="events-summary-image" label="Events Summary Image" columns="1"/>
             <squarespace:block-field id="events-summary" label="Events Summary" columns="1"/>
          </div>
       </section>
