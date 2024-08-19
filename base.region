@@ -22,6 +22,7 @@
       <!-- MA Summary -->
       <section class="full-section">
          <div>
+            <h2>Foo</h2>
             <squarespace:block-field id="ma-summary" label="MA Summary" columns="2"/>
          </div>
       </section>
@@ -32,6 +33,7 @@
       <!-- Events callout -->
       <section class="full-section">
          <div>
+            <h2>Something</h2>
             <squarespace:block-field id="events-summary" label="Events Summary" columns="2"/>
          </div>
       </section>
