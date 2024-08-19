@@ -20,13 +20,35 @@
       {@|apply announcement.block}
 
       <!-- MA Summary -->
-      {@|apply section.block}
+      <section class="full-section">
+         <div>
+            <div>
+               <h2>Section 1</h2>
+               <squarespace:block-field id="ma-summary-left" columns="1"/>
+            </div>
+            <div>
+               <h2>Section 2</h2>
+               <squarespace:block-field id="ma-summary-right" columns="1"/>
+            </div>
+         </div>
+      </section>
 
       <!-- Program Tabs -->
       {@|apply tabs.block}
 
       <!-- Events callout -->
-      {@|apply section.block}
+      <section class="full-section">
+         <div>
+            <div>
+               <h2>Section 1</h2>
+               <squarespace:block-field id="events-summary-left" columns="1"/>
+            </div>
+            <div>
+               <h2>Section 2</h2>
+               <squarespace:block-field id="events-summary-right" columns="1"/>
+            </div>
+         </div>
+      </section>
 
       <!-- Aim High PDX -->
       <section>
