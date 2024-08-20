@@ -1,0 +1,24 @@
+{.section item}
+   <section class="staff">
+      <img src="{@|staff-image}" alt="{@|staff-name}">
+      <div>
+         <div>
+            <h2>{@|staff-name}</h2>
+            <h3>{@|staff-role}</h3>
+            <ul>
+               {.repeated section staff-certs}
+                  <li>{@}</li>
+               {.end}
+            </ul>
+         </div>
+         <div>
+            <h4>Martial Arts Style:</h4>
+            <ul>
+               {.repeated section staff-style}
+                  <li>{@}</li>
+               {.end}
+            </ul>
+         </div>
+      </div>
+   </section>
+{.end}
