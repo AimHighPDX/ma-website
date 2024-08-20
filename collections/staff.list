@@ -1,12 +1,11 @@
-<section>
-   {.repeated section items}
-      <section class="staff">
-         <img src="{@|mainImage.assetUrl}" alt="{@|title}">
-         <div>
-            <h3>{@|title}</h3>
-            <h4>{@|customContent.staff-role}</h4>
-            {@|body}
-         </div>
-      </section>
-   {.end}
-</section>
+
+{.repeated section items}
+   <section class="staff">
+      <img src="{assetUrl}" alt="{title}">
+      <div>
+         <h3>{title}</h3>
+         <h4>{customContent.staff-role}</h4>
+         {body}
+      </div>
+   </section>
+{.end}
