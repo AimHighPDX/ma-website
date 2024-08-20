@@ -33,8 +33,8 @@
       <!-- Events callout -->
       <section class="full-section">
          <div>
-            <squarespace:block-field id="events-summary-image" label="Events Summary Image" columns="1"/>
             <squarespace:block-field id="events-summary" label="Events Summary" columns="1"/>
+            <squarespace:block-field id="events-summary-image" label="Events Summary Image" columns="1"/>
          </div>
       </section>
 

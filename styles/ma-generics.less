@@ -40,7 +40,7 @@ Not for color changes; these are for structural changes.
          align-items: center;
 
          > div:has(.image-block) {
-            order: 0;
+            order: -1;
             * {
                max-height: 15rem;
             }
@@ -57,8 +57,88 @@ Not for color changes; these are for structural changes.
    }
 }
 
-
+/* Item */
 .staff {
-   
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   /* Deal with mobile sizing later */
+
+   background-image: linear-gradient(.25turn, transparent, transparent 15%, @primary 15%, @primary 20%, transparent 20%);
+
+   .staff-image {
+      display: grid;
+      img {
+         align-self: end;
+      }
+   }
+
+   .staff-text {
+      display: flex;
+      flex-direction: column;
+      padding: (2 * @padding) 0;
+
+      h2 {
+         border-bottom: max(2px, .08em) solid @primary;
+      }
+
+      h3 {
+         order: -1;
+      }
+
+      h4 {
+         margin-top: 1rem;
+      }
+   }
 }
 
+/* Collection */
+.staff-list {
+   display: grid;
+   gap: 1rem;
+   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+   grid-template-rows: repeat(auto-fit, 350px);
+   list-style-type: none;
+   
+   .staff {
+      display: grid;
+      grid-template-rows: 1fr auto 0fr;
+
+      @grid-transition: .5s;
+
+      background: @black;
+      box-shadow: @shadow;
+      border-radius: @radius;
+      overflow: hidden;
+      transition: @grid-transition;
+
+      .staff-image {
+         overflow: hidden;
+         object-fit: cover;
+         object-position: top;
+         width: 100%;
+      }
+
+      .disclosure-header {
+         overflow: hidden;
+         padding: @text-padding;
+      }
+
+      .disclosure-body {
+         overflow: auto;
+         color-scheme: dark;
+
+         display: block;
+         padding: 0 1rem;
+         transition: visibility step-end @grid-transition, all @grid-transition;
+      }
+
+      &:has(button[aria-expanded="true"]) {
+         grid-template-rows: 0fr auto 1fr;
+
+         .disclosure-body {
+            padding: @padding;
+            transition: visibility step-start @grid-transition, all @grid-transition;
+         }
+      }
+   }
+}

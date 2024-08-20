@@ -1,11 +1,15 @@
-
-{.repeated section items}
-   <section class="staff">
-      <img src="{assetUrl}" alt="{title}">
-      <div>
-         <h3>{title}</h3>
-         <h4>{customContent.staff-role}</h4>
-         {body}
-      </div>
-   </section>
-{.end}
+<ul class="staff-list">
+   {.repeated section items}
+      <li class="staff">
+         <img class="staff-image" src="{assetUrl}" alt="{title}, {customContent.staff-role}">
+         <div class="disclosure-header">
+            <h3>{title}</h3>
+            <h4>{customContent.staff-role}</h4>
+            <button type="button" aria-controls="{id}-bio" aria-expanded="false" aria-label="{title}">
+               About {title}
+            </button>
+         </div>
+         <div class="disclosure-body" id="{id}-bio">{body}</div>
+      </li>
+   {.end}
+</ul>

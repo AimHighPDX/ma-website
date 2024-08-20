@@ -1,20 +1,16 @@
 {.section item}
-   <section class="staff">
-      <img src="{customContent.staff-image}" alt="{title}">
-      <div>
-         <div>
-            <h2>{title}</h2>
-            <h3>{customContent.staff-role}</h3>
-            <ul>
-               <li>{customContent.staff-certs}</li>
-            </ul>
-         </div>
-         <div>
-            <h4>Martial Arts Style:</h4>
-            <ul>
-               <li>{customContent.staff-style}</li>
-            </ul>
-         </div>
+   <section class="staff item">
+      <div class="staff-image">
+         <div></div>
+         <img src="{customContent.staff-image.assetUrl}" alt="{title}">
+      </div>
+      
+      <div class="staff-text">
+         <h2>{title}</h2>
+         <h3>{customContent.staff-role}</h3>
+         <ul>{customContent.staff-certs.html}</ul>
+         <h4>Martial Arts Style:</h4>
+         <ul>{customContent.staff-style.html}</ul>
       </div>
    </section>
 {.end}
