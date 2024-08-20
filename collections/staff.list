@@ -1,11 +1,11 @@
 <section>
    {.repeated section items}
       <section class="staff">
-         <img src="{@|staff-image}" alt="{@|staff-name}">
+         <img src="{@|mainImage.assetUrl}" alt="{@|title}">
          <div>
-            <h3>{@|staff-name}</h3>
-            <h4>{@|staff-role}</h4>
-            <p>{@|staff-bio}</p>
+            <h3>{@|title}</h3>
+            <h4>{@|customContent.staff-role}</h4>
+            {@|body}
          </div>
       </section>
    {.end}
