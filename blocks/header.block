@@ -1,5 +1,5 @@
 <header>
-   <nav id="ma-nav" data-content-field="navigation-ma-nav">
+   <nav id="ma-nav" data-content-field="navigation-maNav">
       <ul>
          {.repeated section items}
             <li class="{.section active} active-link{.end}">
