@@ -1,16 +1,23 @@
 {.section item}
-   <section class="staff item">
+   <section class="staff-standalone">
       <div class="staff-image">
          <div></div>
          <img src="{customContent.staff-image.assetUrl}" alt="{title}">
       </div>
       
       <div class="staff-text">
-         <h2>{title}</h2>
-         <h3>{customContent.staff-role}</h3>
-         <ul>{customContent.staff-certs.html}</ul>
-         <h4>Martial Arts Style:</h4>
-         <ul>{customContent.staff-style.html}</ul>
+         <h2>
+            {title}
+         </h2>
+         <h3>
+            {.repeated section categories}
+               {@}
+            {.alternates with}
+               /
+            {.end}
+            {customContent.staff-role}
+         </h3>
+         {body}
       </div>
    </section>
 {.end}

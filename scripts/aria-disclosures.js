@@ -1,10 +1,11 @@
 /**
- * 
+ * Initiates hiding of closed disclosures and adds the proper event listener.
  */
+(function(){
+   console.log("foo");
+   window.addEventListener("load", initDisclosures, {once:true});
+}())
 
-/**
- * 
- */
 function initDisclosures() {
    let allDisclosures = document.querySelectorAll("button[aria-expanded][aria-controls]");
    for (let disclosure of allDisclosures) {
@@ -28,5 +29,3 @@ function toggleDisclosure(button, description) {
    button.setAttribute("aria-expanded", !isShown);
    description.toggleAttribute("hidden", isShown);
 }
-
-initDisclosures();

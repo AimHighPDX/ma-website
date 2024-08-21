@@ -58,7 +58,7 @@ Not for color changes; these are for structural changes.
 }
 
 /* Item */
-.staff {
+.staff-standalone {
    display: grid;
    grid-template-columns: 1fr 1fr;
    /* Deal with mobile sizing later */
@@ -96,12 +96,12 @@ Not for color changes; these are for structural changes.
    display: grid;
    gap: 1rem;
    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-   grid-template-rows: repeat(auto-fit, 350px);
    list-style-type: none;
    
    .staff {
       display: grid;
       grid-template-rows: 1fr auto 0fr;
+      height: 350px;
 
       @grid-transition: .5s;
 

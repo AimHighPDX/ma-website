@@ -9,7 +9,7 @@
                About {title}
             </button>
          </div>
-         <div class="disclosure-body" id="{id}-bio">{body}</div>
+         <div class="disclosure-body" id="{id}-bio">{excerpt}</div>
       </li>
    {.end}
 </ul>
