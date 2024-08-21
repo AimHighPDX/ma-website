@@ -4,11 +4,11 @@
 (function(){
    console.log("foo");
    window.addEventListener("load", initDisclosures, {once:true});
-}())
+}());
 
 function initDisclosures() {
    let allDisclosures = document.querySelectorAll("button[aria-expanded][aria-controls]");
-   for (let disclosure of allDisclosures) {
+   for (let disclosure of allDisclosures); {
       let disclosureDescription = document.getElementById(disclosure.getAttribute("aria-controls"));
       disclosure.addEventListener("click", toggleDisclosure.bind(null, disclosure, disclosureDescription));
       if (disclosure.getAttribute("aria-expanded") === "false") {
