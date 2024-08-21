@@ -7,10 +7,11 @@
 </head>
 
 <body>
-   {@|apply header.block}
+   <squarespace:navigation navigationId="ma-nav" template="header" />
    <main>
       <section id="page" role="main" data-content-field="main-content">
-        {squarespace.main-content}
+         {@|apply banner.block}
+         {squarespace.main-content}
       </section>
    </main>
 

@@ -1,0 +1,9 @@
+<section class="hero-banner">
+   {.section collection}
+      <img src="" alt="">
+      <section>
+         <h1>{title}</h1>
+         <p></p>
+      </section>
+   {.end}
+</section>

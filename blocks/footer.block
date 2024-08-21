@@ -4,7 +4,7 @@
          <img class="logo" src="{website.logoImageUrl}?width=200" alt="{website.siteTitle}">
          <address>
             {.section website.location}
-               <p>
+               <p data-content-field="location">
                   {addressTitle}<br>
                   {addressLine1}<br>
                   {addressLine2}

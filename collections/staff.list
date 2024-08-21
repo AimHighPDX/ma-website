@@ -1,15 +1,21 @@
-<ul class="staff-list">
+<ul class="staff-list" data-collection-id="{collection.id}">
    {.repeated section items}
-      <li class="staff">
+      <li class="staff" data-item-id="{item.id}">
          <img class="staff-image" src="{assetUrl}" alt="{title}, {customContent.staff-role}">
          <div class="disclosure-header">
-            <h3>{title}</h3>
+            <h3 data-content-field="title">{title}</h3>
             <h4>{customContent.staff-role}</h4>
             <button type="button" aria-controls="{id}-bio" aria-expanded="false" aria-label="{title}">
                About {title}
             </button>
          </div>
-         <div class="disclosure-body" id="{id}-bio">{excerpt}</div>
+         <div class="disclosure-body" id="{id}-bio">
+            {.excerpt?} 
+               {excerpt}
+            {.or}
+               Bio coming soon!
+            {.end}
+         </div>
       </li>
    {.end}
 </ul>

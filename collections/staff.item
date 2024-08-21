@@ -1,14 +1,12 @@
 {.section item}
-   <section class="staff-standalone">
+   <section class="staff-standalone" data-item-id="{item.id}">
       <div class="staff-image">
          <div></div>
          <img src="{customContent.staff-image.assetUrl}" alt="{title}">
       </div>
       
       <div class="staff-text">
-         <h2>
-            {title}
-         </h2>
+         <h2 data-content-field="title">{title}</h2>
          <h3>
             {.repeated section categories}
                {@}

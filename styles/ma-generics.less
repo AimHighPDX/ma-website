@@ -88,6 +88,14 @@ Not for color changes; these are for structural changes.
       h4 {
          margin-top: 1rem;
       }
+
+      ul, ol {
+         list-style-type: none;
+
+         p::before {
+            content: "" !important;
+         }
+      }
    }
 }
 
