@@ -10,7 +10,7 @@ function initDisclosures() {
    let allDisclosures = document.querySelectorAll("button[aria-expanded][aria-controls]");
    for (let disclosure of allDisclosures) {
       let disclosureDescription = document.getElementById(disclosure.getAttribute("aria-controls"));
-      disclosure.addEventListener("click", toggleDisclosure.bind(null, disclosure, disclosureDescription))
+      disclosure.addEventListener("click", toggleDisclosure.bind(null, disclosure, disclosureDescription));
       if (disclosure.getAttribute("aria-expanded") === "false") {
          disclosureDescription.toggleAttribute("hidden", true);
       }
