@@ -1,3 +1,20 @@
 {.section item}
-   {@|json-pretty}
+   <section class="full-section">
+      <img alt="image">
+      <div>
+         text here
+      </div>
+   </section>
+
+   <section>
+      Preferably, insert list view of the classes for mma
+   </section>
+
+   <section>
+      <squarespace:query collection="testing/test-staff" limit="1" category="MMA">
+         {.repeated section items}
+            {@|apply staff.block}
+         {.end}
+      </squarespace:query>
+   </section>
 {.end}
