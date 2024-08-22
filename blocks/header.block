@@ -11,9 +11,10 @@
                   </button>
                   <ul id="{collection.title}-submenu">
                      {.repeated section items}
+                        {.var @current active}
                         {.section collection}
                            <li>
-                              <a class="button" href="{fullUrl}" {.section active} aria-current="page" {.end}>{navigationTitle}</a>
+                              <a class="button" href="{fullUrl}" {.if @current} aria-current="page" {.end}>{navigationTitle}</a>
                            </li>
                         {.end}
                         {.section externalLink}
@@ -25,9 +26,10 @@
                   </ul>
                </li>
             {.or}
+               {.var @current active}
                {.section collection}
                   <li>
-                     <a class="button" href="{fullUrl}" {.section active} aria-current="page" {.end}>{navigationTitle}</a>
+                     <a class="button" href="{fullUrl}" {.if @current} aria-current="page" {.end}>{navigationTitle}</a>
                   </li>
                {.end}
                {.section externalLink}

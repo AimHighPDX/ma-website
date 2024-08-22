@@ -212,7 +212,7 @@ button, a.button {
 
       &::after {
          content:"❯";
-         transition: @transition-time-user-init ease-in-out;
+         transition: transform @transition-time-user-init ease-in-out;
       }
 
       &[aria-expanded="false"]::after {
@@ -252,10 +252,22 @@ header {
             border-radius: 0;
             height: 100%;
             width: 100%;
+            box-shadow: none;
 
             &[aria-current="page"] {
-               background-color: red;
+               text-decoration: underline;
+               color: darken(@text-color, @interactive-color-adjustment);
+               text-underline-offset: .2em;
             }
+
+            &:hover {
+               box-shadow: none;
+            }
+         }
+
+         button.disclosure[aria-expanded="true"] {
+            background-color: @action;
+            color: unset;
          }
       }
 
@@ -263,7 +275,7 @@ header {
          position: absolute;
          flex-direction: column;
          align-items: stretch;
-         background-color: @black;
+         background-color: @darkgray;
       }
 
       .logo {
