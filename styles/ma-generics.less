@@ -33,7 +33,7 @@ Not for color changes; these are for structural changes.
 }
 
  
-
+/* full width container with 2 cols. */
 .full-section {
    width: 100%;
    
@@ -58,12 +58,12 @@ Not for color changes; these are for structural changes.
       justify-content: center;
       grid-template-columns: repeat(auto-fill, max(18rem, 45%));
 
-      > div:not(:has(.image-block)) {
-         padding: @padding;
+      > * {
+         height: 100%;
       }
 
-      > div:has(.image-block) * {
-         height: 100%;
+      .padded {
+         padding: @padding;
       }
       
       @media only screen and (max-width:40rem) {
@@ -71,7 +71,7 @@ Not for color changes; these are for structural changes.
          flex-direction: column;
          align-items: center;
 
-         > div:has(.image-block) {
+         > div:has(img) {
             order: -1;
             * {
                max-height: 15rem;
@@ -80,7 +80,7 @@ Not for color changes; these are for structural changes.
       }
    }
 
-   /* Unset some padding */
+   /* Unset some padding if necessary */
    .sqs-image-shape-container-element {
       padding-bottom: 0 !important;
       img {

@@ -1,12 +1,14 @@
 {.section item}
    {.var @programkey .customContent.program}
    <section class="full-section">
-      <img alt="image">
       <div>
-         {body}
-         <a href="/intro" class="button">
-            Enroll Now
-         </a>
+         <img src="{customContent.summary-image.assetUrl}" alt="image">
+         <div class="padded">
+            {body}
+            <a href="/intro" class="button">
+               Enroll Now
+            </a>
+         </div>
       </div>
    </section>
 
@@ -14,9 +16,17 @@
       <squarespace:query collection="" limit="20" category="{@programkey}">
       </squarespace:query>
       Insert list view of the classes for {@programkey}
+      <div class="button-set">
+         <a href="/class-schedule" class="button">
+            Schedule for all programs
+         </a>
+         <a href="/contact" class="button secondary">
+            Contact us for private lessons <span aria-hidden="true">→</span>
+         </a>
+      </div>
    </section>
 
-   <section>
+   <section class="full-section">
       <squarespace:query collection="testing/test-staff" limit="1" category="{@programkey}">
          {.repeated section items}
             {@|apply staff.block}
