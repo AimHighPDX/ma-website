@@ -2,14 +2,11 @@
    {.repeated section items}
       <li class="staff" data-item-id="{item.id}">
          <img class="staff-image" src="{assetUrl}" alt="{title}, {customContent.staff-role}">
-         <div class="disclosure-header">
+         <button type="button" class="disclosure disclosure-header" aria-controls="{id}-bio" aria-expanded="false">
             <h3 data-content-field="title">{title}</h3>
-            <h4>{customContent.staff-role}</h4>
-            <button type="button" class="disclosure" aria-controls="{id}-bio" aria-expanded="false" aria-label="{title}">
-               About {title}
-            </button>
-         </div>
+         </button>
          <div class="disclosure-body" id="{id}-bio">
+            <h4>{customContent.staff-role}</h4>
             {.excerpt?} 
                {excerpt}
             {.or}

@@ -188,6 +188,7 @@ button, a.button {
 
    &.icon-button {
       padding: 0;
+      gap: 0;
       justify-content: left;
 
       .icon {
@@ -198,29 +199,45 @@ button, a.button {
          justify-content: center;
 
          margin: .5rem;
-         min-width: calc(48px - 1rem);
       }
 
       .text {
-         margin: @text-padding;
-         margin-left: 0;
+         margin: .5em;
+      }
+
+      &:has(.text.visually-hidden) {
+         justify-content: center;
       }
    }
 
    &.disclosure {
       gap: .5em;
 
-      &::after {
-         content:"❯";
+      &:not(.icon-button) {
+         &::after {
+            content:"❯";
+            transition: transform @transition-time-user-init ease-in-out;
+         }
+   
+         &[aria-expanded="false"]::after {
+            transform: rotate(.25turn);
+         }
+   
+         &[aria-expanded="true"]::after {
+            transform: rotate(-.25turn);
+         }
+      }
+
+      &.icon-button {
          transition: transform @transition-time-user-init ease-in-out;
-      }
 
-      &[aria-expanded="false"]::after {
-         transform: rotate(.25turn);
-      }
-
-      &[aria-expanded="true"]::after {
-         transform: rotate(-.25turn);
+         &[aria-expanded="false"] .icon {
+            transform: rotate(.25turn);
+         }
+   
+         &[aria-expanded="true"] .icon {
+            transform: rotate(-.25turn);
+         }
       }
    }
 }
@@ -254,13 +271,15 @@ header {
             width: 100%;
             box-shadow: none;
 
+            outline-offset: -.5rem;
+
             &[aria-current="page"] {
                text-decoration: underline;
                color: darken(@text-color, @interactive-color-adjustment);
                text-underline-offset: .2em;
             }
 
-            &:hover {
+            &:not([disabled]):not([aria-disabled]):hover {
                box-shadow: none;
             }
          }

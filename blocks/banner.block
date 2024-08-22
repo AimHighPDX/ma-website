@@ -1,9 +1,8 @@
 <section class="hero-banner">
    {.section collection}
-      <img src="" alt="">
-      <section>
-         <h1>{title}</h1>
-         <p></p>
-      </section>
+      {.section mainImage}
+         <img src="{assetUrl}" alt="{title}">
+      {.end}
+      <h1>{title}</h1>
    {.end}
 </section>

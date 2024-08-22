@@ -9,8 +9,8 @@
 <body>
    <squarespace:navigation navigationId="maNav" template="header" />
    <main>
+      {@|apply banner.block}
       <section id="page" role="main" data-content-field="main-content">
-         {@|apply banner.block}
          {squarespace.main-content}
       </section>
    </main>

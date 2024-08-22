@@ -1,6 +1,38 @@
 /* These are ma-specific styles.
 Not for color changes; these are for structural changes.
  */
+.hero-banner {
+   width: 100%;
+   height: min(15rem, 40vh);
+   grid-column-start: 1;
+   grid-column-end: -1;
+
+   display: grid;
+   grid-template-columns: inherit;
+   grid-template-rows: 1fr auto 1rem;
+
+   padding: 0;
+   margin: @padding 0;
+
+   img {
+      grid-column-start: 1;
+      grid-column-end: -1;
+      grid-row-start: 1;
+      grid-row-end: -1;
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+
+   h1 {
+      grid-row-start: 2;
+      grid-column-start: 2;
+      padding: @padding;
+   }
+}
+
+ 
 
 .full-section {
    width: 100%;
@@ -103,7 +135,7 @@ Not for color changes; these are for structural changes.
 .staff-list {
    display: grid;
    gap: 1rem;
-   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
    list-style-type: none;
    
    .staff {
@@ -125,8 +157,20 @@ Not for color changes; these are for structural changes.
       }
 
       .disclosure-header {
-         overflow: hidden;
-         padding: @text-padding;
+         width: 100%;
+         justify-content: space-between;
+         border-radius: 0;
+
+         background: @black;
+         color: @action;
+
+         > * {
+            color: unset;
+         }
+
+         button {
+            outline-offset: -.5rem;
+         }
       }
 
       .disclosure-body {
@@ -136,6 +180,8 @@ Not for color changes; these are for structural changes.
          display: block;
          padding: 0 1rem;
          transition: visibility step-end @transition-time, all @transition-time;
+         border-top: 2px solid @white;
+         opacity: 0;
       }
 
       &:has(button[aria-expanded="true"]) {
@@ -143,7 +189,8 @@ Not for color changes; these are for structural changes.
 
          .disclosure-body {
             padding: @padding;
-            transition: visibility step-start @transition-time, all @transition-time;
+            transition: visibility step-start @transition-time, opacity @transition-time ease-out, all @transition-time;
+            opacity: 1;
          }
       }
    }
