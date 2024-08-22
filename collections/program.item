@@ -1,17 +1,23 @@
 {.section item}
+   {.var @programkey .customContent.program}
    <section class="full-section">
       <img alt="image">
       <div>
-         text here
+         {body}
+         <a href="/intro" class="button">
+            Enroll Now
+         </a>
       </div>
    </section>
 
    <section>
-      Preferably, insert list view of the classes for mma
+      <squarespace:query collection="" limit="20" category="{@programkey}">
+      </squarespace:query>
+      Insert list view of the classes for {@programkey}
    </section>
 
    <section>
-      <squarespace:query collection="testing/test-staff" limit="1" category="MMA">
+      <squarespace:query collection="testing/test-staff" limit="1" category="{@programkey}">
          {.repeated section items}
             {@|apply staff.block}
          {.end}
