@@ -2,19 +2,44 @@
    <nav id="ma-nav" data-content-field="navigation-maNav">
       <ul>
          {.repeated section items}
-            <li class="{.section active} active-link{.end}">
+            {.folder?}
+               <li class="sub-nav">
+                  <button type="button" class="disclosure" aria-controls="{collection.title}-submenu" aria-expanded="false">
+                     <span>
+                        {collection.navigationTitle}
+                     </span>
+                  </button>
+                  <ul id="{collection.title}-submenu">
+                     {.repeated section items}
+                        {.section collection}
+                           <li>
+                              <a class="button" href="{fullUrl}" {.section active} aria-current="page" {.end}>{navigationTitle}</a>
+                           </li>
+                        {.end}
+                        {.section externalLink}
+                           <li>
+                              <a class="button" href="{url}" class="external" target="_blank">{title}</a>
+                           </li>
+                        {.end}
+                     {.end}
+                  </ul>
+               </li>
+            {.or}
                {.section collection}
-                  <a href="{fullUrl}">{navigationTitle}</a>
+                  <li>
+                     <a class="button" href="{fullUrl}" {.section active} aria-current="page" {.end}>{navigationTitle}</a>
+                  </li>
                {.end}
-
                {.section externalLink}
-                  <a href="{url}"{.section newWindow} target="_blank"{.end}>{title}</a>
+                  <li>
+                     <a class="button" href="{url}" class="external" target="_blank">{title}</a>
+                  </li>
                {.end}
-            </li>
+            {.end}
          {.end}
       </ul>
       <a href="/" aria-label="{website.siteTitle}">
-         <img src="{website.logoImageUrl}?width=200" alt="{website.siteTitle}">
+         <img class="logo" src="{website.logoImageUrl}?width=200" alt="{website.siteTitle}">
       </a>
    </nav>
 </header>

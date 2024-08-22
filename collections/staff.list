@@ -5,7 +5,7 @@
          <div class="disclosure-header">
             <h3 data-content-field="title">{title}</h3>
             <h4>{customContent.staff-role}</h4>
-            <button type="button" aria-controls="{id}-bio" aria-expanded="false" aria-label="{title}">
+            <button type="button" class="disclosure" aria-controls="{id}-bio" aria-expanded="false" aria-label="{title}">
                About {title}
             </button>
          </div>

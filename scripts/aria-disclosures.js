@@ -25,9 +25,33 @@ function toggleDisclosure(button, description) {
    description.toggleAttribute("hidden", isShown);
 }
 
+/**
+ * Site nav disclosures for submenus (single-layer)
+ */
+
+function initNavDisclosure() {
+   let navDisclosures = document.querySelectorAll('header nav button[aria-expanded][aria-controls]');
+   for (let disclosure of navDisclosures) {
+      let wrapper = disclosure.parentElement;
+      let submenu = document.getElementById(disclosure.getAttribute("aria-controls"));
+      wrapper.addEventListener("focusout", (event) => {
+         let focusOutside = !submenu.contains(event.relatedTarget) && disclosure !== event.relatedTarget;
+         if (disclosure.getAttribute("aria-expanded") === "true" && focusOutside) {
+            toggleDisclosure(disclosure, submenu);
+         }
+      });
+      submenu.addEventListener("keydown", (event) => {
+         if (event.key === "Escape") {
+            //close dropdown. Focus on disclosure
+            toggleDisclosure(disclosure, submenu);
+            disclosure.focus();
+         }
+      });
+   }
+}
+
+
 (function(){
    'use strict';
-
-   console.log("foo");
-   window.addEventListener("load", initDisclosures, {once:true});
+   window.addEventListener("load", () => {initDisclosures(); initNavDisclosure();}, {once:true});
 }());
