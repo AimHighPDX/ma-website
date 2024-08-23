@@ -198,26 +198,34 @@ Not for color changes; these are for structural changes.
 
 .table-wrapper {
    overflow: auto;
+   color-scheme: dark;
 
-   table {
-      border: 2px solid white;
+   caption {
+      text-align: left;
    }
 
-   th {
-      background-color: gray;
-      vertical-align: bottom;
+   td, th {
+      text-align: center;
+   }
+
+   tr > th {
+      text-align: right;
+   }
+
+   th, td {
+      vertical-align: center;
+      padding: @text-padding;
    }
 
    tr {
       &:nth-child(even) {
-         background-color: darkolivegreen;
+         background-color: darken(@primary, (2.5 * @color-contrast-adjustment));
       }
       &:nth-child(odd) {
-         background-color: darkgoldenrod;
+         background-color: darken(@primary, (2 * @color-contrast-adjustment));
       }
-   }
-
-   td {
-      vertical-align: center;;
+      &:first-of-type {
+         background-color: @primary;
+      }
    }
 }
