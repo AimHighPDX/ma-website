@@ -1,6 +1,6 @@
 <!-- This is a real table. NEVER change the table display properties.-->
 <section tabindex="0" role="region" aria-labelledby="class-schedule-title" class="table-wrapper">
-   <table>
+   <table id="class-schedule-table">
       <caption id="class-schedule-title" class="heading-level2">Class Schedule</caption>
       <tr>
          <th></th>

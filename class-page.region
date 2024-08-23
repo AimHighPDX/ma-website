@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   {squarespace-headers}
+   <squarespace:script src="aria-disclosures.js" combo="true" defer />
+</head>
+
+<body>
+   <squarespace:navigation navigationId="maNav" template="header" />
+
+   <main>
+      {@|apply banner.block}
+      <section id="page" role="main" data-content-field="main-content">
+         <squarespace:query collection="program" limit="1" category="{collection.navigationTitle}">
+            {.repeated section items}
+               {@|apply class-page.block}
+            {.end}
+         </squarespace:query>
+      </section>
+   </main>
+
+   {@|apply footer.block}
+</body>
+
+</html>
