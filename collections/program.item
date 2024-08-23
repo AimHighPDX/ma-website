@@ -1,5 +1,5 @@
 {.section item}
-   {.var @programkey .customContent.program}
+   {.var @programkey customContent.program}
    <section class="full-section">
       <div>
          <img src="{customContent.summary-image.assetUrl}" alt="image">

@@ -50,8 +50,10 @@ function initNavDisclosure() {
    }
 }
 
-
 (function(){
    'use strict';
-   window.addEventListener("load", () => {initDisclosures(); initNavDisclosure();}, {once:true});
+   window.addEventListener("load", () => {
+      initDisclosures(); 
+      initNavDisclosure();
+   }, {once:true});
 }());

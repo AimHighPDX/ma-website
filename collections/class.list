@@ -1,1 +1,30 @@
-This is where a class list would go.
+<!-- This is a real table. NEVER change the table display properties.-->
+<section tabindex="0" role="region" aria-labelledby="class-schedule-title" class="table-wrapper">
+   <table>
+      <caption id="class-schedule-title">Class Schedule</caption>
+      <tr>
+         <th></th>
+         <th>Monday</th>
+         <th>Tuesday</th>
+         <th>Wednesday</th>
+         <th>Thursday</th>
+         <th>Friday</th>
+         <th>Saturday</th>
+         <th>Sunday</th>
+      </tr>
+      {.repeated section items}
+         <tr>
+            <th>{title}</th>
+            {.section customContent}
+               <td>{time-monday}</td>
+               <td>{time-tuesday}</td>
+               <td>{time-wednesday}</td>
+               <td>{time-thursday}</td>
+               <td>closed</td>
+               <td>{time-saturday}</td>
+               <td>closed</td>
+            {.end}
+         </tr>
+      {.end}
+   </table>
+</section>

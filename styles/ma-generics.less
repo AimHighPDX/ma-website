@@ -195,3 +195,29 @@ Not for color changes; these are for structural changes.
       }
    }
 }
+
+.table-wrapper {
+   overflow: auto;
+
+   table {
+      border: 2px solid white;
+   }
+
+   th {
+      background-color: gray;
+      vertical-align: bottom;
+   }
+
+   tr {
+      &:nth-child(even) {
+         background-color: darkolivegreen;
+      }
+      &:nth-child(odd) {
+         background-color: darkgoldenrod;
+      }
+   }
+
+   td {
+      vertical-align: center;;
+   }
+}
