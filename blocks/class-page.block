@@ -12,7 +12,7 @@
 </section>
 
 <section>
-   <squarespace:query collection="" limit="20" category="{@programkey}">
+   <squarespace:query collection="{website.baseUrl}/schedule" limit="20" category="{@programkey}">
    </squarespace:query>
    Insert list view of the classes for {@programkey}
    <div class="button-set">
@@ -26,7 +26,7 @@
 </section>
 
 <section class="full-section">
-   <squarespace:query collection="/staff" limit="1" category="{@programkey}">
+   <squarespace:query collection="{website.baseUrl}/staff" limit="1" category="{@programkey}">
       {.repeated section items}
          {@|apply staff.block}
       {.end}
