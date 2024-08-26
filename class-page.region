@@ -11,7 +11,7 @@
 
    <main>
       {@|apply banner.block}
-      
+
       <section id="page" role="main" data-content-field="main-content">
          <squarespace:query collection="program" limit="1" category="{collection.navigationTitle}">
             {.repeated section items}

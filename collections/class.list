@@ -28,3 +28,8 @@
       {.end}
    </table>
 </section>
+
+
+<squarespace:query collection="{.section collection}{urlId}{.end}" limit="20">
+   {title}: It's this!
+</squarespace:query>
