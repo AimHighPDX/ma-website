@@ -9,11 +9,11 @@
 <body>
    <squarespace:navigation navigationId="maNav" template="header" />
 
-   <main>
+   <main data-content-field="main-content">
       {@|apply banner.block}
 
-      <section id="page" role="main" data-content-field="main-content">
-         <section class="full-section">
+      <section class="full-section">
+         <div>
             <squarespace:query collection="program" limit="1" category="{collection.navigationTitle}">
                {.repeated section items}
                   <img src="{customContent.summary-image.assetUrl}" alt="image">
@@ -25,18 +25,20 @@
                   </div>
                {.end}
             </squarespace:query>
-         </section>
+         </div>
+      </section>
 
-         <section>
-            <h2>Classes</h2>
+      <section class="centered-section">
+         <h2>Classes</h2>
+         <div class="query-class-container">
             <squarespace:query collection="schedule" limit="20" category="{collection.navigationTitle}">
                {.repeated section items}
-                  <div>
+                  <div class="query-class">
                      <h3>{customContent.level}</h3>
                      <div>
                         <p>{customContent.duration}</p>
-                        <table>
-                           <caption><span class="visually-hidden">{title}</span> Schedule</caption>
+                        <table class="class-times">
+                           <caption class="visually-hidden">{title} Schedule</caption>
                            <tr>
                               <th>Mon/Wed</th>
                               <th>Tue/Thu</th>
@@ -58,43 +60,44 @@
                   </div>
                {.end}
             </squarespace:query>
+         </div>
 
-            <div class="button-set">
-               <a href="/class-schedule" class="button">
-                  Schedule for all programs
-               </a>
-               <a href="/contact" class="button secondary">
-                  Contact us for private lessons <span aria-hidden="true">→</span>
-               </a>
-            </div>
-         </section>
-
-         <section class="full-section">
-            <squarespace:query collection="staff" limit="1" category="{collection.navigationTitle}">
-               {.repeated section items}
-                  <section class="staff-standalone" data-item-id="{item.id}">
-                     <div class="staff-image">
-                        <div></div>
-                        <img src="{customContent.staff-image.assetUrl}" alt="{title}">
-                     </div>
-                     
-                     <div class="staff-text">
-                        <h2 data-content-field="title">{title}</h2>
-                        <h3>
-                           {.repeated section categories}
-                              {@}
-                           {.alternates with}
-                              /
-                           {.end}
-                           {customContent.staff-role}
-                        </h3>
-                        {body}
-                     </div>
-                  </section>
-               {.end}
-            </squarespace:query>
-         </section>
+         <div class="button-set">
+            <a href="/class-schedule" class="button">
+               Schedule for all programs
+            </a>
+            <a href="/contact" class="button secondary">
+               Contact us for private lessons <span aria-hidden="true">→</span>
+            </a>
+         </div>
       </section>
+
+      <section class="full-section">
+         <squarespace:query collection="staff" limit="1" category="{collection.navigationTitle}">
+            {.repeated section items}
+               <section class="staff-standalone" data-item-id="{item.id}">
+                  <div class="staff-image">
+                     <div></div>
+                     <img src="{customContent.staff-image.assetUrl}" alt="{title}">
+                  </div>
+                  
+                  <div class="staff-text">
+                     <h2 data-content-field="title">{title}</h2>
+                     <h3>
+                        {.repeated section categories}
+                           {@}
+                        {.alternates with}
+                           /
+                        {.end}
+                        {customContent.staff-role}
+                     </h3>
+                     {body}
+                  </div>
+               </section>
+            {.end}
+         </squarespace:query>
+      </section>
+
    </main>
 
    {@|apply footer.block}
