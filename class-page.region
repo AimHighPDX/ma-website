@@ -10,7 +10,17 @@
    <squarespace:navigation navigationId="maNav" template="header" />
 
    <main data-content-field="main-content">
-      {@|apply banner.block}
+      <section class="hero-banner">
+         {.section collection}
+            {.section mainImage}
+               <img src="{assetUrl}" alt="{title}">
+            {.end}
+            <div>
+               <img src="{website.socialLogoImageUrl}" alt="{title} logo">
+               <h1>{title}</h1>
+            </div>
+         {.end}
+      </section>
 
       <section class="full-section">
          <div>
