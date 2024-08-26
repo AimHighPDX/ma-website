@@ -13,11 +13,55 @@
       {@|apply banner.block}
 
       <section id="page" role="main" data-content-field="main-content">
-         <squarespace:query collection="program" limit="1" category="{collection.navigationTitle}">
-            {.repeated section items}
-               {@|apply class-page.block}
-            {.end}
-         </squarespace:query>
+         <section class="full-section">
+            <squarespace:query collection="program" limit="1" category="{collection.navigationTitle}">
+               {.repeated section items}
+                  {@|apply class-page.block}
+               {.end}
+            </squarespace:query>
+         </section>
+
+         <section>
+            <squarespace:query collection="staff" limit="20" category="{collection.navigationTitle}">
+               {.repeated section items}
+                  <!-- {@|json-pretty} -->
+               {.end}
+            </squarespace:query>
+            <div class="button-set">
+               <a href="/class-schedule" class="button">
+                  Schedule for all programs
+               </a>
+               <a href="/contact" class="button secondary">
+                  Contact us for private lessons <span aria-hidden="true">→</span>
+               </a>
+            </div>
+         </section>
+
+         <section class="full-section">
+            <squarespace:query collection="staff" limit="1" category="{collection.navigationTitle}">
+               {.repeated section items}
+                  <section class="staff-standalone" data-item-id="{item.id}">
+                     <div class="staff-image">
+                        <div></div>
+                        <img src="{customContent.staff-image.assetUrl}" alt="{title}">
+                     </div>
+                     
+                     <div class="staff-text">
+                        <h2 data-content-field="title">{title}</h2>
+                        <h3>
+                           {.repeated section categories}
+                              {@}
+                           {.alternates with}
+                              /
+                           {.end}
+                           {customContent.staff-role}
+                        </h3>
+                        {body}
+                     </div>
+                  </section>
+               {.end}
+            </squarespace:query>
+         </section>
       </section>
    </main>
 
