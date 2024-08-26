@@ -16,8 +16,12 @@
                <img src="{assetUrl}" alt="{title}">
             {.end}
             <div>
-               <img src="{website.socialLogoImageUrl}" alt="{title} logo">
-               <h1>{title}</h1>
+               <squarespace:query collection="program" limit="1" category="{navigationTitle}">
+                  {.repeated section items}
+                     <img src="{assetUrl}" alt="{title}">
+                  {.end}
+               </squarespace:query>
+               <h1>{collection.title}</h1>
             </div>
          {.end}
       </section>
@@ -28,6 +32,12 @@
                {.repeated section items}
                   <img src="{customContent.summary-image.assetUrl}" alt="image">
                   <div class="padded">
+                     <h2>Overview</h2>
+                     <ul class="tags">
+                        {.repeated section tags}
+                           <li>{@}</li>
+                        {.end}
+                     </ul>
                      {body}
                      <a href="/intro" class="button">
                         Enroll Now
