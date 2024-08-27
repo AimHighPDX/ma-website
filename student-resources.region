@@ -45,7 +45,7 @@
                                  <ul>
                                     {.repeated section items}
                                        <li>
-                                          <a href="/s/{customContent.file}" target="_blank" data-color="{customContent.color}">
+                                          <a href="{sourceUrl}" target="_blank" data-color="{customContent.color}">
                                              {title}
                                           </a>
                                        </li>
