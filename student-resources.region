@@ -38,7 +38,7 @@
                      <div id="curriculum-{customContent.program|slugify}-tabpanel" role="tabpanel" aria-labelledby="curriculum-{customContent.program|slugify}-tab">
                         <h3>{title}</h3>
                         <p>Find gear requirements and more on the <a href="/programs/{customContent.program|slugify}">{title} program page.</a></p>
-                        <squarespace:query collection="curriculum">
+                        <squarespace:query collection="curriculum/{customContent.program|slugify}">
                            <details>
                               <summary><h4>Curriculum</h4></summary>
                               <div>
