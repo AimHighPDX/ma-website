@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   {squarespace-headers}
+   <squarespace:script src="aria-disclosures.js" combo="true" defer />
+</head>
+
+<body>
+   <squarespace:navigation navigationId="maNav" template="header" />
+   <main>
+      {@|apply banner.block}
+
+      <section id="page" role="main" data-content-field="main-content">
+         <section>
+            <h2>General</h2>
+            <div class="button-set">
+               <a href="" class="button">Belt Promotion</a>
+               <a href="/schedule" class="button">Class Schedule</a>
+               <a href="" class="button">How To Check In</a>
+               <a href="" class="button">How To Tie a Belt</a>
+               <a href="" class="button">Student Highlights</a>
+            </div>
+         </section>
+         <section>
+            <h2>By Program</h2>
+            <section id="curriculum" class="tabs tabs-style-component" data-start="1">
+               <squarespace:query collection="program" limit="10">
+                  <div class="tablist-style-full" role="tablist" aria-orientation="vertical" aria-label="Vertical Tabs">
+                     {.repeated section items}
+                        <button id="curriculum-{customContent.program|slugify}-tab" aria-controls="curriculum-{customContent.program|slugify}-tabpanel" role="tab">
+                           {customContent.program}
+                        </button>
+                     {.end}
+                  </div>
+               
+                  {.repeated section items}
+                     <div id="curriculum-{customContent.program|slugify}-tabpanel" role="tabpanel" aria-labelledby="curriculum-{customContent.program|slugify}-tab">
+                        <h3>{title}</h3>
+                        <p>Find gear requirements and more on the <a href="/programs/{customContent.program|slugify}">{title} program page.</a></p>
+                        <squarespace:query collection="program" limit="20">
+                           <details>
+                              <summary><h4>Curriculum</h4></summary>
+                              <div>
+                                 <ul>
+                                    {.repeated section items}
+                                       <li>
+                                          <a href="/s/{customContent.file}" target="_blank" data-color="{customContent.color}">
+                                             {title}
+                                          </a>
+                                       </li>
+                                    {.end}
+                                 </ul>
+                              </div>
+                           </details>
+                        </squarespace:query>
+                        {.section customContent}
+                           {.videos?}
+                              <details>
+                                 <summary><h4>Videos</h4></summary>
+                                 <div>
+                                    {.videos}
+                                 </div>
+                              </details>
+                           {.end}
+                           {.add-info?}
+                              <details>
+                                 <summary><h4>Additional Information</h4></summary>
+                                 <div>
+                                    {.add-info}
+                                 </div>
+                              </details>
+                           {.end}
+                        {.end}
+                     </div>
+                  {.end}
+               </squarespace:query>
+            </section>
+         </section>
+         <section>
+            <h2>Videos</h2>
+            Some more stuff with queries.
+         </section>
+      </section>
+   </main>
+
+   {@|apply footer.block}
+</body>
+
+</html>
