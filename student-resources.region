@@ -25,7 +25,7 @@
          <section>
             <h2>By Program</h2>
             <section id="curriculum" class="tabs tabs-style-component" data-start="1">
-               <squarespace:query collection="program" limit="10">
+               <squarespace:query collection="program">
                   <div class="tablist-style-full" role="tablist" aria-orientation="vertical" aria-label="Vertical Tabs">
                      {.repeated section items}
                         <button id="curriculum-{customContent.program|slugify}-tab" aria-controls="curriculum-{customContent.program|slugify}-tabpanel" role="tab">
@@ -38,7 +38,7 @@
                      <div id="curriculum-{customContent.program|slugify}-tabpanel" role="tabpanel" aria-labelledby="curriculum-{customContent.program|slugify}-tab">
                         <h3>{title}</h3>
                         <p>Find gear requirements and more on the <a href="/programs/{customContent.program|slugify}">{title} program page.</a></p>
-                        <squarespace:query collection="program" limit="20">
+                        <squarespace:query collection="curriculum">
                            <details>
                               <summary><h4>Curriculum</h4></summary>
                               <div>
