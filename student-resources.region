@@ -38,23 +38,24 @@
                      <div id="curriculum-{customContent.program|slugify}-tabpanel" role="tabpanel" aria-labelledby="curriculum-{customContent.program|slugify}-tab">
                         <h3>{title}</h3>
                         <p>Find gear requirements and more on the <a href="/programs/{customContent.program|slugify}">{title} program page.</a></p>
-                        <squarespace:query collection="curriculum/{customContent.program|slugify}">
-                           <details>
-                              <summary><h4>Curriculum</h4></summary>
-                              <div>
-                                 <ul>
-                                    {.repeated section items}
-                                       <li>
-                                          <a href="{sourceUrl}" target="_blank" data-color="{customContent.color}">
-                                             {title}
-                                          </a>
-                                       </li>
-                                    {.end}
-                                 </ul>
-                              </div>
-                           </details>
-                        </squarespace:query>
                         {.section customContent}
+                           <squarespace:query collection="curriculum/{program|slugify}">
+                              <details>
+                                 <summary><h4>Curriculum</h4></summary>
+                                 <div>
+                                    <ul>
+                                       {.repeated section items}
+                                          <li>
+                                             <a href="{sourceUrl}" target="_blank" data-color="{customContent.color}">
+                                                {title}
+                                             </a>
+                                          </li>
+                                       {.end}
+                                    </ul>
+                                 </div>
+                              </details>
+                           </squarespace:query>
+                        
                            {.videos?}
                               <details>
                                  <summary><h4>Videos</h4></summary>
