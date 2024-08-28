@@ -1,0 +1,10 @@
+<section class="full-section">
+   <div>
+      <div class="full-section-left">
+         <squarespace:block-field id="{collection.id}-left" columns="1"/>
+      </div>
+      <div class="full-section-right">
+         <squarespace:block-field id="{collection.id}-right" columns="1"/>
+      </div>
+   </div>
+</section>

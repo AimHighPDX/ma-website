@@ -26,6 +26,8 @@
          {.end}
       </section>
 
+      {@|apply section.block}
+
       <section class="full-section">
          <div>
             <squarespace:query collection="program" limit="1" category="{collection.navigationTitle}">
@@ -104,12 +106,7 @@
                   <div class="staff-text">
                      <h2 data-content-field="title">{title}</h2>
                      <h3>
-                        {.repeated section categories}
-                           {@}
-                        {.alternates with}
-                           /
-                        {.end}
-                        {customContent.staff-role}
+                        {customContent.program} {customContent.staff-role}
                      </h3>
                      {body}
                   </div>
