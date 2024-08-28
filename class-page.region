@@ -18,7 +18,7 @@
             <div>
                <squarespace:query collection="program" limit="1" category="{navigationTitle}">
                   {.repeated section items}
-                     <img src="{assetUrl}" alt="{title}">
+                     <img src="{customContent.logo}" alt="{title}">
                   {.end}
                </squarespace:query>
                <h1>{collection.title}</h1>
