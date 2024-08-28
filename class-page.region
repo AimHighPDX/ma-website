@@ -26,29 +26,7 @@
          {.end}
       </section>
 
-      {@|apply section.block}
-
-      <section class="full-section">
-         <div>
-            <squarespace:query collection="program" limit="1" category="{collection.navigationTitle}">
-               {.repeated section items}
-                  <img src="{customContent.summary-image.assetUrl}" alt="image">
-                  <div class="padded">
-                     <h2>Overview</h2>
-                     <ul class="tags">
-                        {.repeated section tags}
-                           <li>{@}</li>
-                        {.end}
-                     </ul>
-                     {body}
-                     <a href="/intro" class="button">
-                        Enroll Now
-                     </a>
-                  </div>
-               {.end}
-            </squarespace:query>
-         </div>
-      </section>
+      {@|apply class-section.block}
 
       <section class="centered-section">
          <h2>Classes</h2>

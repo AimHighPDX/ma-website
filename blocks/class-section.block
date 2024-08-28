@@ -5,6 +5,9 @@
       </div>
       <div class="full-section-right">
          <squarespace:block-field id="{collection.id}-right" columns="1"/>
+         <a href="/intro" class="button">
+            Enroll Now
+         </a>
       </div>
    </div>
 </section>
