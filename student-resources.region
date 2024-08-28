@@ -22,62 +22,62 @@
                <a href="" class="button">Student Highlights</a>
             </div>
          </section>
+
          <section>
             <h2>By Program</h2>
-            <section id="curriculum" class="tabs tabs-style-component" data-start="1">
+            <section id="curriculum" class="tabs tabs-style-component" data-start="1" data-js="tabs">
                <squarespace:query collection="program">
-                  <div class="tablist-style-full" role="tablist" aria-orientation="vertical" aria-label="Vertical Tabs">
-                     {.repeated section items}
-                        <button id="curriculum-{customContent.program|slugify}-tab" aria-controls="curriculum-{customContent.program|slugify}-tabpanel" role="tab">
-                           {customContent.program}
-                        </button>
-                     {.end}
-                  </div>
-               
-                  {.repeated section items}
-                     <div id="curriculum-{customContent.program|slugify}-tabpanel" role="tabpanel" aria-labelledby="curriculum-{customContent.program|slugify}-tab">
-                        <h3>{title}</h3>
-                        <p>Find gear requirements and more on the <a href="/programs/{customContent.program|slugify}">{title} program page.</a></p>
-                        {.section customContent}
-                           <squarespace:query collection="curriculum/{program|slugify}">
-                              <details>
-                                 <summary><h4>Curriculum</h4></summary>
-                                 <div>
-                                    <ul>
-                                       {.repeated section items}
-                                          <li>
-                                             <a href="{sourceUrl}" target="_blank" data-color="{customContent.color}">
-                                                {title}
-                                             </a>
-                                          </li>
-                                       {.end}
-                                    </ul>
-                                 </div>
-                              </details>
-                           </squarespace:query>
-                        
-                           {.videos?}
-                              <details>
-                                 <summary><h4>Videos</h4></summary>
-                                 <div>
-                                    {.videos}
-                                 </div>
-                              </details>
-                           {.end}
-                           {.add-info?}
-                              <details>
-                                 <summary><h4>Additional Information</h4></summary>
-                                 <div>
-                                    {.add-info}
-                                 </div>
-                              </details>
-                           {.end}
-                        {.end}
+                  <div data-js="tab-pair">
+                     <h3>{title}</h3>
+                     <div>
+                        <squarespace:query collection="curriculum" category="{program}">
+                           <details>
+                              <summary>Curriculum</summary>
+                           </details>
+                           <div>
+                              <ul>
+                                 {.repeated section items}
+                                    <li>
+                                       <a href="{sourceUrl}" target="_blank" data-color="{customContent.color}">
+                                          {title}
+                                       </a>
+                                    </li>
+                                 {.end}
+                              </ul>
+                           </div>
+                        </squarespace:query>
+                        <details>
+                           <summary>Videos</summary>
+                           <div class="accordian-content">
+                              <squarespace:block-field id="{collection.id}-videos" label="Videos" columns="1"/>
+                           </div>
+                        </details>
+                        <details>
+                           <summary>Additional Information</summary>
+                           <div class="accordian-content">
+                              <squarespace:block-field id="{collection.id}-add-info" label="Additional Information" columns="1"/>
+                           </div>
+                        </details>
                      </div>
-                  {.end}
+                  </div>
                </squarespace:query>
             </section>
          </section>
+
+         <template id="tabs-template">
+            <!-- This will be recreated in JS -->
+            <section id="" class="tabs tabs-style-component" data-start="1">
+               <div class="tablist-style-full" role="tablist" aria-orientation="vertical" aria-label="Vertical Tabs">
+                     <button id="curriculum-ID-tab" aria-controls="curriculum-ID-tabpanel" role="tab">
+                     </button>
+               </div>
+               <div id="curriculum-ID-tabpanel" role="tabpanel" aria-labelledby="curriculum-ID-tab">
+
+               </div>
+
+            </section>
+         </template>
+
          <section>
             <h2>Videos</h2>
             Some more stuff with queries.

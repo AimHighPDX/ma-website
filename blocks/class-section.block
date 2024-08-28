@@ -4,6 +4,7 @@
          <squarespace:block-field id="{collection.id}-left" columns="1"/>
       </div>
       <div class="full-section-right">
+         <h2>Overview</h2>
          <squarespace:block-field id="{collection.id}-right" columns="1"/>
          <a href="/intro" class="button">
             Enroll Now
