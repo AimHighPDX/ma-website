@@ -1,0 +1,7 @@
+<ul>
+   {.repeated section items}
+      <li>
+         <a href="{sourceUrl}" style="background-color:{customContent.color};">{title}</a>
+      </li>
+   {.end}
+</ul>

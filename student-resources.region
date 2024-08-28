@@ -29,34 +29,26 @@
                <squarespace:query collection="program">
                   {.repeated section items}
                      <div data-js="tab-pair">
-                        <h3>{title}</h3>
-                        <div>
-                           <squarespace:query collection="curriculum" category="{customContent.program}">
-                              <details>
-                                 <summary>Curriculum</summary>
-                              </details>
+                        <h3 data-js="tab">{title}</h3>
+                        <div data-js="tabpanel">
+                           <h3 hidden>{title}</h3>
+                           <p>Find gear requirements and more on the <a href="{sourceUrl}">{customContent.program} program page.</a></p>
+                           <details>
+                              <summary>Curriculum</summary>
                               <div class="accordian-content">
-                                 <ul>
-                                    {.repeated section items}
-                                       <li>
-                                          <a href="{sourceUrl}" target="_blank" data-color="{customContent.color}">
-                                             {title}
-                                          </a>
-                                       </li>
-                                    {.end}
-                                 </ul>
+                                 <squarespace:block-field id="{id}-curriculum" label="{title} Curriculum" columns="1"/>
                               </div>
-                           </squarespace:query>
+                           </details>
                            <details>
                               <summary>Videos</summary>
                               <div class="accordian-content">
-                                 <squarespace:block-field id="{id}-videos" label="Videos" columns="1"/>
+                                 <squarespace:block-field id="{id}-videos" label="{title} Videos" columns="1"/>
                               </div>
                            </details>
                            <details>
                               <summary>Additional Information</summary>
                               <div class="accordian-content">
-                                 <squarespace:block-field id="{id}-add-info" label="Additional Information" columns="1"/>
+                                 <squarespace:block-field id="{id}-add-info" label="{title} Additional Information" columns="1"/>
                               </div>
                            </details>
                         </div>
