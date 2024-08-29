@@ -3,7 +3,7 @@
 
 <head>
    {squarespace-headers}
-   <squarespace:script src="aria-disclosures.js" combo="true" />
+   <squarespace:script src="aria-disclosures.js" />
 </head>
 
 <body>
