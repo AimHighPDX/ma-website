@@ -3,6 +3,7 @@
 
 <head>
    {squarespace-headers}
+   <squarespace:script src="aria.js" />
 </head>
 
 <body>
