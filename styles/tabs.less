@@ -1,0 +1,196 @@
+.tabs {
+   --tab-color: @action;
+   --tab-color-darker: darken(@action, @color-contrast-adjustment);
+   --tab-color-lighter: lighten(@action, @color-contrast-adjustment);
+
+   --tab-color-foreground: lighten(@primary, @color-contrast-adjustment);
+   --tab-color-background: darken(@primary, @color-contrast-adjustment);
+   
+   display: grid;
+   margin: @padding 0 @padding 0;
+}
+
+.tabs *[role="tablist"] {
+   --action-color: var(--tab-color);
+   --action-color-darker: var(--tab-color-darker);
+   --action-color-lighter: var(--tab-color-lighter);
+
+   display: flex;
+   grid-area: tabs;
+}
+
+.tabs *[role="tabpanel"] {
+   grid-area: panels;
+}
+
+.tabs *[role="tab"]:focus-visible, .tabs *[role="tabpanel"]:focus-visible {
+   outline-offset: 0;
+}
+
+
+/* Tab panels are the height of their largest panel. */
+.tabs.panel-max-content *[role="tabpanel"] {
+   display: block;
+}
+
+/* Tab panels are a set height and scroll */
+.tabs.panel-scroll *[role="tabpanel"]{
+   height: 15em;
+   overflow-y: auto;
+}
+
+
+
+/* Orientation settings */
+/* Horizontal tabs */
+.tabs:has(*[role="tablist"][aria-orientation="horizontal"]) {
+   grid-template-columns: 1fr;
+   grid-template-rows: auto auto;
+   grid-template-areas: "tabs" "panels";
+}
+
+.tabs.alt-alignment:has(*[role="tablist"][aria-orientation="horizontal"]) {
+   grid-template-areas: "panels" "tabs";
+}
+
+.tabs *[role="tablist"][aria-orientation="horizontal"] {
+   flex-direction: row;
+}
+
+
+/* Vertical tabs */
+.tabs:has(*[role="tablist"][aria-orientation="vertical"]) {
+   grid-template-columns: auto 1fr;
+   grid-template-rows: 1fr;
+   grid-template-areas: "tabs panels";
+}
+
+.tabs.alt-alignment:has(*[role="tablist"][aria-orientation="vertical"]) {
+   grid-template-columns: 1fr auto;
+   grid-template-areas: "panels tabs";
+}
+
+.tabs *[role="tablist"][aria-orientation="vertical"] {
+   flex-direction: column;
+}
+
+
+
+/* Default styling. */
+.tabs {
+   gap: 1em;
+}
+
+/* Component style */
+.tabs.tabs-style-component {
+   background: var(--tab-color-foreground);
+   gap: 0;
+   border-radius: @radius;
+   box-shadow: @shadow;
+   overflow: hidden;
+}
+
+.tabs.tabs-style-component *[role="tablist"] {
+   padding: .8em;
+   border-bottom: 1px solid var(--tab-color-background);;
+}
+
+.tabs.tabs-style-component *[role="tabpanel"] {
+   padding: @padding;
+}
+
+.tabs.tabs-style-component *[role="tabpanel"]:focus-visible {
+   outline-offset: -.5rem;
+   border-radius: 1rem;
+}
+
+/* Tablist and tabs styles */
+/* Default */
+.tabs *[role="tablist"] {
+   flex-wrap: wrap;
+   gap: .8em;
+}
+
+.tabs *[role="tab"] {
+   border-radius: 100em;
+   width: auto;
+}
+
+.tabs *[role="tab"][aria-selected="true"], 
+.tabs *[role="tab"][aria-selected="true"]:active,
+.tabs *[role="tab"][aria-selected="true"]:hover {
+   background: none;
+   box-shadow: none;
+}
+
+/* full bleed tabs */
+.tabs .tablist-style-full[role="tablist"] {
+   background: var(--tab-color-background);
+   padding: 0;
+   gap: 0;
+
+   border-radius: 1000em;
+
+   flex-wrap: nowrap;
+   overflow: hidden;
+}
+
+.tabs .tablist-style-full[role="tablist"][aria-orientation="vertical"] {
+   border-radius: @radius;
+}
+
+.tabs .tablist-style-full *[role="tab"]:focus-visible {
+   outline-offset: -.2rem;
+}
+
+.tabs .tablist-style-full *[role="tab"] {
+   background: transparent;
+   border-radius: 0;
+   box-shadow: none;
+   text-decoration: underline;
+
+   flex-grow: 1;
+   justify-content: center;
+}
+
+.tabs .tablist-style-full *[role="tab"]:hover {
+   background: var(--action-color-lighter);
+   box-shadow: none;
+}
+
+.tabs .tablist-style-full *[role="tab"]:active {
+   background: var(--action-color-darker);
+   box-shadow: none;
+}
+
+.tabs .tablist-style-full *[role="tab"][aria-selected="true"], 
+.tabs .tablist-style-full *[role="tab"][aria-selected="true"]:active,
+.tabs .tablist-style-full *[role="tab"][aria-selected="true"]:hover {
+   color: inherit;
+   background: var(--tab-color-foreground);
+   text-decoration: none;
+   box-shadow: 0 0 5px @shadow-color;
+   z-index: 5;
+}
+
+/* Special full bleed tabs + component style adjustment */
+.tabs.tabs-style-component .tablist-style-full[aria-orientation] {
+   border: none;
+   border-radius: 0;
+}
+
+.tabs.tabs-style-component .tablist-style-full[aria-orientation="horizontal"] *[role="tab"] {
+   border-radius: @radius @radius 0 0;
+}
+
+.tabs.tabs-style-component.alt-alignment .tablist-style-full[aria-orientation="horizontal"] *[role="tab"] {
+   border-radius: 0 0 @radius @radius;
+}
+
+.tabs.tabs-style-component .tablist-style-full[aria-orientation="vertical"] *[role="tab"] {
+   border-radius: @radius 0 0 @radius;
+}
+
+.tabs.tabs-style-component.alt-alignment .tablist-style-full[aria-orientation="vertical"] *[role="tab"] {
+   border-radius: 0 @radius @radius 0;
+}
