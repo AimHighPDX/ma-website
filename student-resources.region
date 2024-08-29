@@ -31,8 +31,8 @@
                      <div id="{id}-curriculum" data-js="tabpanel" data-title="{title}">
                         <h3>{title}</h3>
                         <p>Find gear requirements and more on the <a href="{sourceUrl}">{customContent.program} program page.</a></p>
-                        
-                        {.customContent.has-curriculum?}
+                     <!-- {@|json-pretty} -->
+                        {.equal? customContent.has-curriculum true}
                            <button type="button" class="disclosure" aria-controls="{id}-curriculum-wrapper" aria-expanded="false">
                               <span>
                                  Curriculum
@@ -42,7 +42,7 @@
                               <squarespace:block-field id="{id}-curriculum" label="{title} Curriculum" columns="1"/>
                            </div>
                         {.end}
-                        {.customContent.has-videos?}
+                        {.equal? customContent.has-videos true}
                         <button type="button" class="disclosure" aria-controls="{id}-videos-wrapper" aria-expanded="false">
                            <span>
                               Videos
@@ -52,7 +52,7 @@
                            <squarespace:block-field id="{id}-videos" label="{title} Videos" columns="1"/>
                         </div>
                         {.end}
-                        {.customContent.has-add-info?}
+                        {.equal? customContent.has-add-info true}
                         <button type="button" class="disclosure" aria-controls="{id}-add-info-wrapper" aria-expanded="false">
                            <span>
                               Additional Information
