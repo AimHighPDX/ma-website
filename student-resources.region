@@ -32,15 +32,17 @@
                         <h3>{title}</h3>
                         <p>Find gear requirements and more on the <a href="{sourceUrl}">{customContent.program} program page.</a></p>
                         
-                        <button type="button" class="disclosure" aria-controls="{id}-curriculum-wrapper" aria-expanded="false">
-                           <span>
-                              Curriculum
-                           </span>
-                        </button>
-                        <div id="{id}-curriculum-wrapper">
-                           <squarespace:block-field id="{id}-curriculum" label="{title} Curriculum" columns="1"/>
-                        </div>
-
+                        {.customContent.has-curriculum?}
+                           <button type="button" class="disclosure" aria-controls="{id}-curriculum-wrapper" aria-expanded="false">
+                              <span>
+                                 Curriculum
+                              </span>
+                           </button>
+                           <div id="{id}-curriculum-wrapper">
+                              <squarespace:block-field id="{id}-curriculum" label="{title} Curriculum" columns="1"/>
+                           </div>
+                        {.end}
+                        {.customContent.has-videos?}
                         <button type="button" class="disclosure" aria-controls="{id}-videos-wrapper" aria-expanded="false">
                            <span>
                               Videos
@@ -49,7 +51,8 @@
                         <div id="{id}-videos-wrapper">
                            <squarespace:block-field id="{id}-videos" label="{title} Videos" columns="1"/>
                         </div>
-
+                        {.end}
+                        {.customContent.has-add-info?}
                         <button type="button" class="disclosure" aria-controls="{id}-add-info-wrapper" aria-expanded="false">
                            <span>
                               Additional Information
@@ -58,12 +61,13 @@
                         <div id="{id}-add-info-wrapper">
                            <squarespace:block-field id="{id}-add-info" label="{title} Additional Information" columns="1"/>
                         </div>
+                        {.end}
                      </div>
                   {.end}
                </squarespace:query>
             </section>
          </section>
-         
+
          <section>
             <h2>Videos</h2>
             Some more stuff with queries.
