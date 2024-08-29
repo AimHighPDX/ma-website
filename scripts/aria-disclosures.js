@@ -1,3 +1,5 @@
+(function(){
+   'use strict';
 /**
  * Initiates hiding of closed disclosures and adds the proper event listener.
  */
@@ -50,10 +52,9 @@ function initNavDisclosure() {
    }
 }
 
-(function(){
-   'use strict';
-   window.addEventListener("load", () => {
-      initDisclosures(); 
-      initNavDisclosure();
-   }, {once:true});
+
+window.addEventListener("load", () => {
+   initDisclosures(); 
+   initNavDisclosure();
+}, {once:true});
 }());
