@@ -25,51 +25,45 @@
 
          <section>
             <h2>By Program</h2>
-            <section id="curriculum" class="tabs tabs-style-component" data-start="1" data-js="tabs">
+            <section id="curriculum" class="tabs tabs-style-component" data-start="1" data-orientation="vertical" data-style="tablist-style-full">
                <squarespace:query collection="program">
                   {.repeated section items}
-                     <div data-js="tab-pair">
-                        <h3 data-js="tab">{title}</h3>
-                        <div data-js="tabpanel">
-                           <h3 hidden>{title}</h3>
-                           <p>Find gear requirements and more on the <a href="{sourceUrl}">{customContent.program} program page.</a></p>
-                           <details open>
-                              <summary>Curriculum</summary>
-                              <div class="accordian-content">
-                                 <squarespace:block-field id="{id}-curriculum" label="{title} Curriculum" columns="1"/>
-                              </div>
-                           </details>
-                           <details open>
-                              <summary>Videos</summary>
-                              <div class="accordian-content">
-                                 <squarespace:block-field id="{id}-videos" label="{title} Videos" columns="1"/>
-                              </div>
-                           </details>
-                           <details open>
-                              <summary>Additional Information</summary>
-                              <div class="accordian-content">
-                                 <squarespace:block-field id="{id}-add-info" label="{title} Additional Information" columns="1"/>
-                              </div>
-                           </details>
+                     <div id="{id}-curriculum" data-js="tabpanel" data-title="{title}">
+                        <h3>{title}</h3>
+                        <p>Find gear requirements and more on the <a href="{sourceUrl}">{customContent.program} program page.</a></p>
+                        
+                        <button type="button" class="disclosure" aria-controls="{id}-curriculum-wrapper" aria-expanded="false">
+                           <span>
+                              Curriculum
+                           </span>
+                        </button>
+                        <div id="{id}-curriculum-wrapper">
+                           <squarespace:block-field id="{id}-curriculum" label="{title} Curriculum" columns="1"/>
+                        </div>
+
+                        <button type="button" class="disclosure" aria-controls="{id}-videos-wrapper" aria-expanded="false">
+                           <span>
+                              Videos
+                           </span>
+                        </button>
+                        <div id="{id}-videos-wrapper">
+                           <squarespace:block-field id="{id}-videos" label="{title} Videos" columns="1"/>
+                        </div>
+
+                        <button type="button" class="disclosure" aria-controls="{id}-add-info-wrapper" aria-expanded="false">
+                           <span>
+                              Additional Information
+                           </span>
+                        </button>
+                        <div id="{id}-add-info-wrapper">
+                           <squarespace:block-field id="{id}-add-info" label="{title} Additional Information" columns="1"/>
                         </div>
                      </div>
                   {.end}
                </squarespace:query>
             </section>
          </section>
-
-            <!-- This will be recreated in JS 
-            <section id="" class="tabs tabs-style-component" data-start="1">
-               <div class="tablist-style-full" role="tablist" aria-orientation="vertical" aria-label="Vertical Tabs">
-                     <button id="curriculum-ID-tab" aria-controls="curriculum-ID-tabpanel" role="tab">
-                     </button>
-               </div>
-               <div id="curriculum-ID-tabpanel" role="tabpanel" aria-labelledby="curriculum-ID-tab">
-
-               </div>
-
-            </section>-->
-
+         
          <section>
             <h2>Videos</h2>
             Some more stuff with queries.
