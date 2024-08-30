@@ -284,10 +284,6 @@ Not for color changes; these are for structural changes.
 
    list-style: none;
 
-   li {
-      border-radius: 50%;
-   }
-   
    .curriculum-item {
       display: flex;
       align-items: center;
@@ -295,5 +291,22 @@ Not for color changes; these are for structural changes.
 
       height: 100%;
       width: 100%;
+
+      background-size: cover;
+      border-radius: 50%;
+      text-shadow: 0 0 2px black;
+      box-shadow: @shadow;
+      font-weight: bold;
+      text-align: center;
+      padding: .2em;
+
+      &:hover {
+         transform: scale(1.1);
+      }
+
+      &:active {
+         transform: unset;
+         box-shadow: inset @shadow;
+      }
    }
 }

@@ -220,10 +220,9 @@ function replaceCurriculum() {
          link.setAttribute("href", item.getElementsByTagName("a")[0].getAttribute("href"));
          link.textContent = item.textContent.trim();
          link.classList.add("curriculum-item");
+         link.style.backgroundImage = "url(" + item.getElementsByTagName("img")[0].dataset.src + ")";
 
          element.append(link);
-         element.style.backgroundImage = "url(" + item.getElementsByTagName("img")[0].dataset.src + ")";
-         
          container.append(element);
       }
       container.classList.add("curriculum-list");
