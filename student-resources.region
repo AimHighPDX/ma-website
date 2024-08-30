@@ -3,7 +3,8 @@
 
 <head>
    {squarespace-headers}
-   <squarespace:script src="aria.js" />
+   <squarespace:script src="aria.js" combo="true" />
+   <squarespace:script src="replace-sqs.js" combo="true" />
 </head>
 
 <body>
@@ -70,7 +71,14 @@
 
          <section>
             <h2>Videos</h2>
-            Some more stuff with queries.
+            <div>
+               Exercises
+               (embedded videos)
+            </div>
+            <div>
+               Livestreams
+               (links out, maybe remove at this point?)
+            </div>
          </section>
       </section>
    </main>
