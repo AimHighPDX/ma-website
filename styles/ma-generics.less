@@ -287,17 +287,26 @@ Not for color changes; these are for structural changes.
       border-radius: 0;
       box-shadow: none;
       background: transparent;
-      padding: .5em;
+      padding: .5rem 1rem;
       border-top: 2px solid @primary-dark;
 
-      justify-items: space-between;
+      justify-content: space-between;
 
       &:first-of-type {
          margin-top: 1.5rem;
       }
 
+      &:last-of-type {
+         transition: border-bottom 0s;
+      }
+
       &:last-of-type[aria-expanded="false"], &:last-of-type + div {
          border-bottom: 2px solid @primary-dark;
+      }
+
+      + div {
+         padding: 1rem;
+         padding-top: 0;
       }
    }
 
@@ -334,17 +343,19 @@ Not for color changes; these are for structural changes.
          transition: .2s;
 
          &:not(.black) {
-            @text-color: @white;
+            color: @white;
+
+            &:hover {
+               color: hsla(217, 5%, lightness(@white), .6);
+            }
          }
 
          &.black-text {
-            @text-color: @black;
-         }
+            color: @black;
          
-
-         color: @text-color;
-         &:hover {
-            color: hsla(217, 5%, lightness(@text-color), .6);
+            &:hover {
+               color: hsla(217, 5%, lightness(@black), .6);
+            }
          }
 
          &:active {
