@@ -273,14 +273,34 @@ Not for color changes; these are for structural changes.
    }
 }
 
+.grid-container {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+   gap: 1rem 1.5rem;
+
+   margin: 1.5rem 0;
+
+   .grid-header {
+      grid-column-start: 1;
+      grid-column-end: -1;
+   }
+
+   .grid-item {
+      img {
+         text-align: center;
+         max-height: 250px;
+      }
+   }
+}
+
 
 .query-class-container {
    display: flex;
    flex-wrap: wrap;
    gap: 1rem;
-   justify-content: center;
 
-   margin: @padding 0;
+   margin: 1.5rem 0;
+   justify-content: center;
 
    .query-class-header {
       width: 100%;
@@ -419,4 +439,9 @@ Not for color changes; these are for structural changes.
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
    gap: 1rem;
+}
+
+/* Schedule */
+#schedule-pdfs {
+   text-align: right;
 }
