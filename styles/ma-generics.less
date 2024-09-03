@@ -296,7 +296,7 @@ Not for color changes; these are for structural changes.
          margin-top: 1.5rem;
       }
 
-      &:last-of-type {
+      &:last-of-type[aria-expanded="false"], &:last-of-type + div {
          border-bottom: 2px solid @primary-dark;
       }
    }
@@ -363,4 +363,5 @@ Not for color changes; these are for structural changes.
 #resource-exercises .row .col {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 1rem;
 }
