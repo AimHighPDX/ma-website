@@ -70,17 +70,10 @@
             </section>
          </section>
 
-         <section id="resource-videos">
+         <section>
             <h2>Videos</h2>
             <div>
-               <div>
-                  <h3>Exercises</h3>
-                  <squarespace:block-field id="resource-exercises" label="Exercise Videos" columns="1"/>
-               </div>
-               <div>
-                  <h3>Livestreams</h3>
-                  <squarespace:block-field id="resource-livestreams" label="Livestream Links" columns="1"/>
-               </div>
+               <squarespace:block-field id="resource-exercises" label="Exercise Videos" columns="1"/>
             </div>
          </section>
       </section>
