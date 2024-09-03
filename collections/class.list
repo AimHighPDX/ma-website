@@ -36,11 +36,7 @@
       <p><a href="/s/AHAMA_schedule.pdf">PDF schedule</a></p>
       <p><a href="/s/AHAMA_schedule_bw.pdf">Printer-friendly PDF schedule</a></p>
    </div>
-   <h4>Want to learn one-on-one?</h4>
-   <p>
-      Along with group classes, Aim High offers 30 minute and 1 hour private lessons. 
-      <a href="">Contact us to schedule</a> or learn more!
-   </p>
+   <squarespace:block-field id="schedule-callout" label="Schedule CTA" columns="1"/>
 </section>
 
 <section>
@@ -51,40 +47,16 @@
          <p>Reservations and check ins can only be done 30 minutes prior to start time.</p>
       </div>
       <div class="grid-item">
-         <img src="https://images.squarespace-cdn.com/content/66be540903aca45be0afc1d6/1723749420798-L06CIG4L8QI826Q3Q9XA/ZenPlanner_step1.png?content-type=image%2Fpng" 
-            alt="">
-         <h4>Step 1</h4>
-         <p>
-            Download the Zen Planner Member App for 
-            <a href="https://apps.apple.com/us/app/zen-planner-member-app/id1065000091">iPhone</a> or 
-            <a href="https://play.google.com/store/apps/details?id=com.zenplanner.memberapp">Android</a> and log in.
-            See the front desk if you don't know your login.
-         </p>
+         <squarespace:block-field id="zenplanner-step-1" label="Zen Planner Step 1" columns="1"/>
       </div>
       <div class="grid-item">
-         <img src="https://images.squarespace-cdn.com/content/66be540903aca45be0afc1d6/1723749420791-0UD24ROQ1FQZ4GC9NZ1D/ZenPlanner_step2.png?content-type=image%2Fpng" 
-            alt="">
-         <h4>Step 2</h4>
-         <p>
-            Select the calendar tab and reserve the class you want to attend.
-            Make sure to confirm your choice in the pop-up.
-         </p>
+         <squarespace:block-field id="zenplanner-step-2" label="Zen Planner Step 2" columns="1"/>
       </div>
       <div class="grid-item">
-         <img src="https://images.squarespace-cdn.com/content/66be540903aca45be0afc1d6/1723749420785-3DDCWFEDWNXSCNPVQRPO/ZenPlanner_step3.png?content-type=image%2Fpng"
-            alt="">
-         <h4>Step 3</h4>
-         <p>
-            When you are ready to start class, click check in and confirm your choice.
-         </p>
+         <squarespace:block-field id="zenplanner-step-3" label="Zen Planner Step 3" columns="1"/>
       </div>
       <div class="grid-item">
-         <img src="https://images.squarespace-cdn.com/content/66be540903aca45be0afc1d6/1723749420778-OP0HIR8K5SKLVLPBR2XL/ZenPlanner_step4.png?content-type=image%2Fpng" 
-            alt="">
-         <h4>Step 4</h4>
-         <p>
-            If you see a green check mark next to the class, you're checked in and ready to go!
-         </p>
+         <squarespace:block-field id="zenplanner-step-4" label="Zen Planner Step 4" columns="1"/>
       </div>
    </section>
    <section class="grid-container">
@@ -92,29 +64,13 @@
          <h3>Front Desk</h3>
       </div>
       <div class="grid-item">
-         <img src="https://images.squarespace-cdn.com/content/66be540903aca45be0afc1d6/1723749420821-ATRT1OZ0HVXIBS7FZWS3/FrontDesk_step1.png?content-type=image%2Fpng" 
-            alt="">
-         <h4>Step 1</h4>
-         <p>
-            Select the class you wish to attend on the left side of the screen.
-         </p>
+         <squarespace:block-field id="frontdesk-step-1" label="Front Desk Step 1" columns="1"/>
       </div>
       <div class="grid-item">
-         <img src="https://images.squarespace-cdn.com/content/66be540903aca45be0afc1d6/1723749420813-QJ2BU7LF41CWQK5Z9II9/FrontDesk_step2.png?content-type=image%2Fpng" 
-            alt="">
-         <h4>Step 2</h4>
-         <p>
-            Search your name until you see your full name appear below.
-            Then tap the circle above your name.
-         </p>
+         <squarespace:block-field id="frontdesk-step-2" label="Front Desk Step 2" columns="1"/>
       </div>
       <div class="grid-item">
-         <img src="https://images.squarespace-cdn.com/content/66be540903aca45be0afc1d6/1723749420806-V6LU96FJCL6LT5E8YOJ8/FrontDesk_step3.png?content-type=image%2Fpng" 
-            alt="">
-         <h4>Step 3</h4>
-         <p>
-            You have successfully checked in if you see a green check mark next to your name and your profile appears in the Checked In tab.
-         </p>
+         <squarespace:block-field id="frontdesk-step-3" label="Front Desk Step 3" columns="1"/>
       </div>
    </section>
 </section>
