@@ -31,35 +31,32 @@
       <section class="centered-section">
          <h2>Classes</h2>
          <div class="query-class-container">
-            <squarespace:query collection="schedule" limit="20" category="{collection.navigationTitle}">
-               {.repeated section items}
-                  <div class="query-class">
-                     <h3>{customContent.level}</h3>
-                     <div>
-                        <p>{customContent.duration}</p>
-                        <table class="class-times">
-                           <caption class="visually-hidden">{title} Schedule</caption>
-                           <tr>
-                              <th>Mon/Wed</th>
-                              <th>Tue/Thu</th>
-                              <th>Sat</th>
-                           </tr>
-                           <tr>
-                              <td>{customContent.time-monday}</td>
-                              <td>{customContent.time-tuesday}</td>
-                              <td>{customContent.time-saturday}</td>
-                           </tr>
-                        </table>
-                        <details>
-                           <summary><h4>Gear Requirements</h4></summary>
-                           <div>
-                              {body}
-                           </div>
-                        </details>
-                     </div>
-                  </div>
-               {.end}
-            </squarespace:query>
+            {.equal? collection.navigationTitle "Warriors"}
+               <div class="query-class-header">
+                  <h3>Little Warriors</h3>
+                  <p>For Ages 4 – 5</p>
+               </div>
+               <squarespace:query collection="schedule" limit="20" category="Little Warriors">
+                  {.repeated section items}
+                     {@|apply class-condensed.block}
+                  {.end}
+               </squarespace:query>
+               <div class="query-class-header">
+                  <h3>Warriors Junior</h3>
+                  <p>For Ages 6 – 7</p>
+               </div>
+               <squarespace:query collection="schedule" limit="20" category="Warriors Junior">
+                  {.repeated section items}
+                     {@|apply class-condensed.block}
+                  {.end}
+               </squarespace:query>
+            {.or}
+               <squarespace:query collection="schedule" limit="20" category="{collection.navigationTitle}">
+                  {.repeated section items}
+                     {@|apply class-condensed.block}
+                  {.end}
+               </squarespace:query>
+            {.end}
          </div>
 
          <div class="button-set">

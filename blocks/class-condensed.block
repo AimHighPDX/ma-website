@@ -1,0 +1,25 @@
+<div class="query-class">
+   <h4>{customContent.level}</h3>
+   <div>
+      <p>{customContent.duration}</p>
+      <table class="class-times">
+         <caption class="visually-hidden">{title} Schedule</caption>
+         <tr>
+            <th>Mon/Wed</th>
+            <th>Tue/Thu</th>
+            <th>Sat</th>
+         </tr>
+         <tr>
+            <td>{customContent.time-monday}</td>
+            <td>{customContent.time-tuesday}</td>
+            <td>{customContent.time-saturday}</td>
+         </tr>
+      </table>
+      <details>
+         <summary><h4>Gear Requirements</h4></summary>
+         <div>
+            {body}
+         </div>
+      </details>
+   </div>
+</div>

@@ -1,4 +1,4 @@
-<section class="full-section">
+<section class="full-section class-summary">
    <div>
       <div class="full-section-left">
          <squarespace:block-field id="{collection.id}-left" columns="1"/>

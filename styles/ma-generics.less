@@ -41,6 +41,14 @@ Not for color changes; these are for structural changes.
    }
 }
 
+.centered-section {
+   text-align: center;
+
+   .button-set {
+      justify-content: center;
+   }
+}
+
  
 /* full width container with 2 cols. */
 .full-section {
@@ -65,10 +73,14 @@ Not for color changes; these are for structural changes.
       grid-column: 2;
       display: grid;
       justify-content: center;
+      gap: 1.5rem;
       grid-template-columns: repeat(auto-fill, max(18rem, 45%));
 
       > * {
          height: 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
       }
 
       .padded {
@@ -241,6 +253,27 @@ Not for color changes; these are for structural changes.
 }
 
 
+/* Class pages*/
+.class-summary {
+   .full-section-right {
+      padding: 1.5rem 0;
+   }
+   ul {
+      list-style: none;
+      margin-bottom: 1rem;
+
+      li {
+         font-size: 1.1em;
+         line-height: 1.3em;
+      }
+   }
+
+   .button:last-child {
+      margin: 1rem 0;
+   }
+}
+
+
 .query-class-container {
    display: flex;
    flex-wrap: wrap;
@@ -248,30 +281,41 @@ Not for color changes; these are for structural changes.
    justify-content: center;
 
    margin: @padding 0;
-}
 
-.query-class > div{
-   border-top: 2px solid @primary;
-   border-bottom: 2px solid @primary;
-   padding: 1rem;
-   min-width: 50%;
-
-   .class-times {
-      table-layout: fixed;
-      text-align: center;
-
-      th {
-         font-weight: bold;
-         width: 33%;
+   .query-class-header {
+      width: 100%;
+      ~ .query-class-header {
+         margin-top: 1.5rem;
       }
+   }
 
-      th, td {
-         padding: .125em .5em;
-      }
+   .query-class {
+      text-align: left;
 
-      th + th, td + td {
-         border-left: 2px solid @primary;
-      }
+      > div {
+         border-top: 2px solid @primary;
+         border-bottom: 2px solid @primary;
+         padding: 1rem;
+         min-width: 50%;
+      
+         .class-times {
+            table-layout: fixed;
+            text-align: center;
+      
+            th {
+               font-weight: bold;
+               width: 33%;
+            }
+      
+            th, td {
+               padding: .125em .5em;
+            }
+      
+            th + th, td + td {
+               border-left: 2px solid @primary;
+            }
+         }
+      }     
    }
 }
 
