@@ -1,0 +1,5 @@
+<ul>
+   {.repeated section items}
+      Promotion event
+   {.end}
+</ul>
