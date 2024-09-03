@@ -45,7 +45,7 @@
                            </div>
                         {.end}
                         {.equal? customContent.has-videos true}
-                        <button type="button" class="disclosure" aria-controls="{id}-videos-wrapper" aria-expanded="false">
+                        <button type="button" class="disclosure heading-level4" aria-controls="{id}-videos-wrapper" aria-expanded="false">
                            <span>
                               Videos
                            </span>
@@ -55,7 +55,7 @@
                         </div>
                         {.end}
                         {.equal? customContent.has-add-info true}
-                        <button type="button" class="disclosure" aria-controls="{id}-add-info-wrapper" aria-expanded="false">
+                        <button type="button" class="disclosure heading-level4" aria-controls="{id}-add-info-wrapper" aria-expanded="false">
                            <span>
                               Additional Information
                            </span>

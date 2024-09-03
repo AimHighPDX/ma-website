@@ -311,6 +311,8 @@ Not for color changes; these are for structural changes.
       }
 
       .curriculum-item {
+         @text-color: @white;
+
          display: flex;
          align-items: center;
          justify-content: center;
@@ -319,9 +321,8 @@ Not for color changes; these are for structural changes.
          width: 100%;
 
          background-size: cover;
-         background-color: white;
          border-radius: 50%;
-         color: @white;
+         color: @text-color;
          box-shadow: @shadow;
          text-decoration: none;
          font-weight: bold;
@@ -331,11 +332,11 @@ Not for color changes; these are for structural changes.
          transition: .2s;
 
          &.black-text {
-            color: black;
+            @text-color: @black;
          }
 
          &:hover {
-            color: hsla(217, 5%, 95%, .5);
+            color: hsla(217, 5%, lightness(@text-color), .7);
          }
 
          &:active {
