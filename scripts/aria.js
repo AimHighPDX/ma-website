@@ -222,6 +222,11 @@ function replaceCurriculum() {
          link.classList.add("curriculum-item");
          link.style.backgroundImage = "url(" + item.getElementsByTagName("img")[0].dataset.src + ")";
 
+         let linkColor = link.style.backgroundImage.toLowerCase();
+         if (linkColor.includes("white") || linkColor.includes("yellow") || linkColor.includes("gold")) {
+            link.classList.add("black-text");
+         }
+
          element.append(link);
          container.append(element);
       }

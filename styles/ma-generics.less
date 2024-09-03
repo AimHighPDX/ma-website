@@ -282,6 +282,7 @@ Not for color changes; these are for structural changes.
    grid-auto-rows: 80px;
    gap: 1rem;
 
+   margin: .8rem 0 1rem 0;
    list-style: none;
 
    .curriculum-item {
@@ -293,15 +294,22 @@ Not for color changes; these are for structural changes.
       width: 100%;
 
       background-size: cover;
+      background-color: white;
       border-radius: 50%;
-      text-shadow: 0 0 2px black;
+      color: white;
       box-shadow: @shadow;
+      text-decoration: none;
       font-weight: bold;
       text-align: center;
       padding: .2em;
+      transition: .2s;
+
+      &.black-text {
+         color: black;
+      }
 
       &:hover {
-         transform: scale(1.1);
+         transform: scale(1.05); //Not a fan of this, need to figure something else out
       }
 
       &:active {
