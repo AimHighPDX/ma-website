@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   {squarespace-headers}
+   <squarespace:script src="aria.js" />
+</head>
+
+<body>
+   <squarespace:navigation navigationId="maNav" template="header" />
+   <main>
+      <section id="page" role="main" data-content-field="main-content">
+         <squarespace:block-field id="belt-promotion-intro" label="Belt Promotion Intro" columns="1"/>
+         <section>
+            <h2>Warriors</h2>
+            <squarespace:query collection="all-events" limit="12" category="Warriors"></squarespace:query>
+         </section>
+         <section>
+            <h2>MMA</h2>
+            <squarespace:query collection="all-events" limit="12" category="MMA"></squarespace:query>
+         </section>
+         <section>
+            <h2>Taekwondo</h2>
+            <h3>Testing Dates</h3>
+            <ul>
+               <squarespace:query collection="all-events" limit="12" category="Taekwondo">
+                  {.repeated section items}
+                     <li></li>
+                  {.end}
+               </squarespace:query>
+            </ul>
+            <h3>Application</h3>
+            <div class="button-set">
+               <button>Beginner</button>
+               <button>Intermediate & Advanced</button>
+            </div>
+         </section>
+         <section>
+            <h2>Tang Soo Do</h2>
+            <h4>Testing Dates</h4>
+            <squarespace:query collection="all-events" limit="12" category="Tang Soo Do"></squarespace:query>
+         </section>
+      </section>
+   </main>
+
+   {@|apply footer.block}
+</body>
+
+</html>
