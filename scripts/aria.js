@@ -223,7 +223,7 @@ function replaceCurriculum() {
          link.style.backgroundImage = "url(" + item.getElementsByTagName("img")[0].dataset.src + ")";
 
          let linkColor = link.style.backgroundImage.toLowerCase();
-         if (linkColor.includes("white") || linkColor.includes("yellow") || linkColor.includes("gold")) {
+         if (linkColor.includes("white") || linkColor.includes("yellow") || linkColor.includes("gold") || linkColor.includes("orange")) {
             link.classList.add("black-text");
          }
 

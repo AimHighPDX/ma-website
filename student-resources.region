@@ -31,9 +31,11 @@
                      <div id="{id}-curriculum" data-js="tabpanel" data-title="{title}">
                         <h3>{title}</h3>
                         <p>Find gear requirements and more on the <a href="{sourceUrl}">{customContent.program} program page.</a></p>
-                     <!-- {@|json-pretty} -->
+                        <div>
+                           <squarespace:block-field id="{id}-summary" label="{title} Summary" columns="1"/>
+                        </div>
                         {.equal? customContent.has-curriculum true}
-                           <button type="button" class="disclosure" aria-controls="{id}-curriculum-wrapper" aria-expanded="false">
+                           <button type="button" class="disclosure heading-level4" aria-controls="{id}-curriculum-wrapper" aria-expanded="false">
                               <span>
                                  Curriculum
                               </span>

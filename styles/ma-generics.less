@@ -276,45 +276,77 @@ Not for color changes; these are for structural changes.
 }
 
 /* Student resources page */
-#curriculum .curriculum-list {
-   display: grid;
-   grid-template-columns: repeat(auto-fill, 80px);
-   grid-auto-rows: 80px;
-   gap: 1rem;
-
-   margin: .8rem 0 1rem 0;
-   list-style: none;
-
-   .curriculum-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      height: 100%;
+#curriculum {
+   button.disclosure {
       width: 100%;
+      border-radius: 0;
+      box-shadow: none;
+      background: transparent;
+      padding: .5em;
+      border-top: 2px solid @primary-dark;
 
-      background-size: cover;
-      background-color: white;
-      border-radius: 50%;
-      color: white;
-      box-shadow: @shadow;
-      text-decoration: none;
-      font-weight: bold;
-      text-align: center;
-      padding: .2em;
-      transition: .2s;
+      justify-items: space-between;
 
-      &.black-text {
-         color: black;
+      &:first-of-type {
+         margin-top: @padding;
       }
 
-      &:hover {
-         transform: scale(1.05); //Not a fan of this, need to figure something else out
+      &:last-of-type {
+         border-bottom: 2px solid @primary-dark;
+      }
+   }
+
+   .curriculum-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 80px);
+      grid-auto-rows: 80px;
+      gap: 1rem;
+
+      margin: .8rem 0 1rem 0;
+      list-style: none;
+
+      button[role="tab"] {
+         padding: 1.5em 1em;
+         flex-grow: 0;
       }
 
-      &:active {
-         transform: unset;
-         box-shadow: inset @shadow;
+      .curriculum-item {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         height: 100%;
+         width: 100%;
+
+         background-size: cover;
+         background-color: white;
+         border-radius: 50%;
+         color: @white;
+         box-shadow: @shadow;
+         text-decoration: none;
+         font-weight: bold;
+         text-align: center;
+         padding: .2em;
+
+         transition: .2s;
+
+         &.black-text {
+            color: black;
+         }
+
+         &:hover {
+            color: hsla(217, 5%, 95%, .5);
+         }
+
+         &:active {
+            transform: unset;
+            box-shadow: inset @shadow;
+         }
       }
+   }
+
+   ul:not(.curriculum-list) {
+      padding: .5rem 1.5rem;
+      line-height: 1.5em;
    }
 }
