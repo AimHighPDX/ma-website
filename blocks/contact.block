@@ -1,0 +1,31 @@
+<address>
+   {.section website.location}
+      <p data-content-field="location">
+         {addressTitle}<br>
+         {addressLine1}<br>
+         {addressLine2}
+      </p>
+   {.end}
+   {.section websiteSettings}
+      <div>
+         <img role="presentation" src="">
+         <a href="tel:{contactPhoneNumber}">{contactPhoneNumber}</a>
+      </div>
+      <div>
+         <img role="presentation" src="">
+         <a href="mailto:{contactEmail}">{contactEmail}</a>
+      </div>
+   {.end}
+</address>  
+<ul>
+   <!-- social media links-->
+</ul>
+<div>
+   <h4>Hours</h4>
+   {.section websiteSettings.businessHours}
+      <p>M-Th: {.monday.text}</p>
+      <p>Friday: <i>Closed</i></p>
+      <p>Saturday: {.saturday.text}</p>
+      <p>Sunday: <i>Closed</i></p>
+   {.end}
+</div>

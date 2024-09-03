@@ -2,28 +2,7 @@
    <div>
       <section class="contact-block">
          <img class="logo" src="{website.logoImageUrl}?width=200" alt="{website.siteTitle}">
-         <address>
-            {.section website.location}
-               <p data-content-field="location">
-                  {addressTitle}<br>
-                  {addressLine1}<br>
-                  {addressLine2}
-               </p>
-            {.end}
-            {.section websiteSettings}
-               <div>
-                  <img role="presentation" src="">
-                  <a href="tel:{contactPhoneNumber}">{contactPhoneNumber}</a>
-               </div>
-               <div>
-                  <img role="presentation" src="">
-                  <a href="mailto:{contactEmail}">{contactEmail}</a>
-               </div>
-            {.end}
-         </address>  
-         <ul>
-            <!-- social media links-->
-         </ul>
+         {@|apply contact.block}
       </section>
       <section>
          <h2>Sitemap</h2> <!-- Uses page nav -->
