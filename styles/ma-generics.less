@@ -277,6 +277,11 @@ Not for color changes; these are for structural changes.
 
 /* Student resources page */
 #curriculum {
+   *[role="tablist"] button {
+      flex-grow: 0;
+      padding: 1.5rem 1rem;
+   }
+
    button.disclosure {
       width: 100%;
       border-radius: 0;
@@ -288,7 +293,7 @@ Not for color changes; these are for structural changes.
       justify-items: space-between;
 
       &:first-of-type {
-         margin-top: @padding;
+         margin-top: 1.5rem;
       }
 
       &:last-of-type {
@@ -311,8 +316,6 @@ Not for color changes; these are for structural changes.
       }
 
       .curriculum-item {
-         @text-color: @white;
-
          display: flex;
          align-items: center;
          justify-content: center;
@@ -322,7 +325,6 @@ Not for color changes; these are for structural changes.
 
          background-size: cover;
          border-radius: 50%;
-         color: @text-color;
          box-shadow: @shadow;
          text-decoration: none;
          font-weight: bold;
@@ -331,11 +333,16 @@ Not for color changes; these are for structural changes.
 
          transition: .2s;
 
-         &.black-text {
-            @text-color: @black;
-            color: @text-color;
+         &:not(.black) {
+            @text-color: @white;
          }
 
+         &.black-text {
+            @text-color: @black;
+         }
+         
+
+         color: @text-color;
          &:hover {
             color: hsla(217, 5%, lightness(@text-color), .6);
          }
@@ -351,4 +358,9 @@ Not for color changes; these are for structural changes.
       padding: .5rem 1.5rem;
       line-height: 1.5em;
    }
+}
+
+#resource-videos > div {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
