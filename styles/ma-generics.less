@@ -333,10 +333,11 @@ Not for color changes; these are for structural changes.
 
          &.black-text {
             @text-color: @black;
+            color: @text-color;
          }
 
          &:hover {
-            color: hsla(217, 5%, lightness(@text-color), .7);
+            color: hsla(217, 5%, lightness(@text-color), .6);
          }
 
          &:active {
