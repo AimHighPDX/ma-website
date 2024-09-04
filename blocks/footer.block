@@ -18,9 +18,4 @@
          ...
       </section>
    </div>
-   <div>
-      {.section websiteSettings.businessHours}
-         <p></p>
-      {.end}
-   </div>
 </footer>

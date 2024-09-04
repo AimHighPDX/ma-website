@@ -2,6 +2,14 @@ footer {
    background: @black;
    > div {
       display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem;
+      gap: 1rem;
+   }
+
+   svg {
+      fill: @text-color;
    }
 }
 
@@ -10,5 +18,30 @@ img.logo {
 }
 
 .contact-block {
+   address a:has(> svg) {
+      display: flex;
+      gap: .5em;
+      align-items: center;
 
+      svg {
+         height: .8em;
+      }
+   }
+}
+
+.social-links {
+   list-style: none;
+   display: flex;
+   gap: 1em;
+   height: 2em;
+}
+
+.business-hours {
+   display: grid;
+   grid-template-columns: max-content max-content;
+   gap: 0 1em;
+
+   p {
+      margin: 0;
+   }
 }
