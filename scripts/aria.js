@@ -234,6 +234,16 @@ function replaceCurriculum() {
       wrapper.replaceChildren(container);
    }
 }
+
+/**
+ * Reverse order on past events (to merge with upcoming)
+ */
+function reverseList() {
+   let reverseLists = document.querySelectorAll("[data-js='reverse-list']");
+   for (let list of reverseLists) {
+      list.replaceWith(...Array.from(list.getElementsByTagName("li")).reverse());
+   }
+}
  
 
 
@@ -249,5 +259,6 @@ function replaceCurriculum() {
       initNavDisclosure();
       initTabs();
       replaceCurriculum();
+      reverseList();
    }, {once:true});
 }());

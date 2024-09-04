@@ -10,110 +10,130 @@
    <squarespace:navigation navigationId="maNav" template="header" />
    <main>
       <section id="page" role="main" data-content-field="main-content">
-         <squarespace:block-field id="belt-promotion-intro" label="Belt Promotion Intro" columns="1"/>
+         <div>
+            <squarespace:block-field id="belt-promotion-intro" label="Belt Promotion Intro" columns="1"/>
+         </div>
 
-         <section>
-            <h2>Warriors</h2>
-            <h3>Testing Dates</h3>
-            <ul>
-               {.repeated section past}
-                  {.repeated section categories}
-                     {.equal? @ "Warriors"}
-                        <li>{startDate|date %m/%d}</li>
+         <section class="belt-promotion-programs">
+            <section>
+               <h3>Warriors</h3>
+               <h4>Testing Dates</h4>
+               <ul>
+                  <ul data-js="reverse-list"> {# This ul will be removed with js}
+                     {.repeated section past}
+                        {.repeated section categories}
+                           {.equal? @ "Warriors"}
+                              <li class="past">{startDate|date %m/%d}</li>
+                           {.end}
+                        {.end}
+                     {.end}
+                  </ul>
+                  {.repeated section upcoming}
+                     {.repeated section categories}
+                        {.equal? @ "Warriors"}
+                           <li>{startDate|date %m/%d}</li>
+                        {.end}
                      {.end}
                   {.end}
-               {.end}
-               {.repeated section upcoming}
-                  {.repeated section categories}
-                     {.equal? @ "Warriors"}
-                        <li>{startDate|date %m/%d}</li>
+               </ul>
+               <div>
+                  <h4>Application</h4>
+                  <div class="button-set">
+                     <button>Beginner</button>
+                     <button>Intermediate & Advanced</button>
+                  </div>
+               </div>
+            </section>
+   
+            <section>
+               <h3>MMA</h3>
+               <h4>Testing Dates</h4>
+               <ul>
+                  <ul data-js="reverse-list"> {# This ul will be removed with js}
+                     {.repeated section past}
+                        {.repeated section categories}
+                           {.equal? @ "MMA"}
+                              <li class="past">{startDate|date %m/%d}</li>
+                           {.end}
+                        {.end}
+                     {.end}
+                  </ul>
+                  {.repeated section upcoming}
+                     {.repeated section categories}
+                        {.equal? @ "MMA"}
+                           <li>{startDate|date %m/%d}</li>
+                        {.end}
                      {.end}
                   {.end}
-               {.end}
-            </ul>
-            <h3>Application</h3>
-            <div class="button-set">
-               <button>Beginner</button>
-               <button>Intermediate & Advanced</button>
-            </div>
-         </section>
-
-         <section>
-            <h2>MMA</h2>
-            <h3>Testing Dates</h3>
-            <ul>
-               {.repeated section past}
-                  {.repeated section categories}
-                     {.equal? @ "MMA"}
-                        <li>{startDate|date %m/%d}</li>
+               </ul>
+               <div>
+                  <h4>Application</h4>
+                  <div class="button-set">
+                     <button>Beginner</button>
+                     <button>Intermediate & Advanced</button>
+                  </div>
+               </div>
+            </section>
+   
+            <section>
+               <h3>Taekwondo</h3>
+               <h4>Testing Dates</h4>
+               <ul>
+                  <ul data-js="reverse-list"> {# This ul will be removed with js}
+                     {.repeated section past}
+                        {.repeated section categories}
+                           {.equal? @ "Taekwondo"}
+                              <li class="past">{startDate|date %m/%d}</li>
+                           {.end}
+                        {.end}
+                     {.end}
+                  </ul>
+                  {.repeated section upcoming}
+                     {.repeated section categories}
+                        {.equal? @ "Taekwondo"}
+                           <li>{startDate|date %m/%d}</li>
+                        {.end}
                      {.end}
                   {.end}
-               {.end}
-               {.repeated section upcoming}
-                  {.repeated section categories}
-                     {.equal? @ "MMA"}
-                        <li>{startDate|date %m/%d}</li>
+               </ul>
+               <div>
+                  <h4>Application</h4>
+                  <div class="button-set">
+                     <button>Beginner</button>
+                     <button>Intermediate & Advanced</button>
+                  </div>
+               </div>
+            </section>
+   
+            <section>
+               <h3>Tang Soo Do</h3>
+               <h4>Testing Dates</h4>
+               <ul>
+                  <ul data-js="reverse-list"> {# This ul will be removed with js}
+                     {.repeated section past}
+                        {.repeated section categories}
+                           {.equal?:@:"Tang Soo Do"}
+                              <li class="past">{startDate|date %m/%d}</li>
+                           {.end}
+                        {.end}
+                     {.end}
+                  </ul>
+                  {.repeated section upcoming}
+                     {.repeated section categories}
+                        {.equal?:@:"Tang Soo Do"}
+                           <li>{startDate|date %m/%d}</li>
+                        {.end}
                      {.end}
                   {.end}
-               {.end}
-            </ul>
-            <h3>Application</h3>
-            <div class="button-set">
-               <button>Beginner</button>
-               <button>Intermediate & Advanced</button>
-            </div>
-         </section>
-
-         <section>
-            <h2>Taekwondo</h2>
-            <h3>Testing Dates</h3>
-            <ul>
-               {.repeated section past}
-                  {.repeated section categories}
-                     {.equal? @ "Taekwondo"}
-                        <li>{startDate|date %m/%d}</li>
-                     {.end}
-                  {.end}
-               {.end}
-               {.repeated section upcoming}
-                  {.repeated section categories}
-                     {.equal? @ "Taekwondo"}
-                        <li>{startDate|date %m/%d}</li>
-                     {.end}
-                  {.end}
-               {.end}
-            </ul>
-            <h3>Application</h3>
-            <div class="button-set">
-               <button>Beginner</button>
-               <button>Intermediate & Advanced</button>
-            </div>
-         </section>
-
-         <section>
-            <h2>Tang Soo Do</h2>
-            <h3>Testing Dates</h3>
-            <ul>
-               {.repeated section past}
-                  {.repeated section categories}
-                     {.equal?:@:"Tang Soo Do"}
-                        <li>{startDate|date %m/%d}</li>
-                     {.end}
-                  {.end}
-               {.end}
-               {.repeated section upcoming}
-                  {.repeated section categories}
-                     {.equal?:@:"Tang Soo Do"}
-                        <li>{startDate|date %m/%d}</li>
-                     {.end}
-                  {.end}
-               {.end}
-            </ul>
-            <h3>Application</h3>
-            <div class="button-set">
-               <button>Beginner</button>
-               <button>Intermediate & Advanced</button>
-            </div>
+               </ul>
+               <div>
+                  <h4>Application</h4>
+                  <div class="button-set">
+                     <button>Beginner</button>
+                     <button>Intermediate & Advanced</button>
+                  </div>
+               </div>
+            </section>
          </section>
       </section>
    </main>

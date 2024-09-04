@@ -263,7 +263,7 @@ Not for color changes; these are for structural changes.
       padding: 1.5rem 0;
    }
    ul {
-      list-style: none;
+      list-style-type: none;
       margin-bottom: 1rem;
 
       li {
@@ -365,7 +365,7 @@ Not for color changes; these are for structural changes.
       gap: 1rem;
 
       margin: .8rem 0 1rem 0;
-      list-style: none;
+      list-style-type: none;
 
       button[role="tab"] {
          padding: 1.5em 1em;
@@ -442,5 +442,34 @@ Not for color changes; these are for structural changes.
 
          margin-top: 1em;
       }
+   }
+}
+
+/* Belt Promotion Page */
+#belt-promotion-intro {
+   text-align: center;
+}
+
+.belt-promotion-programs {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+
+   > section {
+      padding: @padding;
+      text-align: center;
+      border-radius: @radius;
+      border: 2px solid @primary;
+      max-width: 300px;
+   }
+
+   ul {
+      list-style-type: none;
+      columns: 2;
+   }
+
+   .past {
+      color: darken(@text-color, 50%);
    }
 }
