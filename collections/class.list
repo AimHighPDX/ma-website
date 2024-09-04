@@ -40,6 +40,7 @@
 </section>
 
 <section>
+   <squarespace:block-field id="check-in-guide" label="How to Check In" columns="12"/>
    <h2>Check in guide</h2>
    <section class="grid-container">
       <div class="grid-header">
