@@ -10,8 +10,6 @@
 
 @main-content-width: min(800px, 100%);
 
-@lightbox-height: (100vh - (2 * @padding));
-@lightbox-width: (100vw - (2 * @padding));
 
 @transition-time: .5s;
 @transition-time-user-init: .2s;
@@ -19,6 +17,9 @@
 :root {
    font-size: 100%;
    font-family: 'Open Sans', 'sans-serif';
+
+   --lightbox-height: (100vh - (2 * @padding));
+   --lightbox-width: (100vw - (2 * @padding));
 }
 
 * {
@@ -319,4 +320,56 @@ header {
          padding: .5rem;
       }
    }
+}
+
+dialog {
+   width: clamp(100px, 30rem, var(--lightbox-width));
+   max-height: var(--lightbox-height);
+
+   border:none;
+   border-radius: @radius;
+   box-shadow: @shadow; 
+   
+   overflow: hidden;
+   overscroll-behavior: contain;
+}
+
+html:has(.modal-dialog[open]) {
+   overflow: hidden;
+}
+
+dialog::backdrop {
+   background: @shadow-color;
+   backdrop-filter: blur(2px);
+   overscroll-behavior: contain;
+}
+
+dialog > div {
+   overflow: hidden;
+   display: grid;
+   grid-template-rows: auto 1fr;
+   max-height: inherit;
+}
+
+dialog header {
+   position: sticky;
+   top: 0;
+
+   padding: @text-padding;
+   width: 100%;
+   height: min-content;
+
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background: inherit;
+}
+
+dialog .dialog-body {
+   padding: var(--padding);
+   overflow: auto;
+}
+
+dialog.modal-dialog {
+   margin: auto;
 }

@@ -39,7 +39,7 @@
                <div>
                   <h4>Application</h4>
                   <div class="button-set">
-                     <button>Beginner</button>
+                     <button onclick="openDialog('belt-promotion-form', this);">Beginner</button>
                      <button>Intermediate & Advanced</button>
                   </div>
                </div>
@@ -129,12 +129,27 @@
                <div>
                   <h4>Application</h4>
                   <div class="button-set">
-                     <button>Beginner</button>
+                     <button >Beginner</button>
                      <button>Intermediate & Advanced</button>
                   </div>
                </div>
             </section>
          </section>
+
+         <dialog id="belt-promotion-form" class="modal-dialog" open>
+            <div>
+               <header autofocus>
+                  <h2>Belt Promotion Application</h2>
+                  <button class="icon-button" onclick="dispatchCloseEvent(this);">
+                     <div class="icon" aria-hidden="true">&block;</div>
+                     <span class="text visually-hidden">Close dialog</span>
+                  </button>
+               </header>
+               <div class="dialog-body">
+                  Stuff goes here.
+               </div>
+            </div>
+         </dialog>
       </section>
    </main>
 

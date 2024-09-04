@@ -244,8 +244,51 @@ function reverseList() {
       list.replaceWith(...Array.from(list.getElementsByTagName("li")).reverse());
    }
 }
- 
 
+
+/**
+ * Dialogs
+ */
+var priorFocus = document; //only applicable for modals
+
+function initDialog() {
+   let dialogs = document.getElementsByTagName('dialog');
+   for (let dialog of dialogs) {
+      dialog.addEventListener('closeDialog', () => {
+         dialog.close();
+         if (dialog.classList.contains("modal-dialog")) {
+            priorFocus.focus();
+         }
+      })
+   }
+}
+
+/**
+ * Given a dialog element's id, open it.
+ * 
+ * @param {String} targetid
+ * @param {HTMLElement} origin
+ */
+function openDialog(targetid, origin) {
+   let dialog = document.getElementById(targetid);
+
+   if (dialog.classList.contains("modal-dialog")) {
+      dialog.showModal();
+      priorFocus = origin;
+   } else {
+      dialog.show();
+   }
+}
+
+/**
+ * Sends out a custom event to be caught by the parent dialog.
+ * 
+ * @param {HTMLElement} origin
+ */
+function dispatchCloseEvent(origin) {
+   let customEvent = new CustomEvent('closeDialog', { bubbles: true, cancelable: true });
+   origin.dispatchEvent(customEvent);
+}
 
 
 
@@ -260,5 +303,6 @@ function reverseList() {
       initTabs();
       replaceCurriculum();
       reverseList();
+      initDialog();
    }, {once:true});
 }());

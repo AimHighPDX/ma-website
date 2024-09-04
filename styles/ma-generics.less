@@ -455,6 +455,7 @@ Not for color changes; these are for structural changes.
    justify-content: center;
    flex-wrap: wrap;
    gap: 1.5rem;
+   margin: 3rem 0;
 
    > section {
       padding: @padding;
@@ -462,6 +463,13 @@ Not for color changes; these are for structural changes.
       border-radius: @radius;
       border: 2px solid @primary;
       max-width: 300px;
+
+      display: grid;
+      grid-template-rows: repeat(3, auto) 1fr;
+
+      > *:last-child {
+         align-self: end;
+      }
    }
 
    ul {
