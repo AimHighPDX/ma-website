@@ -103,6 +103,7 @@ img {
 
 h4, .heading-level4 {
    font-size: 1.2rem;
+   font-weight: bold;
    margin-bottom: .1em;
 }
 
@@ -121,8 +122,7 @@ h1, .heading-level1 {
    margin-bottom: .2em;
 }
 
-
-a:not(.button) {
+.a-mixin() {
    color: @action;
    text-decoration: underline;
    border-radius: 1px;
@@ -139,6 +139,10 @@ a:not(.button) {
    &:focus-visible {
       outline-offset: 2px;
    }
+}
+
+a:not(.button) {
+   .a-mixin();
 }
 
 /* Buttons */

@@ -425,14 +425,3 @@ td,
 th {
   padding: 0;
 }
-
-
-/* Remove Squarespace styles */
-[class*=sqs-col] .sqs-block {
-   padding: unset !important;
-   width: unset;
-}
-
-.sqs-layout > .sqs-row {
-   margin: unset !important;
-}

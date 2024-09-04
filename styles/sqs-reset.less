@@ -1,0 +1,33 @@
+/* Remove default squarespace styling */
+[class*=sqs-col] .sqs-block {
+   padding: unset !important;
+   width: unset;
+}
+
+.sqs-layout > .sqs-row {
+   margin: unset !important;
+}
+
+body:not(.image-block-stack-dynamic-font-sizing) .sqs-block-image .design-layout-stack {
+   .image-title p, .image-subtitle p {
+      color: inherit;
+      font-family: inherit;
+      font-weight: inherit;
+      font-style: inherit;
+      font-size: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      line-height: inherit;
+      a {
+         .a-mixin();
+      }
+   }
+
+   .image-title-wrapper + .image-subtitle-wrapper .image-subtitle {
+      margin-top: .5em;
+   }
+
+   .image-title p {
+      .heading-level4();
+   }
+}
