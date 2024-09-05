@@ -14,9 +14,35 @@
             <squarespace:block-field id="belt-promotion-intro" label="Belt Promotion Intro" columns="1"/>
          </div>
 
+         <div>
+            <h2>Temp placement</h2>
+            <squarespace:block-field id="belt-promotion-form" label="Belt Promotion Form" columns="1"/>
+         </div>
+
+         <squarespace:query collection="curriculum">
+            <script>
+               var promotionCustomizations = {
+                  "Warriors Junior": {},
+                  "Little Warriors": {},
+                  "MMA": {},
+                  "Taekwondo": {},
+                  "Tang Soo Do": {}
+               };
+            </script>
+               
+            {.repeated section items}
+               <script>
+                  promotionCustomizations["{categories.0}"]["{title}"] = {
+                     "feedback": "{customContent.parent-feedback}",
+                     "essay": "{customContent.student-essay}"
+                  }
+               </script>
+            {.end}
+         </squarespace:query>
+
          <section class="belt-promotion-programs">
             <section>
-               <h3>Warriors</h3>
+               <h3>Little Warriors</h3>
                <h4>Testing Dates</h4>
                <ul>
                   <ul data-js="reverse-list"> {# This ul will be removed with js}
@@ -39,8 +65,37 @@
                <div>
                   <h4>Application</h4>
                   <div class="button-set">
-                     <button onclick="openDialog('belt-promotion-form', this);">Beginner</button>
-                     <button>Intermediate & Advanced</button>
+                     <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Little Warriors');">Application</button>
+                  </div>
+               </div>
+            </section>
+
+         <section class="belt-promotion-programs">
+            <section>
+               <h3>Warriors Junior</h3>
+               <h4>Testing Dates</h4>
+               <ul>
+                  <ul data-js="reverse-list"> {# This ul will be removed with js}
+                     {.repeated section past}
+                        {.repeated section categories}
+                           {.equal? @ "Warriors"}
+                              <li class="past">{startDate|date %m/%d}</li>
+                           {.end}
+                        {.end}
+                     {.end}
+                  </ul>
+                  {.repeated section upcoming}
+                     {.repeated section categories}
+                        {.equal? @ "Warriors"}
+                           <li>{startDate|date %m/%d}</li>
+                        {.end}
+                     {.end}
+                  {.end}
+               </ul>
+               <div>
+                  <h4>Application</h4>
+                  <div class="button-set">
+                     <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Warriors Junior');">Application</button>
                   </div>
                </div>
             </section>
@@ -69,8 +124,7 @@
                <div>
                   <h4>Application</h4>
                   <div class="button-set">
-                     <button>Beginner</button>
-                     <button>Intermediate & Advanced</button>
+                     <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('MMA');">Application</button>
                   </div>
                </div>
             </section>
@@ -99,8 +153,7 @@
                <div>
                   <h4>Application</h4>
                   <div class="button-set">
-                     <button>Beginner</button>
-                     <button>Intermediate & Advanced</button>
+                     <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Taekwondo');">Application</button>
                   </div>
                </div>
             </section>
@@ -129,8 +182,7 @@
                <div>
                   <h4>Application</h4>
                   <div class="button-set">
-                     <button >Beginner</button>
-                     <button>Intermediate & Advanced</button>
+                     <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Tang Soo Do');">Application</button>
                   </div>
                </div>
             </section>
@@ -146,12 +198,9 @@
                   </button>
                </header>
                <div class="dialog-body">
-                  Stuff goes here.
                </div>
             </div>
          </dialog>
-
-         <squarespace:block-field id="belt-promotion-form" label="Belt Promotion Form" columns="1"/>
       </section>
    </main>
 
