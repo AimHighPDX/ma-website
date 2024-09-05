@@ -4,6 +4,7 @@
 <head>
    {squarespace-headers}
    <squarespace:script src="aria.js" />
+   <squarespace:script src="form-replacement.js" />
 </head>
 
 <body>
@@ -18,27 +19,6 @@
             <h2>Temp placement</h2>
             <squarespace:block-field id="belt-promotion-form" label="Belt Promotion Form" columns="1"/>
          </div>
-
-         <squarespace:query collection="curriculum">
-            <script>
-               var promotionCustomizations = {
-                  "Warriors Junior": {},
-                  "Little Warriors": {},
-                  "MMA": {},
-                  "Taekwondo": {},
-                  "Tang Soo Do": {}
-               };
-            </script>
-               
-            {.repeated section items}
-               <script>
-                  promotionCustomizations["{categories.0}"]["{title}"] = {
-                     "feedback": "{customContent.parent-feedback}",
-                     "essay": "{customContent.student-essay}"
-                  }
-               </script>
-            {.end}
-         </squarespace:query>
 
          <section class="belt-promotion-programs">
             <section>
@@ -70,7 +50,6 @@
                </div>
             </section>
 
-         <section class="belt-promotion-programs">
             <section>
                <h3>Warriors Junior</h3>
                <h4>Testing Dates</h4>

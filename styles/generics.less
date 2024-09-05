@@ -373,3 +373,192 @@ dialog .dialog-body {
 dialog.modal-dialog {
    margin: auto;
 }
+
+/**
+ * Form fields defaults.
+**/
+
+/* Reset stylings */
+select, input, textarea {
+   font: inherit;
+}
+
+fieldset {
+   border: none;
+}
+
+
+/* Field baseline */
+.form-field {
+   display: flex;
+   flex-direction: column;
+   min-width: 10em;
+
+   width: 100%;
+   gap: .3rem;
+   margin-top: .5rem;
+}
+
+.form-field:has(.field-input[hidden]) {
+   display: none;
+}
+
+.field-required {
+   display: none;
+   color: @error-color;
+   padding: 0 .3em;
+}
+
+.field-label:has(~ .field-input[required]) .field-required {
+   display: inline-block;
+}
+
+.field-input {
+   transition: .2s;
+   border-radius: 5px;
+   width: 100%;
+   padding: .1em .2em;
+
+   background: var(@background, transparent);
+   border: max(1px, .04em) solid @gray;
+   border-bottom: max(1.5px, .06em) solid @darkgray;  
+}
+
+.field-input:focus-visible {
+   outline-offset: 0;
+}
+
+.field-error, .fieldset-error {
+   color: @error-color;
+   
+   transition: .2s, visibility 0s;
+   visibility: hidden;
+   height: 0;
+}
+
+
+
+
+
+
+
+/* Dropdown Fields */
+select.field-value {
+   border: max(1px, .04em) solid @darkgray;
+}
+
+
+/* Checkboxes and Radios */
+.form-field:has(> input[type=checkbox]), .form-field:has(> input[type=radio]) {
+   display: inline-block;
+}
+
+.field-input[type=checkbox], .field-input[type=radio] {
+   width: fit-content;
+   accent-color: var(--action-color);
+}
+
+.field-input[type=checkbox]:focus-visible, .field-input[type=radio]:focus-visible {
+   outline-offset: 2px;
+}
+
+.fieldset-radio[aria-required=true] .field-required, .fieldset-checkbox[data-required] .field-required {
+   display: inline-block;
+}
+
+fieldset[aria-invalid=true]:not([pristine]) .fieldset-error {
+   visibility: visible;
+   height: fit-content;
+}
+
+
+
+
+/* Fieldsets */
+fieldset {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0 1rem;
+   margin-top: .5rem;
+}
+
+fieldset:has(input[required]) legend > .field-required {
+   display: inline-block;
+}
+
+/* Date variant of Fieldsets */
+.fieldset-date {
+   display: grid;
+   grid-template-columns: repeat(3, auto) 1fr;
+}
+
+.fieldset-date > *:not(.form-field) {
+   grid-column: 1 / -1;
+}
+
+.fieldset-date .form-field:has(input[autocomplete~=bday-day]), .fieldset-date .form-field:has(input[autocomplete~=bday-month]) {
+   min-width: 2em;
+   width: 3em;
+}
+
+.fieldset-date .form-field:has(input[autocomplete~=bday-year]) {
+   min-width: 3em;
+   width: 4em;
+}
+
+.fieldset-date:has(input:invalid:not([pristine])) .field-error {
+   visibility: visible;
+   height: fit-content;
+}
+
+
+
+/* Textarea */
+textarea {
+   resize: vertical;
+}
+
+
+/* Overall form errors don't show when the form has not been submitted nor if all inputs are valid. */
+.form-error {
+   border: max(2px, .08em) solid @error-color;
+   color: @error-color;
+}
+
+form[pristine] .form-error, form:not(:has(:invalid)) .form-error {
+   display: none;
+}
+
+
+/* Show errors when input field is invalid and has been edited */
+.field-input:invalid:not([pristine]) ~ .field-error, 
+form:not([pristine]) .field-input:invalid ~ .field-error {
+   visibility: visible;
+   height: fit-content;
+}
+
+/* Style invalid field inputs with red unless the field is focused, the field is pristine, or there has been a manual override */
+.field-input:invalid:not([pristine]):not(:focus):not(.error-override), 
+form:not([pristine]) .field-input:invalid:not(:focus):not(.error-override) {
+   border-color: @error-color;
+}
+
+/* Remove red from error text if the field is focused or if there is a manual override */
+.field-input:focus ~ .field-error,
+.field-input.error-override ~ .field-error {
+   color: inherit;
+}
+
+
+
+/** This css is specifically for address fields **/
+.address-fieldset .form-field:has(.field-input[autocomplete*="address-level"]),
+.address-fieldset .form-field:has(.field-input[autocomplete*="postal-code"]) {
+   flex: 1 1 0;
+   max-width: 15em;
+}
+
+.address-fieldset .form-field[hidden] {
+   display: none;
+}
