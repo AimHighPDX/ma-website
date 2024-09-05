@@ -23,6 +23,7 @@ function replaceSqsForms() {
 
          item.replaceWith(replacement);
       }
+      formInit(sqsForm);
    }
 }
 
@@ -130,7 +131,7 @@ function _createInput(sqsInput) {
    input.id = sqsInput.id;
    input.placeholder = sqsInput.placeholder;
    input.toggleAttribute("pristine", true);
-   input.toggleAttribute("required", sqsInput.required);
+   input.toggleAttribute("required", (sqsInput.required || sqsInput.getAttribute("aria-required")));
    input.type = sqsInput.type;
    return input;
 }
@@ -310,10 +311,10 @@ function createGroup(sqsFieldset) {
 
 /**
  * This script defines basic functionality of a form.
- */
+ *
 window.addEventListener("load", (e) => {
    Array.from(document.getElementsByTagName('form')).forEach((f) => {formInit(f)})
-});
+});*/
 
 function formInit(form) {
    setFormErrorHandling(form);
@@ -694,6 +695,14 @@ function processForm(form) {
 
 
 
+
+
+(function(){
+   'use strict';
+   window.addEventListener("load", () => {
+      replaceSqsForms();
+   }, {once:true});
+}());
 
 
 /**
