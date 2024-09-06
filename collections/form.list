@@ -1,15 +1,13 @@
-<form id="{collection.id}-form" pristine novalidate>
+<form id="{collection.urlId}" pristine novalidate>
    <div class="form-error">Whoops, the whole form is wrong!</div>
-
    {.repeated section items}
       {.var @id id}
-
       {.equal? customContent.customType "form-hidden"}
-         <input id="{@id}-input" type="hidden" name="{title}">
+         <input id="{@id}-input" type="hidden" name="{customContent.name}">
       {.or}
          <div class="form-field">
             <label class="field-label" for="{@id}-input">
-               {item.title}
+               {title}
                <span class="field-required" aria-hidden="true">*</span>
             </label>
             <p id="{@id}-description" class="small-text">{body}</p>
@@ -41,8 +39,9 @@
                      aria-describedBy="{@id}-error {@id}-description"
                      pristine>
                      <option value="" disabled selected>Choose one...</option>
-                     <!-- {@|json-pretty} -->
-                     {options.html}
+                     <div data-js="option-list">
+                        {options.html} <!-- Process this in JS-->
+                     </div>
                   </select>
                {.end}
                {.equal? customType "form-textarea"}

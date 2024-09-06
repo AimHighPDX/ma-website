@@ -5,6 +5,7 @@
    {squarespace-headers}
    <squarespace:script src="aria.js" />
    <squarespace:script src="form-replacement.js" />
+
 </head>
 
 <body>
@@ -15,10 +16,9 @@
             <squarespace:block-field id="belt-promotion-intro" label="Belt Promotion Intro" columns="1"/>
          </div>
 
-         <div>
-            <h2>Temp placement</h2>
-            <squarespace:block-field id="belt-promotion-form" label="Belt Promotion Form" columns="1"/>
-         </div>
+         <squarespace:query collection="belt-promotion-application">
+            {@|apply form.list}
+         </squarespace:query>
 
          <section class="belt-promotion-programs">
             <section>
@@ -45,7 +45,7 @@
                <div>
                   <h4>Application</h4>
                   <div class="button-set">
-                     <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Little Warriors');">Application</button>
+                     <button class="open-dialog" onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Little Warriors');">Application</button>
                   </div>
                </div>
             </section>
@@ -177,6 +177,9 @@
                   </button>
                </header>
                <div class="dialog-body">
+                  <squarespace:query collection="belt-promotion-application">
+                     {@|apply form.list}
+                  </squarespace:query>
                </div>
             </div>
          </dialog>
