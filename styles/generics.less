@@ -419,7 +419,7 @@ fieldset {
    width: 100%;
    padding: .1em .2em;
 
-   background: var(@background, transparent);
+   background: @background;
    border: max(1px, .04em) solid @gray;
    border-bottom: max(1.5px, .06em) solid @darkgray;  
 }
@@ -430,7 +430,6 @@ fieldset {
 
 .field-error, .fieldset-error {
    color: @error-color;
-   
    transition: .2s, visibility 0s;
    visibility: hidden;
    height: 0;

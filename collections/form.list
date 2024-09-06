@@ -1,0 +1,79 @@
+
+<form id="{collection.id}-form" pristine novalidate>
+   <div class="form-error">Whoops, the whole form is wrong!</div>
+
+   {.repeated section items}
+      {.var @id urlId}
+      {.var @description body}
+      <div class="form-field">
+         <label class="field-label" for="{@id}-input">
+            {item.title}
+            <span class="field-required" aria-hidden="true">*</span>
+         </label>
+         {.body?}
+            <p id="{@id}-description" class="small-text">{body}</p>
+         {.end}
+
+         {.section customContent}
+            {.equal? customType "form-text"}
+               <input id="{@id}-input" class="field-input" type="text" name="{name}" 
+                  {.pattern?}
+                     pattern="{pattern}"
+                     title="{title}"
+                  {.end}
+                  {.autocomplete?}
+                     autocomplete="{autocomplete}"
+                  {.end}
+                  {.required?}
+                     required
+                  {.end} 
+                  {.equal? @description '' }
+                     aria-describedBy="{@id}-error"
+                  {.or}
+                     aria-describedBy="{@id}-error {@id}-description"
+                  {.end}
+                  pristine>
+            {.end}
+            {.equal? customType "form-select"}
+               <select id="{@id}-input" class="field-input" name="{name}"
+                  {.autocomplete?}
+                     autocomplete="{autocomplete}"
+                  {.end}
+                  {.required?}
+                     required
+                  {.end} 
+                  {.equal? @description '' }
+                     aria-describedBy="{@id}-error"
+                  {.or}
+                     aria-describedBy="{@id}-error {@id}-description"
+                  {.end}
+                  pristine>
+                  <option value="" disabled selected>Choose one...</option>
+                  More options...
+               </select>
+            {.end}
+            {.equal? customType "form-textarea"}
+               <textarea id="{@id}-input" class="field-input" name="{name}" rows="5"
+               {.autocomplete?}
+                  autocomplete="{autocomplete}"
+               {.end}
+               {.required?}
+                  required
+               {.end} 
+               {.equal? @description '' }
+                  aria-describedBy="{@id}-error"
+               {.or}
+                  aria-describedBy="{@id}-error {@id}-description"
+               {.end}
+               pristine></textarea>
+            {.end}
+         {.end}
+         <p id="{@id}-error" class="field-error"></p>
+      </div>
+   {.end}
+
+   <div>
+      <button id="{collection.id}-submit" type="submit" aria-describedby="submit-status">Submit</button>
+      <p id="{collection.id}-submit-status"></p>
+   </div>
+</form>
