@@ -10,8 +10,9 @@
                {title}
                <span class="field-required" aria-hidden="true">*</span>
             </label>
-            <p id="{@id}-description" class="small-text">{body}</p>
+            <p id="{@id}-description" class="small-text">{customContent.description}</p>
 
+            {.var @body body}
             {.section customContent}
                {.equal? customType "form-text"}
                   <input id="{@id}-input" class="field-input" type="text" name="{name}" 
@@ -39,9 +40,7 @@
                      aria-describedBy="{@id}-error {@id}-description"
                      pristine>
                      <option value="" disabled selected>Choose one...</option>
-                     <div data-js="option-list">
-                        {options.html} <!-- Process this in JS-->
-                     </div>
+                     {@body}
                   </select>
                {.end}
                {.equal? customType "form-textarea"}

@@ -5,7 +5,6 @@
    {squarespace-headers}
    <squarespace:script src="aria.js" />
    <squarespace:script src="form-replacement.js" />
-
 </head>
 
 <body>
