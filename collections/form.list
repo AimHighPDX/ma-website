@@ -10,10 +10,12 @@
                {title}
                <span class="field-required" aria-hidden="true">*</span>
             </label>
-            <p id="{@id}-description" class="small-text">{customContent.description}</p>
 
             {.var @body body}
             {.section customContent}
+               {.description?}
+               <p id="{@id}-description" class="small-text">{description}</p>
+               {.end}
                {.equal? customType "form-text"}
                   <input id="{@id}-input" class="field-input" type="text" name="{name}" 
                      {.pattern?}
@@ -26,7 +28,7 @@
                      {.required?}
                         required
                      {.end} 
-                     aria-describedBy="{@id}-error {@id}-description"
+                     aria-describedBy="{@id}-error {.description?}{@id}-description{.end}"
                      pristine>
                {.end}
                {.equal? customType "form-select"}
@@ -37,7 +39,7 @@
                      {.required?}
                         required
                      {.end} 
-                     aria-describedBy="{@id}-error {@id}-description"
+                     aria-describedBy="{@id}-error {.description?}{@id}-description{.end}"
                      pristine>
                      <option value="" disabled selected>Choose one...</option>
                      {@body}
@@ -51,7 +53,7 @@
                   {.required?}
                      required
                   {.end} 
-                  aria-describedBy="{@id}-error {@id}-description"
+                  aria-describedBy="{@id}-error {.description?}{@id}-description{.end}"
                   pristine></textarea>
                {.end}
             {.end}
