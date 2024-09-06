@@ -49,7 +49,7 @@
                   {.end}
                   pristine>
                   <option value="" disabled selected>Choose one...</option>
-                  More options...
+                  {options}
                </select>
             {.end}
             {.equal? customType "form-textarea"}
