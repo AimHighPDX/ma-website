@@ -1,4 +1,3 @@
-
 <form id="{collection.id}-form" pristine novalidate>
    <div class="form-error">Whoops, the whole form is wrong!</div>
 
@@ -6,17 +5,14 @@
       {.var @id id}
 
       {.equal? customContent.customType "form-hidden"}
-         <input id="@id-input" type="hidden" name="{title}">
+         <input id="{@id}-input" type="hidden" name="{title}">
       {.or}
-         {.var @description body}
          <div class="form-field">
             <label class="field-label" for="{@id}-input">
                {item.title}
                <span class="field-required" aria-hidden="true">*</span>
             </label>
-            {.body?}
-               <p id="{@id}-description" class="small-text">{body}</p>
-            {.end}
+            <p id="{@id}-description" class="small-text">{body}</p>
 
             {.section customContent}
                {.equal? customType "form-text"}
@@ -31,7 +27,7 @@
                      {.required?}
                         required
                      {.end} 
-                     aria-describedBy="{@id}-error {.equal? @description ''}{@id}-description{.end}"
+                     aria-describedBy="{@id}-error {@id}-description"
                      pristine>
                {.end}
                {.equal? customType "form-select"}
@@ -42,9 +38,10 @@
                      {.required?}
                         required
                      {.end} 
-                     aria-describedBy="{@id}-error {.equal? @description ''}{@id}-description{.end}"
+                     aria-describedBy="{@id}-error {@id}-description"
                      pristine>
                      <option value="" disabled selected>Choose one...</option>
+                     <!-- {@|json-pretty} -->
                      {options.html}
                   </select>
                {.end}
@@ -56,7 +53,7 @@
                   {.required?}
                      required
                   {.end} 
-                  aria-describedBy="{@id}-error {.equal? @description ''}{@id}-description{.end}"
+                  aria-describedBy="{@id}-error {@id}-description"
                   pristine></textarea>
                {.end}
             {.end}
