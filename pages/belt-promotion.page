@@ -6,24 +6,13 @@
    <section>
       <h3>Little Warriors</h3>
       <h4>Testing Dates</h4>
-      <ul>
-         <ul data-js="reverse-list"> {# This ul will be removed with js}
-            {.repeated section past}
-               {.repeated section categories}
-                  {.equal? @ "Warriors"}
-                     <li class="past">{startDate|date %m/%d}</li>
-                  {.end}
-               {.end}
+      <squarespace:query collection="testing" category="Little Warriors">
+         <ul data-sort="chronological">
+            {.repeated section items}
+               <li data-time="{startDate}">{startDate|date %m/%d}</li>
             {.end}
          </ul>
-         {.repeated section upcoming}
-            {.repeated section categories}
-               {.equal? @ "Warriors"}
-                  <li>{startDate|date %m/%d}</li>
-               {.end}
-            {.end}
-         {.end}
-      </ul>
+      </squarespace:query>
       <button class="open-dialog" onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Little Warriors');">Application</button>
    </section>
 
@@ -31,23 +20,9 @@
       <h3>Warriors Junior</h3>
       <h4>Testing Dates</h4>
       <squarespace:query collection="testing" category="Warriors Junior">
-         <!-- {@|json-pretty} -->
-         <ul>
-            <ul data-js="reverse-list"> {# This ul will be removed with js}
-               {.repeated section past}
-                  {.repeated section categories}
-                     {.equal? @ "Warriors"}
-                        <li class="past">{startDate|date %m/%d}</li>
-                     {.end}
-                  {.end}
-               {.end}
-            </ul>
-            {.repeated section upcoming}
-               {.repeated section categories}
-                  {.equal? @ "Warriors"}
-                     <li>{startDate|date %m/%d}</li>
-                  {.end}
-               {.end}
+         <ul data-sort="chronological">
+            {.repeated section items}
+               <li data-time="{startDate}">{startDate|date %m/%d}</li>
             {.end}
          </ul>
       </squarespace:query>
@@ -57,72 +32,39 @@
    <section>
       <h3>MMA</h3>
       <h4>Testing Dates</h4>
-      <ul>
-         <ul data-js="reverse-list"> {# This ul will be removed with js}
-            {.repeated section past}
-               {.repeated section categories}
-                  {.equal? @ "MMA"}
-                     <li class="past">{startDate|date %m/%d}</li>
-                  {.end}
-               {.end}
+      <squarespace:query collection="testing" category="MMA">
+         <ul data-sort="chronological">
+            {.repeated section items}
+               <li data-time="{startDate}">{startDate|date %m/%d}</li>
             {.end}
          </ul>
-         {.repeated section upcoming}
-            {.repeated section categories}
-               {.equal? @ "MMA"}
-                  <li>{startDate|date %m/%d}</li>
-               {.end}
-            {.end}
-         {.end}
-      </ul>
+      </squarespace:query>
       <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('MMA');">Application</button>
    </section>
 
    <section>
       <h3>Taekwondo</h3>
       <h4>Testing Dates</h4>
-      <ul>
-         <ul data-js="reverse-list"> {# This ul will be removed with js}
-            {.repeated section past}
-               {.repeated section categories}
-                  {.equal? @ "Taekwondo"}
-                     <li class="past">{startDate|date %m/%d}</li>
-                  {.end}
-               {.end}
+      <squarespace:query collection="testing" category="Taekwondo">
+         <ul data-sort="chronological">
+            {.repeated section items}
+               <li data-time="{startDate}">{startDate|date %m/%d}</li>
             {.end}
          </ul>
-         {.repeated section upcoming}
-            {.repeated section categories}
-               {.equal? @ "Taekwondo"}
-                  <li>{startDate|date %m/%d}</li>
-               {.end}
-            {.end}
-         {.end}
-      </ul>
+      </squarespace:query>
       <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Taekwondo');">Application</button>
    </section>
 
    <section>
       <h3>Tang Soo Do</h3>
       <h4>Testing Dates</h4>
-      <ul>
-         <ul data-js="reverse-list"> {# This ul will be removed with js}
-            {.repeated section past}
-               {.repeated section categories}
-                  {.equal?:@:"Tang Soo Do"}
-                     <li class="past">{startDate|date %m/%d}</li>
-                  {.end}
-               {.end}
+      <squarespace:query collection="testing" category="Tang Soo Do">
+         <ul data-sort="chronological">
+            {.repeated section items}
+               <li data-time="{startDate}">{startDate|date %m/%d}</li>
             {.end}
          </ul>
-         {.repeated section upcoming}
-            {.repeated section categories}
-               {.equal?:@:"Tang Soo Do"}
-                  <li>{startDate|date %m/%d}</li>
-               {.end}
-            {.end}
-         {.end}
-      </ul>
+      </squarespace:query>
       <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Tang Soo Do');">Application</button>
    </section>
 </section>
@@ -137,32 +79,9 @@
          </button>
       </header>
       <div class="dialog-body">
-         <div id="warriors-junior-form">
-            <squarespace:query collection="belt-promotion-application" category="Warriors Junior">
-               {@|apply form.list}
-            </squarespace:query>
-         </div>
-         <div id="little-warriors-form">
-            <squarespace:query collection="belt-promotion-application" category="Little Warriors">
-               {@|apply form.list}
-            </squarespace:query>
-         </div>
-         <div id="mma-form">
-            <squarespace:query collection="belt-promotion-application" category="MMA">
-               {@|apply form.list}
-            </squarespace:query>
-         </div>
-         <div id="taekwondo-form">
-            <squarespace:query collection="belt-promotion-application" category="Taekwondo">
-               {@|apply form.list}
-            </squarespace:query>
-         </div>
-         <div id="tang-soo-do-form">
-            <squarespace:query collection="belt-promotion-application" category="Tang Soo Do">
-               {@|apply form.list}
-               <script>beltPromotionInit();</script>
-            </squarespace:query>
-         </div>
+         <squarespace:query collection="belt-promotion-application">
+            {@|apply form.list}
+         </squarespace:query>
       </div>
    </div>
 </dialog>

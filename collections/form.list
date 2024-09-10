@@ -4,9 +4,9 @@
       {.var @id id}
       {.var @empty nothing}
       {.equal? customContent.customType "form-hidden"}
-         <input id="{@id}-input" type="hidden" name="{customContent.name}">
+         <input id="{@id}-input" data-category="{categories}" type="hidden" name="{customContent.name}">
       {.or}
-         <div class="form-field">
+         <div class="form-field" data-category="{categories}">
             <label class="field-label" for="{@id}-input">
                {title}
                <span class="field-required" aria-hidden="true">*</span>

@@ -20,7 +20,7 @@
                <h3>Little Warriors</h3>
                <h4>Testing Dates</h4>
                <ul>
-                  <ul data-js="reverse-list"> {# This ul will be removed with js}
+                  <ul data-sort="reverse"> {# This ul will be removed with js}
                      {.repeated section past}
                         {.repeated section categories}
                            {.equal? @ "Warriors"}
@@ -44,7 +44,7 @@
                <h3>Warriors Junior</h3>
                <h4>Testing Dates</h4>
                <ul>
-                  <ul data-js="reverse-list"> {# This ul will be removed with js}
+                  <ul data-sort="reverse"> {# This ul will be removed with js}
                      {.repeated section past}
                         {.repeated section categories}
                            {.equal? @ "Warriors"}
@@ -68,7 +68,7 @@
                <h3>MMA</h3>
                <h4>Testing Dates</h4>
                <ul>
-                  <ul data-js="reverse-list"> {# This ul will be removed with js}
+                  <ul data-sort="reverse"> {# This ul will be removed with js}
                      {.repeated section past}
                         {.repeated section categories}
                            {.equal? @ "MMA"}
@@ -92,7 +92,7 @@
                <h3>Taekwondo</h3>
                <h4>Testing Dates</h4>
                <ul>
-                  <ul data-js="reverse-list"> {# This ul will be removed with js}
+                  <ul data-sort="reverse"> {# This ul will be removed with js}
                      {.repeated section past}
                         {.repeated section categories}
                            {.equal? @ "Taekwondo"}
@@ -116,7 +116,7 @@
                <h3>Tang Soo Do</h3>
                <h4>Testing Dates</h4>
                <ul>
-                  <ul data-js="reverse-list"> {# This ul will be removed with js}
+                  <ul data-sort="reverse"> {# This ul will be removed with js}
                      {.repeated section past}
                         {.repeated section categories}
                            {.equal?:@:"Tang Soo Do"}

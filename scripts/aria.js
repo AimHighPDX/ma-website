@@ -236,12 +236,32 @@ function replaceCurriculum() {
 }
 
 /**
- * Reverse order on past events (to merge with upcoming)
+ * Sort any list
  */
-function reverseList() {
-   let reverseLists = document.querySelectorAll("[data-js='reverse-list']");
-   for (let list of reverseLists) {
-      list.replaceWith(...Array.from(list.getElementsByTagName("li")).reverse());
+function sortLists() {
+   let lists = document.querySelectorAll("[data-sort]");
+   let orderedList;
+   for (let list of lists) {
+      switch(list.getAttribute("data-sort")) {
+         case "chronological":
+            orderedList = Array.from(list.getElementsByTagName("li"));
+            orderedList.sort((a,b) => {
+               return a.dataset.time - b.dataset.time;
+            })
+            for (let item of orderedList) {
+               if (item.dataset.time < Date.now()) {
+                  item.className = "past";
+               }
+            }
+            list.replaceChildren(...orderedList);
+            break;
+         case "reverse":
+            orderedList = Array.from(list.getElementsByTagName("li")).reverse();
+            for (let list of orderedList) {
+               list.replaceWith(...orderedList);
+            }
+         default: break;
+      }
    }
 }
 
@@ -302,7 +322,7 @@ function dispatchCloseEvent(origin) {
       initNavDisclosure();
       initTabs();
       replaceCurriculum();
-      reverseList();
+      sortLists();
       initDialog();
    }, {once:true});
 }());
