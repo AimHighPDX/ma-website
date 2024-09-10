@@ -1,6 +1,0 @@
-<h2>This is a test</h2>
-<squarespace:query collection="schedule" limit="20" category="Little Warriors">
-   {.repeated section items}
-      {@|apply class-condensed.block}
-   {.end}
-</squarespace:query>

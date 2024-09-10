@@ -1,0 +1,64 @@
+<section>
+   <h2>General</h2>
+   <div class="button-set">
+      <a href="" class="button">Belt Promotion</a>
+      <a href="/schedule" class="button">Class Schedule</a>
+      <a href="" class="button">How To Check In</a>
+      <a href="" class="button">How To Tie a Belt</a>
+      <a href="" class="button">Student Highlights</a>
+   </div>
+</section>
+
+<section>
+   <h2>By Program</h2>
+   <section id="curriculum" class="tabs tabs-style-component" data-start="0" data-orientation="vertical" data-style="tablist-style-full">
+      <squarespace:query collection="program">
+         {.repeated section items}
+            <div id="{id}-curriculum" data-js="tabpanel" data-title="{title}">
+               <h3>{title}</h3>
+               <p>Find gear requirements and more on the <a href="{sourceUrl}">{customContent.program} program page.</a></p>
+               <div>
+                  <squarespace:block-field id="{id}-summary" label="{title} Summary" columns="1"/>
+               </div>
+               {.equal? customContent.has-curriculum true}
+                  <button type="button" class="disclosure heading-level4" aria-controls="{id}-curriculum-wrapper" aria-expanded="false">
+                     <span>
+                        Curriculum
+                     </span>
+                  </button>
+                  <div id="{id}-curriculum-wrapper">
+                     <squarespace:block-field id="{id}-curriculum" label="{title} Curriculum" columns="1"/>
+                  </div>
+               {.end}
+               {.equal? customContent.has-videos true}
+               <button type="button" class="disclosure heading-level4" aria-controls="{id}-videos-wrapper" aria-expanded="false">
+                  <span>
+                     Videos
+                  </span>
+               </button>
+               <div id="{id}-videos-wrapper">
+                  <squarespace:block-field id="{id}-videos" label="{title} Videos" columns="1"/>
+               </div>
+               {.end}
+               {.equal? customContent.has-add-info true}
+               <button type="button" class="disclosure heading-level4" aria-controls="{id}-add-info-wrapper" aria-expanded="false">
+                  <span>
+                     Additional Information
+                  </span>
+               </button>
+               <div id="{id}-add-info-wrapper">
+                  <squarespace:block-field id="{id}-add-info" label="{title} Additional Information" columns="1"/>
+               </div>
+               {.end}
+            </div>
+         {.end}
+      </squarespace:query>
+   </section>
+</section>
+
+<section>
+   <h2>Videos</h2>
+   <div>
+      <squarespace:block-field id="resource-exercises" label="Exercise Videos" columns="1"/>
+   </div>
+</section>
