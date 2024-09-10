@@ -425,7 +425,7 @@ function processForm(form) {
 
 function beltPromotionInit() {
    let tsdForm = document.getElementById("tang-soo-do-form");
-   let tsdEssayDescription = tsdForm.querySelector(".form-field:has(*[name=Student Essay]) p[id$=description]");
+   let tsdEssayDescription = tsdForm.querySelector(".form-field:has(*[name='Student Essay']) p[id$=description]");
    let tsdText = {
       'White': "How is Tang Soo Do training different than you expected?",
       'Sr. White': 'As you think about your training in Tang Soo Do, what do you see as your strengths? What do you think your biggest challenges will be as an Orange Belt?',

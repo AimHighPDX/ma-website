@@ -170,6 +170,7 @@
                   <div id="tang-soo-do-form">
                      <squarespace:query collection="belt-promotion-application" category="Tang Soo Do">
                         {@|apply form.list}
+                        <script>beltPromotionInit();</script>
                      </squarespace:query>
                   </div>
                </div>
