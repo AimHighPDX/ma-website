@@ -82,6 +82,7 @@
          <squarespace:query collection="belt-promotion-application">
             {@|apply form.list}
          </squarespace:query>
+         <script>beltPromotionInit();</script>
       </div>
    </div>
 </dialog>

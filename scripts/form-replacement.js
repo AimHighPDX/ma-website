@@ -424,8 +424,8 @@ function processForm(form) {
 }
 
 function beltPromotionInit() {
-   let tsdForm = document.getElementById("belt-promotion-form");
-   let tsdEssayDescription = tsdForm.querySelector(".form-field:has(*[name='Student Essay']) p[id$=description]");
+   let tsdBelt = document.querySelector("[data-category*='Tang Soo Do'] .field-input[name='Belt']");
+   let tsdEssayDescription = document.querySelector("[data-category*='Tang Soo Do'] .field-input[name='Student Essay']");
    let tsdText = {
       'White': "How is Tang Soo Do training different than you expected?",
       'Sr. White': 'As you think about your training in Tang Soo Do, what do you see as your strengths? What do you think your biggest challenges will be as an Orange Belt?',
@@ -439,7 +439,7 @@ function beltPromotionInit() {
       'Sr. Red': 'What is the most important goal you want to reach before testing for Black Belt? Explain why this goal is important to you.'
     }
 
-   tsdForm.querySelector("*[name=Belt]").addEventListener("change", (e) => {
+   tsdBelt.addEventListener("change", (e) => {
       tsdEssayDescription.textContent = tsdText[e.target.value];
    })
 }
