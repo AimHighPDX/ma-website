@@ -1,0 +1,8 @@
+<section>
+   <section>
+      <squarespace:block-field id="contact-page-text" label="Contact Us Text" columns="1"/>
+   </section>
+   <aside>
+      {@|apply contact.block}
+   </aside>
+</section
