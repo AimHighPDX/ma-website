@@ -425,7 +425,7 @@ function processForm(form) {
 
 function beltPromotionInit() {
    let tsdBelt = document.querySelector("[data-category*='Tang Soo Do'] .field-input[name='Belt']");
-   let tsdEssayDescription = document.querySelector("[data-category*='Tang Soo Do'] .field-input[name='Student Essay']");
+   let tsdEssayDescription = document.getElementById(document.querySelector("[data-category*='Tang Soo Do'] .field-input[name='Student Essay']").getAttribute("aria-describedby").split(" ").find(el => el.endsWith("-description")));
    let tsdText = {
       'White': "How is Tang Soo Do training different than you expected?",
       'Sr. White': 'As you think about your training in Tang Soo Do, what do you see as your strengths? What do you think your biggest challenges will be as an Orange Belt?',
