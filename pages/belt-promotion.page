@@ -6,7 +6,7 @@
    <section>
       <h3>Little Warriors</h3>
       <h4>Testing Dates</h4>
-      <squarespace:query collection="testing" category="Little Warriors">
+      <squarespace:query collection="belt-promotion-schedule" category="Little Warriors">
          <ul data-sort="chronological">
             {.repeated section items}
                <li data-time="{startDate}">{startDate|date %m/%d}</li>
@@ -19,7 +19,7 @@
    <section>
       <h3>Warriors Junior</h3>
       <h4>Testing Dates</h4>
-      <squarespace:query collection="testing" category="Warriors Junior">
+      <squarespace:query collection="belt-promotion-schedule" category="Warriors Junior">
          <ul data-sort="chronological">
             {.repeated section items}
                <li data-time="{startDate}">{startDate|date %m/%d}</li>
@@ -32,7 +32,7 @@
    <section>
       <h3>MMA</h3>
       <h4>Testing Dates</h4>
-      <squarespace:query collection="testing" category="MMA">
+      <squarespace:query collection="belt-promotion-schedule" category="MMA">
          <ul data-sort="chronological">
             {.repeated section items}
                <li data-time="{startDate}">{startDate|date %m/%d}</li>
@@ -45,7 +45,7 @@
    <section>
       <h3>Taekwondo</h3>
       <h4>Testing Dates</h4>
-      <squarespace:query collection="testing" category="Taekwondo">
+      <squarespace:query collection="belt-promotion-schedule" category="Taekwondo">
          <ul data-sort="chronological">
             {.repeated section items}
                <li data-time="{startDate}">{startDate|date %m/%d}</li>
@@ -58,7 +58,7 @@
    <section>
       <h3>Tang Soo Do</h3>
       <h4>Testing Dates</h4>
-      <squarespace:query collection="testing" category="Tang Soo Do">
+      <squarespace:query collection="belt-promotion-schedule" category="Tang Soo Do">
          <ul data-sort="chronological">
             {.repeated section items}
                <li data-time="{startDate}">{startDate|date %m/%d}</li>
