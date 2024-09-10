@@ -23,7 +23,7 @@
 </address>
 <div>
    <h4>Social Links</h4>
-   <ul class="social-links">
+   <ul class="social-links" data-content-field="connected-accounts">
       {.repeated section website.socialAccounts}
          <li>
             <a href="{profileUrl}">
