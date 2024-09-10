@@ -424,7 +424,7 @@ function processForm(form) {
 }
 
 function beltPromotionInit() {
-   let tsdForm = document.getElementById("tang-soo-do-form");
+   let tsdForm = document.getElementById("belt-promotion-form");
    let tsdEssayDescription = tsdForm.querySelector(".form-field:has(*[name='Student Essay']) p[id$=description]");
    let tsdText = {
       'White': "How is Tang Soo Do training different than you expected?",
@@ -450,12 +450,11 @@ function beltPromotionInit() {
  * @param {String} program
  */
 function updateBeltPromotion(program) {
-   let dialogBody = document.querySelector("#belt-promotion-form .dialog-body");
-   dialogBody.setAttribute("data-js", program);
-   let form = document.getElementById(program.toLowerCase().replaceAll(" ", "-") + "-form");
-
-   for (let field of form.getElementsByClassName("field-input")) {
-      field.value = "";
+   let form = document.getElementById("belt-promotion-form");
+   for (let field of form.getElementsByClassName("form-field")) {
+      let input = field.querySelector(".field-input");
+      input.value = "";
+      input.toggleAttribute("disabled", !field.dataset.category.split(",").some(c => c === program));
    }
    form.querySelector("*[name=Program]").value = program;
 }

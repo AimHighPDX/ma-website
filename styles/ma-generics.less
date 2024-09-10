@@ -486,16 +486,8 @@ Not for color changes; these are for structural changes.
    }
 }
 
-#belt-promotion-form .dialog-body {
-   > div {
+#belt-promotion-form {
+   > .form-field:has(.field-input[disabled]) {
       display: none;
-   }
-
-   &[data-js="Warriors Junior"] #warriors-junior-form,
-   &[data-js="Little Warriors"] #little-warriors-form,
-   &[data-js="MMA"] #mma-form,
-   &[data-js="Taekwondo"] #warriors-junior-form,
-   &[data-js="Tang Soo Do"] #tang-soo-do-form {
-      display: block;
    }
 }
