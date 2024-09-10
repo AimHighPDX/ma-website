@@ -36,7 +36,7 @@
                   <h3>Little Warriors</h3>
                   <p>For Ages 4 – 5</p>
                </div>
-               <squarespace:query collection="schedule" limit="20" category="Little Warriors">
+               <squarespace:query collection="resources/class-schedule" limit="20" category="Little Warriors">
                   {.repeated section items}
                      {@|apply class-condensed.block}
                   {.end}
@@ -45,13 +45,13 @@
                   <h3>Warriors Junior</h3>
                   <p>For Ages 6 – 7</p>
                </div>
-               <squarespace:query collection="schedule" limit="20" category="Warriors Junior">
+               <squarespace:query collection="resources/class-schedule" limit="20" category="Warriors Junior">
                   {.repeated section items}
                      {@|apply class-condensed.block}
                   {.end}
                </squarespace:query>
             {.or}
-               <squarespace:query collection="schedule" limit="20" category="{collection.navigationTitle}">
+               <squarespace:query collection="resources/class-schedule" limit="20" category="{collection.navigationTitle}">
                   {.repeated section items}
                      {@|apply class-condensed.block}
                   {.end}
