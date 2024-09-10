@@ -15,10 +15,6 @@
             <squarespace:block-field id="belt-promotion-intro" label="Belt Promotion Intro" columns="1"/>
          </div>
 
-         <squarespace:query collection="belt-promotion-application">
-            {@|apply form.list}
-         </squarespace:query>
-
          <section class="belt-promotion-programs">
             <section>
                <h3>Little Warriors</h3>
@@ -41,12 +37,7 @@
                      {.end}
                   {.end}
                </ul>
-               <div>
-                  <h4>Application</h4>
-                  <div class="button-set">
-                     <button class="open-dialog" onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Little Warriors');">Application</button>
-                  </div>
-               </div>
+               <button class="open-dialog" onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Little Warriors');">Application</button>
             </section>
 
             <section>
@@ -70,12 +61,7 @@
                      {.end}
                   {.end}
                </ul>
-               <div>
-                  <h4>Application</h4>
-                  <div class="button-set">
-                     <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Warriors Junior');">Application</button>
-                  </div>
-               </div>
+               <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Warriors Junior');">Application</button>
             </section>
    
             <section>
@@ -99,12 +85,7 @@
                      {.end}
                   {.end}
                </ul>
-               <div>
-                  <h4>Application</h4>
-                  <div class="button-set">
-                     <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('MMA');">Application</button>
-                  </div>
-               </div>
+               <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('MMA');">Application</button>
             </section>
    
             <section>
@@ -128,12 +109,7 @@
                      {.end}
                   {.end}
                </ul>
-               <div>
-                  <h4>Application</h4>
-                  <div class="button-set">
-                     <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Taekwondo');">Application</button>
-                  </div>
-               </div>
+               <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Taekwondo');">Application</button>
             </section>
    
             <section>
@@ -157,12 +133,7 @@
                      {.end}
                   {.end}
                </ul>
-               <div>
-                  <h4>Application</h4>
-                  <div class="button-set">
-                     <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Tang Soo Do');">Application</button>
-                  </div>
-               </div>
+               <button onclick="openDialog('belt-promotion-form', this);updateBeltPromotion('Tang Soo Do');">Application</button>
             </section>
          </section>
 
@@ -176,9 +147,31 @@
                   </button>
                </header>
                <div class="dialog-body">
-                  <squarespace:query collection="belt-promotion-application">
-                     {@|apply form.list}
-                  </squarespace:query>
+                  <div id="warriors-junior-form">
+                     <squarespace:query collection="belt-promotion-application" category="Warriors Junior">
+                        {@|apply form.list}
+                     </squarespace:query>
+                  </div>
+                  <div id="little-warriors-form">
+                     <squarespace:query collection="belt-promotion-application" category="Little Warriors">
+                        {@|apply form.list}
+                     </squarespace:query>
+                  </div>
+                  <div id="mma-form">
+                     <squarespace:query collection="belt-promotion-application" category="MMA">
+                        {@|apply form.list}
+                     </squarespace:query>
+                  </div>
+                  <div id="taekwondo-form">
+                     <squarespace:query collection="belt-promotion-application" category="Taekwondo">
+                        {@|apply form.list}
+                     </squarespace:query>
+                  </div>
+                  <div id="tang-soo-do-form">
+                     <squarespace:query collection="belt-promotion-application" category="Tang Soo Do">
+                        {@|apply form.list}
+                     </squarespace:query>
+                  </div>
                </div>
             </div>
          </dialog>

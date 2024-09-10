@@ -2,6 +2,7 @@
    <div class="form-error">Whoops, the whole form is wrong!</div>
    {.repeated section items}
       {.var @id id}
+      {.var @empty nothing}
       {.equal? customContent.customType "form-hidden"}
          <input id="{@id}-input" type="hidden" name="{customContent.name}">
       {.or}
@@ -13,33 +14,33 @@
 
             {.var @body body}
             {.section customContent}
-               {.description?}
+               {.equal? description @empty}{.or}
                <p id="{@id}-description" class="small-text">{description}</p>
                {.end}
                {.equal? customType "form-text"}
                   <input id="{@id}-input" class="field-input" type="text" name="{name}" 
-                     {.pattern?}
+                     {.equal? pattern @empty}{.or}
                         pattern="{pattern}"
                         title="{title}"
                      {.end}
-                     {.autocomplete?}
+                     {.equal? autocomplete @empty}{.or}
                         autocomplete="{autocomplete}"
                      {.end}
-                     {.required?}
+                     {.equal? required @empty}{.or}
                         required
                      {.end} 
-                     aria-describedBy="{@id}-error {.description?}{@id}-description{.end}"
+                     aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
                      pristine>
                {.end}
                {.equal? customType "form-select"}
                   <select id="{@id}-input" class="field-input" name="{name}"
-                     {.autocomplete?}
+                     {.equal? autocomplete @empty}{.or}
                         autocomplete="{autocomplete}"
                      {.end}
-                     {.required?}
+                     {.equal? required @empty}{.or}
                         required
                      {.end} 
-                     aria-describedBy="{@id}-error {.description?}{@id}-description{.end}"
+                     aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
                      pristine>
                      <option value="" disabled selected>Choose one...</option>
                      {@body}
@@ -47,13 +48,13 @@
                {.end}
                {.equal? customType "form-textarea"}
                   <textarea id="{@id}-input" class="field-input" name="{name}" rows="5"
-                  {.autocomplete?}
+                  {.equal? autocomplete @empty}{.or}
                      autocomplete="{autocomplete}"
                   {.end}
-                  {.required?}
+                  {.equal? required @empty}{.or}
                      required
                   {.end} 
-                  aria-describedBy="{@id}-error {.description?}{@id}-description{.end}"
+                  aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
                   pristine></textarea>
                {.end}
             {.end}
