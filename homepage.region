@@ -7,7 +7,8 @@
 </head>
 
 <body>
-   {@|apply header.block}
+   <squarespace:navigation navigationId="maNav" template="header" />
+   
    <main>
       <!-- Main image Banner, some differences from general banner -->
       <section class="hero-banner">

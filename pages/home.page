@@ -9,20 +9,21 @@
    </div>
 </section>
 
-<section class="tabs tabs-style-component" data-start="0" data-orientation="vertical" data-style="tablist-style-full">
-   <squarespace:query collection="program">
-      {.repeated section items}
-         <div id="{id}-excerpt" data-js="tabpanel" data-title="{title}">
-            <img src="{customContent.ref-image.assetUrl}" alt="{customContent.ref-image.assetUrl.title}">
-            <div>
-               <h3>{title}</h3>
-               {excerpt}
+<section>
+   <div id="program-tabs" class="tabs tabs-style-component" data-start="0" data-orientation="horizontal" data-style="tablist-style-full">
+      <squarespace:query collection="program">
+         {.repeated section items}
+            <div id="{id}-excerpt" data-js="tabpanel" data-title="{title}">
+               <img src="{customContent.ref-image.assetUrl}" alt="{customContent.ref-image.assetUrl.title}">
+               <div class="text">
+                  <h3>{title}</h3>
+                  {excerpt}
+               </div>
+               <img class="logo" src="{customContent.logo.assetUrl}" alt="{customContent.logo.assetUrl.title}">
             </div>
-            <img>
-         </div>
-         <img src="{customContent.logo.assetUrl}" alt="{customContent.logo.assetUrl.title}">
-      {.end}
-   </squarespace:query>
+         {.end}
+      </squarespace:query>
+   </div>
 </section>
 
 <section class="full-section class-summary">
