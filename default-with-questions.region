@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   {squarespace-headers}
+   <squarespace:script src="aria.js" />
+   <squarespace:script src="form-replacement.js" />
+</head>
+
+<body>
+   <squarespace:navigation navigationId="maNav" template="header" />
+   <main>
+      {@|apply banner.block}
+      <section id="page" role="main" data-content-field="main-content">
+         {squarespace.main-content}
+      </section>
+      <section class="centered">
+         <h3>Have a Question?</h3>
+         <a class="button centered" href="">
+            Contact Us
+         </a>
+      </section>
+   </main>
+
+   {@|apply footer.block}
+</body>
+
+</html>
