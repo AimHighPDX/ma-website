@@ -29,7 +29,7 @@ Not for color changes; these are for structural changes.
       object-fit: cover;
    }
 
-   div {
+   > div {
       img {
          height: 3em;
          width: auto;
@@ -550,10 +550,11 @@ section[role="main"]:has(.full-section) {
    div[role="tabpanel"]:not([hidden]) {
       height: fit-content;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
 
       .text {
+         grid-column-start: -2;
          grid-column-end: -1;
          grid-row: 1;
       }
@@ -562,7 +563,7 @@ section[role="main"]:has(.full-section) {
          grid-column-start: 1;
          grid-column-end: -1;
          grid-row-start: 1;
-         grid-row-end: -1;
+         grid-row-end: 3;
          align-self: end;
          justify-self: start;
 

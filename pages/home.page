@@ -30,12 +30,13 @@
    <div>
       <div class="full-section-left">
          <squarespace:block-field id="{collection.id}-events-left" label="About Events" columns="1"/>
+         <!--
          <squarespace:query collection="events-events" limit="0">
             Depending on upcoming events, show different messages, different links, etc.
-         </squarespace:query>
+         </squarespace:query> --> 
       </div>
       <div class="full-section-right">
-         <squarespace:block-field id="{collection.id}-events-right" label="About Events image" columns="1"/>
+         <squarespace:block-field id="{collection.id}-events-right" label="About Events image" columns="1"/> 
       </div>
    </div>
 </section>
