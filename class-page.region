@@ -90,6 +90,7 @@
          </squarespace:query>
       </section>
 
+      {@|apply have-questions.block}
    </main>
 
    {@|apply footer.block}
