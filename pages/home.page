@@ -1,0 +1,45 @@
+<section class="full-section class-summary">
+   <div>
+      <div class="full-section-left">
+         <squarespace:block-field id="{collection.id}-left" label="About MA image" columns="1"/>
+      </div>
+      <div class="full-section-right">
+         <squarespace:block-field id="{collection.id}-right" label="About MA text" columns="1"/>
+      </div>
+   </div>
+</section>
+
+<section class="tabs tabs-style-component" data-start="0" data-orientation="vertical" data-style="tablist-style-full">
+   <squarespace:query collection="program">
+      {.repeated section items}
+         <div id="{id}-excerpt" data-js="tabpanel" data-title="{title}">
+            <img src="{customContent.ref-image.assetUrl}" alt="{customContent.ref-image.assetUrl.title}">
+            <div>
+               <h3>{title}</h3>
+               {excerpt}
+            </div>
+            <img>
+         </div>
+         <img src="{customContent.logo.assetUrl}" alt="{customContent.logo.assetUrl.title}">
+      {.end}
+   </squarespace:query>
+</section>
+
+<section class="full-section class-summary">
+   <div>
+      <div class="full-section-left">
+         <squarespace:block-field id="{collection.id}-events-left" label="About Events" columns="1"/>
+         <squarespace:query collection="events-events" limit="0">
+            Depending on upcoming events, show different messages, different links, etc.
+         </squarespace:query>
+      </div>
+      <div class="full-section-right">
+         <squarespace:block-field id="{collection.id}-events-right" label="About Events image" columns="1"/>
+      </div>
+   </div>
+</section>
+
+<section class="centered">
+   <squarespace:block-field id="aimhighpdx-summary" label="About Aim High PDX" columns="1"/>
+   <squarespace:block-field id="employment-opportunities" label="About working for Aim High" columns="1"/>
+</section>
