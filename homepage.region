@@ -8,45 +8,21 @@
 
 <body>
    {@|apply header.block}
-   <main data-content-field="main-content">
-      <!-- Main image Banner -->
-      <section>
-         <img src="" alt=""> <!-- Refer to page image -->
-         <div>
-            <squarespace:block-field id="hero-text" columns="1"/>
-         </div>
+   <main>
+      <!-- Main image Banner, some differences from general banner -->
+      <section class="hero-banner">
+         {.section collection}
+            {.section mainImage}
+               <img src="{assetUrl}" alt="{title}">
+            {.end}
+            <div>
+               <squarespace:block-field id="hero-text" columns="1"/>
+            </div>      
+         {.end}
       </section>
 
-      <!-- Summer camps announcement -->
-      {@|apply announcement.block}
-
-      <!-- MA Summary -->
-      <section class="full-section">
-         <div>
-            <squarespace:block-field id="ma-summary-image" label="MA Summary Image" columns="1"/>
-            <squarespace:block-field id="ma-summary" label="MA Summary" columns="1"/>
-         </div>
-      </section>
-
-      <!-- Program Tabs 
-      {@|apply tabs.block}-->
-
-      <!-- Events callout -->
-      <section class="full-section">
-         <div>
-            <squarespace:block-field id="events-summary" label="Events Summary" columns="1"/>
-            <squarespace:block-field id="events-summary-image" label="Events Summary Image" columns="1"/>
-         </div>
-      </section>
-
-      <!-- Aim High PDX -->
-      <section>
-         <squarespace:block-field id="ahpdx-about" columns="1"/>
-         <button class="secondary">Testing</button>
-      </section>
-      <!-- Hiring -->
-      <section>
-         <squarespace:block-field id="ahpdx-hiring" columns="1"/>
+      <section id="page" role="main" data-content-field="main-content">
+         {squarespace.main-content}
       </section>
    </main>
 
