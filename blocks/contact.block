@@ -22,6 +22,21 @@
    {.end}
 </address>
 <div>
+   <h4>Hours</h4>
+   {.section websiteSettings.businessHours}
+      <div class="business-hours">
+         <p>M&ThinSpace;&ndash;&ThinSpace;Th</p>
+         <p>{monday.text}</p>
+         <p>Friday</p>
+         <p><i>Closed</i></p>
+         <p>Saturday</p>
+         <p>{saturday.text}</p>
+         <p>Sunday</p>
+         <p><i>Closed</i></p>
+      </div>
+   {.end}
+</div>
+<div>
    <h4>Social Links</h4>
    <ul class="social-links" data-content-field="connected-accounts">
       {.repeated section website.socialAccounts}
@@ -43,19 +58,4 @@
          </li>
       {.end}
    </ul>
-</div>
-<div>
-   <h4>Hours</h4>
-   {.section websiteSettings.businessHours}
-      <div class="business-hours">
-         <p>M&ThinSpace;&ndash;&ThinSpace;Th</p>
-         <p>{monday.text}</p>
-         <p>Friday</p>
-         <p><i>Closed</i></p>
-         <p>Saturday</p>
-         <p>{saturday.text}</p>
-         <p>Sunday</p>
-         <p><i>Closed</i></p>
-      </div>
-   {.end}
 </div>
