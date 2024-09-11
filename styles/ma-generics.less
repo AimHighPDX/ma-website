@@ -491,3 +491,23 @@ Not for color changes; these are for structural changes.
       display: none;
    }
 }
+
+
+// Contact us page
+.aside-section {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 2rem;
+
+   section:has(#contact-page-text) {
+      flex-grow: 1;
+      width: min-content;
+      min-width: 50%;
+   }
+
+   .contact-block {
+      padding: 1.5rem;
+      background: @primary-dark;
+      width: max-content;
+   }
+}
