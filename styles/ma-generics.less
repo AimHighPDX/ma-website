@@ -503,11 +503,23 @@ Not for color changes; these are for structural changes.
       flex-grow: 1;
       width: min-content;
       min-width: 50%;
+      flex-basis: 50%;
    }
+}
 
-   .contact-block {
-      padding: 1.5rem;
-      background: @primary-dark;
-      width: max-content;
+#contact-aside {
+   padding: 1.5rem;
+   background: @primary-dark;
+   width: min-content;
+   flex-basis: 0;
+   flex-grow: 1;
+
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+
+   > div:not(.contact-block) {
+      flex-grow: 1;
+      min-width: 150px;
    }
 }

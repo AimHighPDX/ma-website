@@ -1,8 +1,10 @@
 <footer>
    <div>
-      <section class="contact-block">
+      <section>
          <img class="logo" src="{website.logoImageUrl}?width=200" alt="{website.siteTitle}">
-         {@|apply contact.block}
+         <div class="contact-block">
+            {@|apply contact.block}
+         </div>
       </section>
       <section>
          <h2>Sitemap</h2> <!-- Uses page nav -->

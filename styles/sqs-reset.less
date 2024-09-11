@@ -31,3 +31,27 @@ body:not(.image-block-stack-dynamic-font-sizing) .sqs-block-image .design-layout
       .heading-level4();
    }
 }
+
+.horizontalrule-block {
+   margin: 1.5rem 0;
+}
+
+.sqs-row:has(> .col:not(.span-12)) {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+
+   &::before, &::after {
+      content: unset;
+   }
+
+   > .col {
+      width: min-content;
+      flex-grow: 1;
+      flex-basis: 0;
+   }
+}
+
+.spacer-block > .sqs-intrinsic {
+   padding: 0 !important; //otherwise, spacer blocks are double height.
+}

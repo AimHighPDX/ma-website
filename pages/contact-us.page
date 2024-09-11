@@ -2,10 +2,12 @@
    <section>
       <squarespace:block-field id="contact-page-text" label="Contact Us Text" columns="12"/>
    </section>
-   <aside class="contact-block">
+   <aside id="contact-aside">
       <div>
          <squarespace:block-field id="ma-location" label="Martial Arts Map" columns="1"/>
       </div>
-      {@|apply contact.block}
+      <div class="contact-block">
+         {@|apply contact.block}
+      </div>
    </aside>
 </section
