@@ -42,14 +42,7 @@
    </div>
 </section>
 
-<section class="full-section">
-   <div>
-      <div class="full-section-left">
-         <squarespace:block-field id="{collection.id}-events-left" label="About Events" columns="1"/>
-         <squarespace:block-field id="aimhighpdx-summary" label="About Aim High PDX" columns="1"/>
-      </div>
-      <div class="full-section-right">
-         <squarespace:block-field id="employment-opportunities" label="About working for Aim High" columns="1"/>
-      </div>
-   </div>
+<section>
+   <squarespace:block-field id="aimhighpdx-summary" label="About Aim High PDX" columns="1"/>
+   <squarespace:block-field id="employment-opportunities" label="About working for Aim High" columns="1"/>
 </section>
