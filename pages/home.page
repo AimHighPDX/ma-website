@@ -42,7 +42,7 @@
    </div>
 </section>
 
-<section>
+<section id="hompage-summary-section" class="centered">
    <squarespace:block-field id="aimhighpdx-summary" label="About Aim High PDX" columns="1"/>
    <squarespace:block-field id="employment-opportunities" label="About working for Aim High" columns="1"/>
 </section>

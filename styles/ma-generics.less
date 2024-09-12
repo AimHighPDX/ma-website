@@ -12,7 +12,7 @@ Not for color changes; these are for structural changes.
    grid-template-rows: 1fr auto 1rem;
 
    padding: 0;
-   margin-bottom: @padding;
+   margin-bottom: (2 * @padding);
    background-color: @primary-dark; //if image not provided
 
    .banner-filter {
@@ -614,5 +614,15 @@ section[role="main"]:has(.full-section) {
 
          filter: drop-shadow(0, 0, 3px, @shadow-color);
       }
+   }
+}
+
+#hompage-summary-section {
+   display: flex;
+   flex-direction: column;
+   gap: 5rem;
+
+   > div {
+      max-width: 550px;
    }
 }
