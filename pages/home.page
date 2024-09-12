@@ -1,4 +1,4 @@
-<section class="full-section class-summary">
+<section class="full-section">
    <div>
       <div class="full-section-left">
          <squarespace:block-field id="{collection.id}-left" label="About MA image" columns="1"/>
@@ -18,6 +18,7 @@
                <div class="text">
                   <h3>{title}</h3>
                   {excerpt}
+                  <a class="button" href="/programs/{categories.0|slugify}">{categories.0} program</a>
                </div>
                <img class="logo" src="{customContent.logo.assetUrl}" alt="{customContent.logo.assetUrl.title}">
             </div>
@@ -26,7 +27,7 @@
    </div>
 </section>
 
-<section class="full-section class-summary">
+<section class="full-section">
    <div>
       <div class="full-section-left">
          <squarespace:block-field id="{collection.id}-events-left" label="About Events" columns="1"/>
