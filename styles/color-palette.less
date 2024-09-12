@@ -11,34 +11,60 @@
       Use HSL color format for any UI elements. 
       Define the hue and the default saturation and lightness levels.
    */
+
 @interactive-color-adjustment: 5%;
 @color-contrast-adjustment: 10%;
 
+@white: hsl(217, 100%, 98%);
 @gray: hsl(217, 5%, 50%);
 @darkgray: hsl(217, 5%, 20%);
-@white: hsl(217, 100%, 98%);
 @black: hsl(217, 100%, 3%);
 
+// tweak: { "type" : "color", "title" : "Base Color", "category" : "Main Color"  }
+@primary: hsl(217, 67%, 38%);
+// tweak: { "type" : "value", "title" : "Lighten Amount", "min" : 5, "max" : 50, "step" : 5, "category" : "Main Color" }
+@primary-light-adjustment: 10%;
+// tweak: { "type" : "value", "title" : "Desaturate Light", "min" : -50, "max" : 50, "step" : 5, "category" : "Main Color" }
+@primary-light-desaturate-adjustment: 15%;
+// tweak: { "type" : "value", "title" : "Darken Amount", "min" : 5, "max" : 50, "step" : 5, "category" : "Main Color" }
+@primary-dark-adjustment: 15%;
+// tweak: { "type" : "value", "title" : "Saturate Dark", "min" : -50, "max" : 50, "step" : 5, "category" : "Main Color" }
+@primary-dark-saturate-adjustment: 5%;
 
-@primary: 	hsl(217, 67%, 38%);
-@primary-light: hsl(216, 46%, 47%);
-@primary-dark: hsl(218, 70%, 21%);
+@primary-light: desaturate(lighten(@primary, @primary-light-adjustment), @primary-light-desaturate-adjustment);
+@primary-dark: saturate(darken(@primary, @primary-dark-adjustment), @primary-dark-saturate-adjustment);
 
+@white: hsl(hue(@primary), 100%, 98%);
+@gray: hsl(hue(@primary), 5%, 50%);
+@darkgray: hsl(hue(@primary), 5%, 20%);
+@black: hsl(hue(@primary), 100%, 3%);
+
+// tweak: { "type" : "color", "title" : "Action and Link Color"}
 @action: hsl(191, 60%, 60%);
 
 /* The focus color MUST be contrast-y enough to be clearly visible in all contexts. DO NOT try to hide it. */
+// tweak: { "type" : "color", "title" : "Focus Color" }
 @focus-color: hsl(250, 90%, 60%);
 
+// tweak: { "type" : "color", "title" : "Error Color" }
 @error-color: hsl(0, 75%, 50%);
 
+
+// tweak: { "type" : "color", "title" : "Default Shadow Color", "category" : "Shadow" };
 @shadow-color: hsla(217, 5%, 5%, 30%);
-@shadow-offset: 1px 1px;
+// tweak: { "type" : "value", "title" : "Shadow Offset", "min" : -10, "max" : 10, "step" : 1 }
+@shadow-offset-value: 1px;
+@shadow-offset: @shadow-offset-value @shadow-offset-value;
+// tweak: { "type" : "value", "title" : "Shadow Size", "min" : 0, "max" : 20, "step" : 1 }
 @shadow-size: 6px;
+
 @shadow: @shadow-offset @shadow-size @shadow-color;
 @shadow-hover: @shadow-offset (@shadow-size * 1.5) @shadow-color;
 @shadow-pressed: inset @shadow-offset @shadow-size @shadow-color;
 
+// tweak: { "type" : "color", "title" : "Background Color" }
 @background: darken(@primary, 32%);
+// tweak: { "type" : "color", "title" : "Text Color" }
 @text-color: @white;
 
 /* preference stuff */
