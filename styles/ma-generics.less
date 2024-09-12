@@ -12,8 +12,15 @@ Not for color changes; these are for structural changes.
    grid-template-rows: 1fr auto 1rem;
 
    padding: 0;
-   margin: @padding 0;
-   background-color: @primary-dark;
+   margin-bottom: @padding;
+   background-color: @primary-dark; //if image not provided
+
+   .banner-filter {
+      grid-column-start: 1;
+      grid-column-end: -1;
+      grid-row-start: 1;
+      grid-row-end: -1;
+   }
 
    > img {
       grid-column-start: 1;
@@ -21,15 +28,12 @@ Not for color changes; these are for structural changes.
       grid-row-start: 1;
       grid-row-end: -1;
 
-      opacity: .75;
-      mix-blend-mode: screen;
-
       width: 100%;
       height: 100%;
       object-fit: cover;
    }
 
-   > div {
+   .banner-text {
       img {
          height: 3em;
          width: auto;
@@ -43,6 +47,20 @@ Not for color changes; these are for structural changes.
       grid-row-start: 2;
       grid-column-start: 2;
       padding: @padding;
+   }
+}
+
+.homepage .hero-banner {
+   height: 75vh;
+   grid-template-rows: 1fr auto 2rem;
+
+   .banner-text {
+      width: max-content;
+      justify-self: end;
+      
+      h1, p {
+         text-shadow: @shadow;
+      }
    }
 }
 

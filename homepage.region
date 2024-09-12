@@ -9,14 +9,15 @@
 <body>
    <squarespace:navigation navigationId="maNav" template="header" />
    
-   <main>
+   <main class="homepage">
       <!-- Main image Banner, some differences from general banner -->
       <section class="hero-banner">
+         <div class="banner-filter"></div>
          {.section collection}
             {.section mainImage}
                <img src="{assetUrl}" alt="{title}">
             {.end}
-            <div>
+            <div class="banner-text">
                <squarespace:block-field id="hero-text" columns="1"/>
             </div>      
          {.end}

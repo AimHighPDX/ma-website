@@ -11,11 +11,12 @@
 
    <main data-content-field="main-content">
       <section class="hero-banner">
+         <div class="banner-filter"></div>
          {.section collection}
             {.section mainImage}
                <img src="{assetUrl}" alt="{title}">
             {.end}
-            <div>
+            <div class="banner-text">
                <squarespace:query collection="program" limit="1" category="{navigationTitle}">
                   {.repeated section items}
                      <img src="{customContent.logo.assetUrl}" alt="{title}">
