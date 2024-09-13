@@ -12,9 +12,6 @@
       Define the hue and the default saturation and lightness levels.
    */
 
-@interactive-color-adjustment: 5%;
-@color-contrast-adjustment: 10%;
-
 @white: hsl(217, 100%, 98%);
 @gray: hsl(217, 5%, 50%);
 @darkgray: hsl(217, 5%, 20%);
@@ -39,23 +36,21 @@
 @darkgray: hsl(hue(@primary), 5%, 20%);
 @black: hsl(hue(@primary), 100%, 3%);
 
-// tweak: { "type" : "color", "title" : "Action and Link Color"}
+// tweak: { "type" : "color", "title" : "Action Color", "category" : "Buttons & Links" }
 @action: hsl(191, 60%, 60%);
 
 /* The focus color MUST be contrast-y enough to be clearly visible in all contexts. DO NOT try to hide it. */
 // tweak: { "type" : "color", "title" : "Focus Color" }
 @focus-color: hsl(250, 90%, 60%);
 
-// tweak: { "type" : "color", "title" : "Error Color" }
-@error-color: hsl(0, 75%, 50%);
-
-
 // tweak: { "type" : "color", "title" : "Default Shadow Color", "category" : "Shadow" };
 @shadow-color: hsla(217, 5%, 5%, 30%);
-// tweak: { "type" : "value", "title" : "Shadow Offset", "min" : -10, "max" : 10, "step" : 1 }
-@shadow-offset-value: 1px;
-@shadow-offset: @shadow-offset-value @shadow-offset-value;
-// tweak: { "type" : "value", "title" : "Shadow Size", "min" : 0, "max" : 20, "step" : 1 }
+// tweak: { "type" : "value", "title" : "Shadow X Offset", "min" : -10, "max" : 10, "step" : 1, "category" : "Shadow" }
+@shadow-offset-x: 1px;
+// tweak: { "type" : "value", "title" : "Shadow Y Offset", "min" : -10, "max" : 10, "step" : 1, "category" : "Shadow" }
+@shadow-offset-y: 1px;
+@shadow-offset: @shadow-offset-x @shadow-offset-y;
+// tweak: { "type" : "value", "title" : "Shadow Size", "min" : 0, "max" : 20, "step" : 1, "category" : "Shadow" }
 @shadow-size: 6px;
 
 @shadow: @shadow-offset @shadow-size @shadow-color;
@@ -63,15 +58,20 @@
 @shadow-pressed: inset @shadow-offset @shadow-size @shadow-color;
 
 // tweak: { "type" : "color", "title" : "Background Color" }
-@background: darken(@primary, 32%);
+@background: hsl(217,50%,5%);
 // tweak: { "type" : "color", "title" : "Text Color" }
-@text-color: @white;
+@text-color: hsl(0,0,100%);
+
+
+// tweak: { "type" : "color", "title" : "Error Color" }
+@error-color: hsl(0, 75%, 50%);
 
 /* preference stuff */
-@media screen and (prefers-color-scheme:light) {
-   @background: @white;
-   @text-color: @black;
-}
+@media screen and (prefers-color-scheme:light) {}
+
+
+@interactive-color-adjustment: 5%;
+@color-contrast-adjustment: 10%;
 
 @media screen and (prefers-contrast:more) {
    @color-contrast-adjustment: 15%;
