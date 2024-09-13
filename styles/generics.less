@@ -73,7 +73,9 @@ main {
    width: 1px;
 }
 
+// tweak: { "type" : "value", "title" : "Outline Width", "min" : .1, "max" : .5, "step" : .1, "category": "Focus Styles" }
 @focus-outline-width: .1rem;
+// tweak: { "type" : "value", "title" : "Outline Offset", "min" : -1, "max" : 1, "step" : .1, "category": "Focus Styles" }
 @focus-outline-offset: .2rem;
 :focus-visible {
    outline: @focus-outline-width solid @focus-color;
@@ -144,7 +146,7 @@ h1, .heading-level1 {
    border-radius: 1px;
 
    &.external::after {
-      content: "*";//add external link at some  point
+      content: "*";
       color: red; 
    }
 
