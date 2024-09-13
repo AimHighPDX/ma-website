@@ -3,24 +3,27 @@
  * Implements the correct overrides for some attributes.
 **/
 
+// tweak: { "type" : "value", "title" : "General Padding", "min" : 0, "max" : 5, "step" : .1 }
 @padding: 1.5rem;
 
-
+// tweak: { "type" : "value", "title" : "Text Padding X", "min" : 0, "max" : 5, "step" : .1, "category" : "Text Padding" }
 @text-padding-x: 1em;
-
+// tweak: { "type" : "value", "title" : "Text Padding Y", "min" : 0, "max" : 5, "step" : .1, "category" : "Text Padding" }
 @text-padding-y: .5em;
 @text-padding: @text-padding-y @text-padding-x;
 
-
+// tweak: { "type" : "value", "title" : "Rounded Corner Radius", "min" : 0, "max" : 5, "step" : .5 }
 @radius: 1rem;
-
+// tweak: { "type" : "value", "title" : "Corner Radius", "min" : 0, "max" : 10, "step" : .1, "category" : "Buttons & Links" }
 @button-radius: .5rem;
 
-
+// tweak: { "type" : "value", "title" : "Maximum Central Content Width", "min" : 300, "max" : 2000, "step" : 50 }
 @main-content-width-px: 800px;
 @main-content-width: min(@main-content-width-px, 100%);
 
+// tweak: { "type" : "value", "title" : "Non User Initiated Animation Time", "min" : 0, "max" : 5, "step" : .1 }
 @transition-time: .5s;
+// tweak: { "type" : "value", "title" : "User Initiated Animation Time", "min" : 0, "max" : 5, "step" : .1 }
 @transition-time-user-init: .2s;
 
 :root {
@@ -70,7 +73,9 @@ main {
    width: 1px;
 }
 
+// tweak: { "type" : "value", "title" : "Focus Outline Width", "min" : .1, "max" : .5, "step" : .1, "category": "Focus Styles" }
 @focus-outline-width: .1rem;
+// tweak: { "type" : "value", "title" : "Focus Outline Offset", "min" : -1, "max" : 1, "step" : .1, "category": "Focus Styles" }
 @focus-outline-offset: .2rem;
 :focus-visible {
    outline: @focus-outline-width solid @focus-color;
