@@ -110,7 +110,7 @@ p {
 // tweak: { "type" : "value", "title" : "Small Text Size", "min" : 50, "max" : 100, "category" : "Body Text" }
 @small-text-reduction: 80%;
 .small-text {
-   font-size: (1rem * @small-text-reduction);
+   font-size: (1rem * (@small-text-reduction / 100));
 }
 
 // tweak: { "type" : "font", "title" : "Level 1", "category" : "Headings" }
