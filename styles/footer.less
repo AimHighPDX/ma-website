@@ -1,5 +1,8 @@
 footer {
-   background: @black;
+   background: @footer-header-color;
+   color: @footer-header-text-color;
+
+   @text-color: @footer-header-text-color;
    margin-top: (2 * @padding);
 
    > div {
@@ -11,8 +14,13 @@ footer {
    }
 }
 
+// tweak: { "type" : "value", "title" : "Logo Max Width", "min" : 50, "max" : 250, "category" : "General Styles" }
+@logo-max-width: 150px;
+// tweak: { "type" : "value", "title" : "Logo Max Height", "min" : 50, "max" : 250, "category" : "General Styles" }
+@logo-max-height: 100px;
 img.logo {
-   max-width: 150px;
+   max-width: @logo-max-width;
+   max-height: @logo-max-height;
 }
 
 .contact-block {
