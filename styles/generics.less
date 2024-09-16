@@ -200,8 +200,14 @@ img {
    border-radius: 1px;
 
    &.external::after {
-      content: "*";
-      color: red; 
+      display: block;
+      content: "";
+      width: 1em;
+      height: 1em;
+      background-color: @text-color;
+      mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEwIDZINkM0Ljg5NTQzIDYgNCA2Ljg5NTQzIDQgOFYxOEM0IDE5LjEwNDYgNC44OTU0MyAyMCA2IDIwSDE2QzE3LjEwNDYgMjAgMTggMTkuMTA0NiAxOCAxOFYxNE0xNCA0SDIwTTIwIDRWMTBNMjAgNEwxMCAxNCIgc3Ryb2tlPSIjNEE1NTY4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIvPjwvc3ZnPg==");
+      mask-size: contain;
+      mask-repeat: no-repeat;
    }
 
    &:hover {
