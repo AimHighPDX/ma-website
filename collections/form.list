@@ -27,7 +27,7 @@
                let template = document.getElementById("{@id-body}");
                let result = document.createDocumentFragment();
                let i = 1;
-               for (let opt of template.content.getElementsByTagName("p")) {
+               for (let opt of template.content.querySelectorAll("p")) {
                   let div = document.createElement("div");
                   let label = document.createElement("label");
                   let input = document.createElement("input")
