@@ -15,7 +15,7 @@
          <div class="banner-filter"></div>
          {.section collection}
             {.section mainImage}
-               <img src="{assetUrl}" alt="{title}">
+               <img src="{assetUrl}" alt="{title}" {@|image-meta}>
             {.end}
             <div class="banner-text">
                <squarespace:block-field id="hero-text" columns="1"/>
