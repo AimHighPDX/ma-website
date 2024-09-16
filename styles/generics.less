@@ -26,8 +26,8 @@
 // tweak: { "type" : "value", "title" : "User Initiated Animation Time", "min" : 0, "max" : 5 }
 @transition-time-user-init: .2s;
 
-// COMMENTtweak: { "type" : "value", "title" : "Outline Width", "min" : .1, "max" : .5, "category": "Focus Styles" }
-@focus-outline-width: .1rem;
+// COMMENTtweak: { "type" : "value", "title" : "Outline Width", "min" : 1, "max" : 10, "category": "Focus Styles" }
+@focus-outline-width: 2px;
 // tweak: { "type" : "value", "title" : "Outline Offset", "min" : -1, "max" : 1, "category": "Focus Styles" }
 @focus-outline-offset: .2rem;
 
@@ -86,29 +86,85 @@ main {
 
 /* Text defaults */
 
-// tweak: { "type" : "font", "title" : "Body Font" }
+// tweak: { "type" : "font", "title" : "Body Font", "category" : "Body Text" }
 .paragraph {
-   font-family: "Open Sans", sans-serif;
+   font-family: "Open Sans";
    font-size: 1rem;
    line-height: 1.5em;
    color: @text-color;
    margin: .5em 0;
 }
-
-
-
-h1, h2, h3 {
-   font-family: bebas-neue-v14-deprecated,'Franklin Gothic Medium',sans-serif;
-   letter-spacing: .1em;
+ 
+p {
+   .paragraph();
 }
+
+// tweak: { "type" : "value", "title" : "Small Text Size", "min" : 50, "max" : 100, "category" : "Body Text" }
+@small-text-reduction: 80%;
+.small-text {
+   font-size: (1rem * @small-text-reduction);
+}
+
+// tweak: { "type" : "font", "title" : "Level 1", "category" : "Headings" }
+.heading-level1 {
+   font-family: bebas-neue-v14-deprecated,;
+   
+   font-size: 3.5rem;
+   margin-bottom: .2em;
+   line-height: 1.2em;
+
+   letter-spacing: .1em;
+   color: @text-color;
+}
+
+// tweak: { "type" : "font", "title" : "Level 2", "category" : "Headings" }
+.heading-level2 {
+   font-family: bebas-neue-v14-deprecated;
+
+   font-size: 2.8rem;
+   margin-bottom: .1em;
+   line-height: 1.2em;
+
+   letter-spacing: .1em;
+   color: @text-color;
+}
+
+// tweak: { "type" : "font", "title" : "Level 3", "category" : "Headings" }
+.heading-level3 {
+   font-family: bebas-neue-v14-deprecated;
+   
+   font-size: 2rem;
+   margin-bottom: .1em;
+   line-height: 1.2em;
+
+   letter-spacing: .1em;
+   color: @text-color;
+}
+
+// tweak: { "type" : "font", "title" : "Level 4", "category" : "Headings" }
+.heading-level4 {
+   font-family: "Open Sans";
+   font-size: 1.2rem;
+   font-weight: bold;
+
+   margin-bottom: .1em;
+   line-height: 1.2em;
+
+   color: @text-color;
+}
+
+h1 { .heading-level1(); }
+
+h2 { .heading-level2(); }
+
+h3 { .heading-level3(); }
+
+h4 { .heading-level4(); }
+
 
 h1, h2, h3, h4, h5, h6 {
    line-height: 1.2em;
    color: @text-color;
-}
- 
-p {
-   .paragraph();
 }
 
 address {
@@ -123,31 +179,8 @@ img {
 }
 
 /* Heading classes. Meant to emulate a different heading size, if needed. */
-.small-text {
-   font-size: .8rem;
-}
 
-h4, .heading-level4 {
-   font-size: 1.2rem;
-   font-weight: bold;
-   margin-bottom: .1em;
-}
-
-h3, .heading-level3 {
-   font-size: 2rem;
-   margin-bottom: .1em;
-}
-
-h2, .heading-level2 {
-   font-size: 2.8rem;
-   margin-bottom: .1em;
-}
-
-h1, .heading-level1 {
-   font-size: 3.5rem;
-   margin-bottom: .2em;
-}
-
+//tweak
 .a-mixin() {
    color: @action;
    text-decoration: underline;
