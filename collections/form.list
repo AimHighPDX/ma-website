@@ -32,6 +32,21 @@
                      aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
                      pristine>
                {.end}
+               {.equal? customType "form-email"}
+                  <input id="{@id}-input" class="field-input" type="email" name="{name}" 
+                     {.equal? pattern @empty}{.or}
+                        pattern="{pattern}"
+                        title="{title}"
+                     {.end}
+                     {.equal? autocomplete @empty}{.or}
+                        autocomplete="{autocomplete}"
+                     {.end}
+                     {.equal? required @empty}{.or}
+                        required
+                     {.end} 
+                     aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
+                     pristine>
+               {.end}
                {.equal? customType "form-select"}
                   <select id="{@id}-input" class="field-input" name="{name}"
                      {.equal? autocomplete @empty}{.or}

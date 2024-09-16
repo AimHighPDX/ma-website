@@ -10,4 +10,21 @@
          {@|apply contact.block}
       </div>
    </aside>
+
+   <dialog id="contact-us-form" class="modal-dialog">
+      <div>
+         <header autofocus>
+            <h2 class="heading-level3">Contact Us</h2>
+            <button class="icon-button" onclick="dispatchCloseEvent(this);">
+               <div class="icon" aria-hidden="true">&#x2715;</div>
+               <span class="text visually-hidden">Close dialog</span>
+            </button>
+         </header>
+         <div class="dialog-body">
+            <squarespace:query collection="contact-us-form">
+               {@|apply form.list}
+            </squarespace:query>
+         </div>
+      </div>
+   </dialog>
 </section
