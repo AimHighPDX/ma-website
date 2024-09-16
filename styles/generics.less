@@ -8,27 +8,27 @@
 
 // tweak: { "type" : "value", "title" : "Text Padding X", "min" : 0, "max" : 5, "category" : "Text Padding" }
 @text-padding-x: 1em;
-// COMMENTtweak: { "type" : "value", "title" : "Text Padding Y", "min" : 0, "max" : 5, "category" : "Text Padding" }
+// tweak: { "type" : "value", "title" : "Text Padding Y", "min" : 0, "max" : 5, "category" : "Text Padding" }
 @text-padding-y: .5em;
 @text-padding: @text-padding-y @text-padding-x;
 
-// COMMENTtweak: { "type" : "value", "title" : "Rounded Corner Radius", "min" : 0, "max" : 5 }
+// tweak: { "type" : "value", "title" : "Rounded Corner Radius", "min" : 0, "max" : 5 }
 @radius: 1rem;
-// COMMENTtweak: { "type" : "value", "title" : "Corner Radius", "min" : 0, "max" : 10, "category" : "Buttons & Links" }
+// tweak: { "type" : "value", "title" : "Corner Radius", "min" : 0, "max" : 10, "category" : "Buttons & Links" }
 @button-radius: .5rem;
 
-// COMMENTtweak: { "type" : "value", "title" : "Maximum Central Content Width", "min" : 300, "max" : 2000, "step" : 50 }
+// tweak: { "type" : "value", "title" : "Maximum Central Content Width", "min" : 300, "max" : 2000, "step" : 50 }
 @main-content-width-px: 800px;
 @main-content-width: min(@main-content-width-px, 100%);
 
-// COMMENTtweak: { "type" : "value", "title" : "Non User Initiated Animation Time", "min" : 0, "max" : 5 }
+// tweak: { "type" : "value", "title" : "Non User Initiated Animation Time", "min" : 0, "max" : 5 }
 @transition-time: .5s;
-// COMMENTtweak: { "type" : "value", "title" : "User Initiated Animation Time", "min" : 0, "max" : 5 }
+// tweak: { "type" : "value", "title" : "User Initiated Animation Time", "min" : 0, "max" : 5 }
 @transition-time-user-init: .2s;
 
-// COMMENTtweak: { "type" : "value", "title" : "Outline Width", "min" : .1, "max" : .5, "category": "Focus Styles" }
+// tweak: { "type" : "value", "title" : "Outline Width", "min" : .1, "max" : .5, "category": "Focus Styles" }
 @focus-outline-width: .1rem;
-// COMMENTtweak: { "type" : "value", "title" : "Outline Offset", "min" : -1, "max" : 1, "category": "Focus Styles" }
+// tweak: { "type" : "value", "title" : "Outline Offset", "min" : -1, "max" : 1, "category": "Focus Styles" }
 @focus-outline-offset: .2rem;
 
 :root {
@@ -85,6 +85,16 @@ main {
 }
 
 /* Text defaults */
+// tweak: { "type" : "font", "title" : "Body Font" }
+.paragraph {
+   font-family: "Open Sans", sans-serif;
+   font-size: 1rem;
+   line-height: 1.5em;
+   color: @text-color;
+   margin: .5em 0;
+}
+
+
 
 h1, h2, h3 {
    font-family: bebas-neue-v14-deprecated,'Franklin Gothic Medium',sans-serif;
@@ -97,11 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 }
  
 p {
-   font-size: 1rem;
-   line-height: 1.5em;
-   color: @text-color;
-
-   margin: .5em 0;
+   .paragraph();
 }
 
 address {
