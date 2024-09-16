@@ -5,6 +5,37 @@
       {.var @empty nothing}
       {.equal? customContent.customType "form-hidden"}
          <input id="{@id}-input" data-category="{categories}" type="hidden" name="{customContent.name}">
+      {.end}
+      {.equal? customContent.customType "form-checkbox"}
+         <fieldset class="fieldset-checkbox" aria-describedby="checkbox-fieldset-error" data-required="true" data-min="1" data-max="2">
+            <legend>
+               {customContent.description}
+               <span class="field-required" aria-hidden="true">*</span>
+               {.equal? customContent.required true}
+                  <span class="visually-hidden">required</span>
+               {.end}
+            </legend>
+            <!--
+            <div class="form-field">
+               <label class="field-label" for="checkbox-field-input-1">
+                  <input name="Checkbox Fieldset" id="checkbox-field-input-1" class="field-input" type="checkbox" value="Checkbox 1">
+                  Checkbox 1
+               </label>
+            </div>
+            <div class="form-field">
+               <label class="field-label" for="checkbox-field-input-2">
+                  <input name="Checkbox Fieldset" id="checkbox-field-input-2" class="field-input" type="checkbox" value="Checkbox 2">
+                  Checkbox 2
+               </label>
+            </div>
+            <div class="form-field">
+               <label class="field-label" for="checkbox-field-input-3">
+                  <input name="Checkbox Fieldset" id="checkbox-field-input-3" class="field-input" type="checkbox" value="Checkbox 3">
+                  Checkbox 3
+               </label>
+            </div>-->
+            <p id="checkbox-fieldset-error" class="fieldset-error"></p>
+         </fieldset>
       {.or}
          <div class="form-field" data-category="{categories}">
             <label class="field-label" for="{@id}-input">
