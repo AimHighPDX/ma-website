@@ -12,6 +12,12 @@
 @text-padding-y: .5em;
 @text-padding: @text-padding-y @text-padding-x;
 
+// tweak: { "type" : "value", "title" : "Button Padding X", "min" : 0, "max" : 5, "category" : "Buttons & Links" }
+@button-padding-x: @text-padding-x;
+// tweak: { "type" : "value", "title" : "Button Padding Y", "min" : 0, "max" : 5, "category" : "Buttons & Links" }
+@button-padding-y: @text-padding-y;
+@button-padding: @button-padding-y @button-padding-x;
+
 // tweak: { "type" : "value", "title" : "Rounded Corner Radius", "min" : 0, "max" : 5, "category" : "General Styles" }
 @radius: 1rem;
 // tweak: { "type" : "value", "title" : "Corner Radius", "min" : 0, "max" : 10, "category" : "Buttons & Links" }
@@ -199,17 +205,6 @@ img {
    text-decoration: underline;
    border-radius: 1px;
 
-   &.external::after {
-      display: block;
-      content: "";
-      width: 1em;
-      height: 1em;
-      background-color: @text-color;
-      mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEwIDZINkM0Ljg5NTQzIDYgNCA2Ljg5NTQzIDQgOFYxOEM0IDE5LjEwNDYgNC44OTU0MyAyMCA2IDIwSDE2QzE3LjEwNDYgMjAgMTggMTkuMTA0NiAxOCAxOFYxNE0xNCA0SDIwTTIwIDRWMTBNMjAgNEwxMCAxNCIgc3Ryb2tlPSIjNEE1NTY4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIvPjwvc3ZnPg==");
-      mask-size: contain;
-      mask-repeat: no-repeat;
-   }
-
    &:hover {
       color: lighten(@action, @interactive-color-adjustment);
    }
@@ -221,6 +216,17 @@ img {
 
 a:not(.button) {
    .a-mixin();
+}
+
+a.external::after {
+   display: block;
+   content: "";
+   width: 1em;
+   height: 1em;
+   background-color: @text-color;
+   mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEwIDZINkM0Ljg5NTQzIDYgNCA2Ljg5NTQzIDQgOFYxOEM0IDE5LjEwNDYgNC44OTU0MyAyMCA2IDIwSDE2QzE3LjEwNDYgMjAgMTggMTkuMTA0NiAxOCAxOFYxNE0xNCA0SDIwTTIwIDRWMTBNMjAgNEwxMCAxNCIgc3Ryb2tlPSIjNEE1NTY4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIvPjwvc3ZnPg==");
+   mask-size: contain;
+   mask-repeat: no-repeat;
 }
 
 hr {
@@ -241,10 +247,10 @@ button, a.button {
    align-items: center;
 
    background-color: @action;
-   color: inherit;
+   color: @button-text-color;
    text-decoration: none;
 
-   padding: @text-padding;
+   padding: @button-padding;
    border-radius: @button-radius;
    border: none;
    box-shadow: @shadow;
@@ -370,11 +376,11 @@ header {
             width: 100%;
             box-shadow: none;
 
-            outline-offset: -.5rem;
+            outline-offset: (-1 * abs(@focus-outline-offset));
 
             &[aria-current="page"] {
                text-decoration: underline;
-               color: darken(@text-color, @interactive-color-adjustment);
+               color: darken(@text-color, @color-contrast-adjustment);
                text-underline-offset: .2em;
             }
 
@@ -385,7 +391,7 @@ header {
 
          button.disclosure[aria-expanded="true"] {
             background-color: @action;
-            color: unset;
+            color: @button-text-color;
          }
       }
 
