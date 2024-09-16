@@ -245,6 +245,7 @@ button, a.button {
    
    display: flex;
    align-items: center;
+   gap: .3em;
 
    background-color: @action;
    color: @button-text-color;
@@ -542,7 +543,7 @@ select.field-value {
 
 .field-input[type=checkbox], .field-input[type=radio] {
    width: fit-content;
-   accent-color: var(--action-color);
+   accent-color: @action;
 }
 
 .field-input[type=checkbox]:focus-visible, .field-input[type=radio]:focus-visible {
