@@ -7,34 +7,46 @@
          <input id="{@id}-input" data-category="{categories}" type="hidden" name="{customContent.name}">
       {.end}
       {.equal? customContent.customType "form-checkbox"}
-         <fieldset class="fieldset-checkbox" aria-describedby="checkbox-fieldset-error" data-required="true" data-min="1" data-max="2">
+         <fieldset class="fieldset-checkbox" aria-describedby="{@id}-fieldset-description {@id}-fieldset-error" 
+            {.equal? customContent.min 0}
+               data-required="false"
+            {.or}
+               data-required="true"
+            {.end}
+            data-min="{customContent.min}" data-max="{customContent.max}">
             <legend>
-               {customContent.description}
+               {title}
                <span class="field-required" aria-hidden="true">*</span>
-               {.equal? customContent.required true}
+               {.equal? required @empty}{.or}
                   <span class="visually-hidden">required</span>
                {.end}
             </legend>
-            <!--
-            <div class="form-field">
-               <label class="field-label" for="checkbox-field-input-1">
-                  <input name="Checkbox Fieldset" id="checkbox-field-input-1" class="field-input" type="checkbox" value="Checkbox 1">
-                  Checkbox 1
-               </label>
-            </div>
-            <div class="form-field">
-               <label class="field-label" for="checkbox-field-input-2">
-                  <input name="Checkbox Fieldset" id="checkbox-field-input-2" class="field-input" type="checkbox" value="Checkbox 2">
-                  Checkbox 2
-               </label>
-            </div>
-            <div class="form-field">
-               <label class="field-label" for="checkbox-field-input-3">
-                  <input name="Checkbox Fieldset" id="checkbox-field-input-3" class="field-input" type="checkbox" value="Checkbox 3">
-                  Checkbox 3
-               </label>
-            </div>-->
-            <p id="checkbox-fieldset-error" class="fieldset-error"></p>
+            <p id="{@id}-fieldset-description" class="small-text"></p>
+            <template id="{@id}-body">{body}</template>
+            <script>
+               let template = document.getElementById("{@id-body}");
+               let result = document.createDocumentFragment();
+               let i = 1;
+               for (let opt of template.content.getElementsByTagName("p")) {
+                  let div = document.createElement("div");
+                  let label = document.createElement("label");
+                  let input = document.createElement("input")
+                  input.name = "{title}";
+                  input.id = "{@id}-field-input-" + i;
+                  input.className = "field-input";
+                  input.type = "checkbox";
+                  input.value = opt.textContent.trim();
+                  label.className = "field-label";
+                  label.htmlFor = input.id;
+                  div.className = "form-field";
+                  label.append(input, opt.textContent.trim());
+                  div.append(label);
+                  result.append(div);
+                  i++;
+               }
+               template.replaceWith(result);
+            </script>
+            <p id="{@id}-fieldset-error" class="fieldset-error"></p>
          </fieldset>
       {.or}
          <div class="form-field" data-category="{categories}">
