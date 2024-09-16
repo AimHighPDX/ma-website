@@ -17,7 +17,7 @@
 @darkgray: hsl(217, 5%, 20%);
 @black: hsl(217, 100%, 3%);
 
-// tweak: { "type" : "color", "title" : "Base Color", "category" : "Main Color"  }
+// tweak: { "type" : "color", "title" : "Base Color", "category" : "Main Color" }
 @primary: hsl(217, 67%, 38%);
 // tweak: { "type" : "value", "title" : "Lighten Amount", "min" : 5, "max" : 50, "step" : 5, "category" : "Main Color" }
 @primary-light-adjustment: 10%;
@@ -38,6 +38,8 @@
 
 // tweak: { "type" : "color", "title" : "Action Color", "category" : "Buttons & Links" }
 @action: hsl(191, 60%, 60%);
+// tweak: { "type" : "color", "title" : "Button Text Color", "category" : "Buttons & Links" }
+@button-text-color: @text-color;
 
 /* The focus color MUST be contrast-y enough to be clearly visible in all contexts. DO NOT try to hide it. */
 // tweak: { "type" : "color", "title" : "Focus Color", "category": "Focus Styles" }
@@ -57,13 +59,13 @@
 @shadow-hover: @shadow-offset (@shadow-size * 1.5) @shadow-color;
 @shadow-pressed: inset @shadow-offset @shadow-size @shadow-color;
 
-// tweak: { "type" : "color", "title" : "Background Color" }
+// tweak: { "type" : "color", "title" : "Background Color", "category" : "General Styles" }
 @background: hsl(217,50%,5%);
-// tweak: { "type" : "color", "title" : "Text Color" }
+// tweak: { "type" : "color", "title" : "Text Color", "category" : "General Styles" }
 @text-color: hsl(0,0,100%);
 
 
-// tweak: { "type" : "color", "title" : "Error Color" }
+// tweak: { "type" : "color", "title" : "Error Color", "category" : "General Styles" }
 @error-color: hsl(0, 75%, 50%);
 
 /* preference stuff */
