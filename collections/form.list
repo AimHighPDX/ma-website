@@ -2,7 +2,7 @@
 <section>
    <squarespace:block-field id="{collection.urlId}-editable" label="Top Content" columns="12"/>
    <button onclick="openDialog('{collection.urlId}', this);">
-      {title}
+      {collection.title} Form
    </button>
    <squarespace:block-field id="{collection.urlId}-editable" label="Bottom Content" columns="12"/>
 </section>
@@ -10,7 +10,7 @@
 <dialog id="{collection.urlId}" class="modal-dialog">
    <div>
       <header autofocus>
-         <h2 class="heading-level3">{title}</h2>
+         <h2 class="heading-level3">{collection.title} Form</h2>
          <button class="icon-button" onclick="dispatchCloseEvent(this);">
             <div class="icon" aria-hidden="true">&#x2715;</div>
             <span class="text visually-hidden">Close dialog</span>
@@ -186,7 +186,7 @@
                <button id="{collection.id}-submit" type="submit" aria-describedby="submit-status">Submit</button>
                <p id="{collection.id}-submit-status"></p>
             </div>
-         </form>         
+         </form>
       </div>
    </div>
 </dialog>
