@@ -1,10 +1,10 @@
 
 <section>
-   <squarespace:block-field id="{collection.urlId}-editable" label="Top Content" columns="12"/>
-   <button onclick="openDialog('{collection.urlId}', this);">
+   <squarespace:block-field id="{collection.urlId}-top-editable" label="Top Content" columns="12"/>
+   <button class="centered" onclick="openDialog('{collection.urlId}', this);">
       {collection.title} Form
    </button>
-   <squarespace:block-field id="{collection.urlId}-editable" label="Bottom Content" columns="12"/>
+   <squarespace:block-field id="{collection.urlId}-bottom-editable" label="Bottom Content" columns="12"/>
 </section>
 
 <dialog id="{collection.urlId}" class="modal-dialog">
