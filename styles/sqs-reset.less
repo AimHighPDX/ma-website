@@ -56,7 +56,12 @@ body:not(.image-block-stack-dynamic-font-sizing) .sqs-block-image .design-layout
    padding: 0 !important; //otherwise, spacer blocks are double height.
 }
 
-.sqs-block-horizontalrule hr {
-   background: @white;
-   color: @white;
+.horizontalrule-block {
+   margin: 0;
+   hr {
+      height: 0;
+      border: .5px solid @white;
+      padding: 0;
+      margin: 2rem 0;
+   }
 }
