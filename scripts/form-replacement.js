@@ -458,3 +458,16 @@ function updateBeltPromotion(program) {
    }
    form.querySelector("*[name=Program]").value = program;
 }
+
+/**
+ * Takes a given input, and transforms it into the proper US format, if able.
+ * 
+ * @param {HTMLInputElement} input 
+ */
+function forcePhoneFormat(input) {
+   if (input.checkValidity()) {
+      let phone = input.value;
+      let capGroup = phone.match(/(.*?)\(?(\d{3})[^\d\w]*(\d{3})[^\d\w]*(\d{4})(?!\d)(.*?)$/);
+      input.value = [capGroup[1].trim(), "(" + capGroup[2] + ")", capGroup[3] + "-" + capGroup[4], capGroup[5].trim()].filter(Boolean).join(" ");
+   }
+}

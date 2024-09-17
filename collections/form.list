@@ -24,7 +24,7 @@
             <p id="{@id}-fieldset-description" class="small-text"></p>
             <template id="{@id}-body">{body}</template>
             <script>
-               let template = document.getElementById("{@id-body}");
+               (function(){let template = document.getElementById("{@id-body}");
                let result = document.createDocumentFragment();
                let i = 1;
                for (let opt of template.content.querySelectorAll("p")) {
@@ -44,7 +44,7 @@
                   result.append(div);
                   i++;
                }
-               template.replaceWith(result);
+               template.replaceWith(result);}());
             </script>
             <p id="{@id}-fieldset-error" class="fieldset-error"></p>
          </fieldset>
@@ -75,12 +75,41 @@
                      aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
                      pristine>
                {.end}
+               {.equal? customType "form-number"}
+                  <input id="{@id}-input" class="field-input" type="tel" name="{name}" 
+                     {.equal? pattern @empty}{.or}
+                        pattern="{pattern}"
+                        title="{title}"
+                     {.end}
+                     {.equal? autocomplete @empty}{.or}
+                        autocomplete="{autocomplete}"
+                     {.end}
+                     {.equal? required @empty}{.or}
+                        required
+                     {.end} 
+                     aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
+                     pristine>
+               {.end}
                {.equal? customType "form-email"}
                   <input id="{@id}-input" class="field-input" type="email" name="{name}" 
                      {.equal? pattern @empty}{.or}
                         pattern="{pattern}"
                         title="{title}"
                      {.end}
+                     {.equal? autocomplete @empty}{.or}
+                        autocomplete="{autocomplete}"
+                     {.end}
+                     {.equal? required @empty}{.or}
+                        required
+                     {.end} 
+                     aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
+                     pristine>
+               {.end}
+               {.equal? customType "form-phone"}
+                  <input id="{@id}-input" class="field-input" type="tel" name="{name}"
+                        pattern=".*?\d{3}[^\d\w]*\d{3}[^\d\w]*\d{4}(?!\d).*?$"
+                        title="Please enter a valid US phone number"
+                        onblur="forcePhoneFormat(this);"
                      {.equal? autocomplete @empty}{.or}
                         autocomplete="{autocomplete}"
                      {.end}
