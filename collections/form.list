@@ -23,28 +23,32 @@
             </legend>
             <p id="{@id}-fieldset-description" class="small-text"></p>
             <template id="{@id}-body">{body}</template>
-            <script>
-               (function(){let template = document.getElementById("{@id-body}");
-               let result = document.createDocumentFragment();
-               let i = 1;
-               for (let opt of template.content.querySelectorAll("p")) {
-                  let div = document.createElement("div");
-                  let label = document.createElement("label");
-                  let input = document.createElement("input")
-                  input.name = "{title}";
-                  input.id = "{@id}-field-input-" + i;
-                  input.className = "field-input";
-                  input.type = "checkbox";
-                  input.value = opt.textContent.trim();
-                  label.className = "field-label";
-                  label.htmlFor = input.id;
-                  div.className = "form-field";
-                  label.append(input, opt.textContent.trim());
-                  div.append(label);
-                  result.append(div);
-                  i++;
-               }
-               template.replaceWith(result);}());
+            <script id="{@id}-script">
+               (function(){
+                  let template = document.getElementById("{@id}-body");
+                  let result = document.createDocumentFragment();
+                  let i = 1;
+                  for (let opt of template.content.querySelectorAll("p")) {
+                     let div = document.createElement("div");
+                     let label = document.createElement("label");
+                     let input = document.createElement("input")
+                     input.name = "{title}";
+                     input.id = "{@id}-field-input-" + i;
+                     input.className = "field-input";
+                     input.type = "checkbox";
+                     input.value = opt.textContent.trim();
+                     label.className = "field-label";
+                     label.htmlFor = input.id;
+                     div.className = "form-field";
+                     label.append(input, opt.textContent.trim());
+                     div.append(label);
+                     result.append(div);
+                     i++;
+                  }
+                  template.replaceWith(result);
+                  document.getElementById("{@id}-script").remove();
+               }());
+
             </script>
             <p id="{@id}-fieldset-error" class="fieldset-error"></p>
          </fieldset>
