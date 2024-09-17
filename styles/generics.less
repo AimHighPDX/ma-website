@@ -230,10 +230,13 @@ a.external::after {
    mask-repeat: no-repeat;
 }
 
-hr {
+.horizontal-rule {
    border: .5px solid @white;
    padding: 0;
-   margin: 2rem 0;
+   margin: 2rem -.5rem;
+}
+hr {
+   .horizontal-rule();
 }
 
 /* Buttons */
