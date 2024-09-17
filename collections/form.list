@@ -7,7 +7,7 @@
          <input id="{@id}-input" data-category="{categories}" type="hidden" name="{customContent.name}">
       {.end}
       {.equal? customContent.customType "form-checkbox"}
-         <fieldset class="fieldset-checkbox" aria-describedby="{@id}-fieldset-description {@id}-fieldset-error" 
+         <fieldset class="fieldset-checkbox" aria-describedby="{@id}-fieldset-error{.section description} {@id}-fieldset-description{.end}" 
             {.equal? customContent.min 0}
                data-required="false"
             {.or}
@@ -17,11 +17,13 @@
             <legend>
                {title}
                <span class="field-required" aria-hidden="true">*</span>
-               {.equal? required @empty}{.or}
+               {.equal? required true}
                   <span class="visually-hidden">required</span>
                {.end}
             </legend>
-            <p id="{@id}-fieldset-description" class="small-text"></p>
+            {.section description}
+               <p id="{@id}-fieldset-description" class="small-text">{@}</p>
+            {.end}
             <template id="{@id}-body">{body}</template>
             <script id="{@id}-script">
                (function(){
@@ -61,77 +63,83 @@
 
             {.var @body body}
             {.section customContent}
-               {.equal? description @empty}{.or}
-               <p id="{@id}-description" class="small-text">{description}</p>
+               {.section description}
+                  <p id="{@id}-description" class="small-text">{@}</p>
                {.end}
                {.equal? customType "form-text"}
                   <input id="{@id}-input" class="field-input" type="text" name="{name}" 
-                     {.equal? pattern @empty}{.or}
+                     {.section pattern}
                         pattern="{pattern}"
+                     {.end}
+                     {.section title}
                         title="{title}"
                      {.end}
-                     {.equal? autocomplete @empty}{.or}
-                        autocomplete="{autocomplete}"
+                     {.section autocomplete}
+                        autocomplete="{@}"
                      {.end}
-                     {.equal? required @empty}{.or}
+                     {.equal? required true}
                         required
                      {.end} 
-                     aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
+                     aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
                      pristine>
                {.end}
                {.equal? customType "form-number"}
                   <input id="{@id}-input" class="field-input" type="tel" name="{name}" 
-                     {.equal? pattern @empty}{.or}
+                     {.section pattern}
                         pattern="{pattern}"
+                     {.end}
+                     {.section title}
                         title="{title}"
                      {.end}
-                     {.equal? autocomplete @empty}{.or}
-                        autocomplete="{autocomplete}"
+                     {.section autocomplete}
+                        autocomplete="{@}"
                      {.end}
-                     {.equal? required @empty}{.or}
+                     {.equal? required true}
                         required
                      {.end} 
-                     aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
+                     aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
                      pristine>
                {.end}
                {.equal? customType "form-email"}
                   <input id="{@id}-input" class="field-input" type="email" name="{name}" 
-                     {.equal? pattern @empty}{.or}
+                     {.section pattern}
                         pattern="{pattern}"
+                     {.end}
+                     {.section title}
                         title="{title}"
                      {.end}
-                     {.equal? autocomplete @empty}{.or}
-                        autocomplete="{autocomplete}"
+                     {.section autocomplete}
+                        autocomplete="{@}"
                      {.end}
-                     {.equal? required @empty}{.or}
+                     {.equal? required true}
                         required
-                     {.end} 
-                     aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
+                     {.end}
+                     aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
                      pristine>
                {.end}
                {.equal? customType "form-phone"}
                   <input id="{@id}-input" class="field-input" type="tel" name="{name}"
-                        pattern=".*?\d{3}[^\d\w]*\d{3}[^\d\w]*\d{4}(?!\d).*?$"
-                        title="Please enter a valid US phone number"
-                        onblur="forcePhoneFormat(this);"
-                     {.equal? autocomplete @empty}{.or}
-                        autocomplete="{autocomplete}"
+                     pattern=".*?\d{3}[^\d\w]*\d{3}[^\d\w]*\d{4}(?!\d).*?$"
+                     title="Please enter a valid US phone number"
+                     onblur="forcePhoneFormat(this);"
+                     {.section autocomplete}
+                        autocomplete="{@}"
                      {.end}
-                     {.equal? required @empty}{.or}
+                     {.equal? required true}
                         required
-                     {.end} 
-                     aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
+                     {.end}
+                     aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
                      pristine>
                {.end}
                {.equal? customType "form-select"}
                   <select id="{@id}-input" class="field-input" name="{name}"
-                     {.equal? autocomplete @empty}{.or}
-                        autocomplete="{autocomplete}"
+                     {.section autocomplete}
+                        autocomplete="{@}"
                      {.end}
-                     {.equal? required @empty}{.or}
+                     {.equal? required true}
                         required
                      {.end} 
-                     aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
+                     aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
                      pristine>
                      <option value="" disabled selected>Choose one...</option>
                      {@body}
@@ -139,13 +147,13 @@
                {.end}
                {.equal? customType "form-textarea"}
                   <textarea id="{@id}-input" class="field-input" name="{name}" rows="5"
-                  {.equal? autocomplete @empty}{.or}
-                     autocomplete="{autocomplete}"
+                  {.section autocomplete}
+                     autocomplete="{@}"
                   {.end}
-                  {.equal? required @empty}{.or}
+                  {.equal? required true}
                      required
                   {.end} 
-                  aria-describedBy="{@id}-error {.equal? description @empty}{.or}{@id}-description{.end}"
+                  aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
                   pristine></textarea>
                {.end}
             {.end}
