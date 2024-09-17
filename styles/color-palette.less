@@ -60,9 +60,9 @@
 @shadow-pressed: inset @shadow-offset @shadow-size @shadow-color;
 
 
-// tweak: { "type" : "color", "title" : "Header & Footer Color", "category" : "Main Color" }
+// tweak: { "type" : "color", "title" : "Header & Footer Color", "category" : "Header and Footer" }
 @footer-header-color: hsl(217, 0, 0%);
-// tweak: { "type" : "color", "title" : "Header & Footer Text Color", "category" : "Main Color" }
+// tweak: { "type" : "color", "title" : "Header & Footer Text Color", "category" : "Header and Footer" }
 @footer-header-text-color: hsl(217, 0, 100%);
 
 // tweak: { "type" : "color", "title" : "Background Color", "category" : "General Styles" }
@@ -74,25 +74,7 @@
 // tweak: { "type" : "color", "title" : "Error Color", "category" : "General Styles" }
 @error-color: hsl(0, 75%, 50%);
 
-/* preference stuff */
-@media screen and (prefers-color-scheme:light) {}
-
-// tweak: { "type" : "value", "title" : "Hover color difference", "min" : 0, "max" : 20, "step" : 1, "category" : "General Styles" }
+// tweak: { "type" : "value", "title" : "Hover color difference", "min" : 0, "max" : 20, "step" : 1, "category" : "Buttons & Links" }
 @interactive-color-adjustment: 10%;
 // tweak: { "type" : "value", "title" : "Color Contrast amound", "min" : 0, "max" : 20, "step" : 1, "category" : "General Styles" }
 @color-contrast-adjustment: 10%;
-
-@media screen and (prefers-contrast:more) {
-   @color-contrast-adjustment: 15%;
-   @interactive-color-adjustment: 10%;
-   @shadow-color: hsla(217, 5%, 5%, 50%);
-}
-
-html {
-   background: @background;
-   color: @text-color;
-}
-
-main {
-   background: @background;
-}

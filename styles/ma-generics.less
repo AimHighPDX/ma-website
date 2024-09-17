@@ -80,18 +80,6 @@ Not for color changes; these are for structural changes.
    }
 }
 
-section[role="main"]:has(.full-section) {
-   grid-column-start: 1;
-   grid-column-end: -1;
-   display: grid;
-   grid-template-columns: inherit;
-   padding: 0;
-
-   > *:not(.full-section) {
-      grid-column: 2;
-      padding: @padding;
-   }
-}
  
 /* full width container with 2 cols. */
 .full-section {
@@ -559,10 +547,6 @@ section[role="main"]:has(.full-section) {
       flex-grow: 1;
       min-width: 150px;
    }
-}
-
-[role='main']:has(> hr:last-child) {
-   padding-bottom: 0;
 }
 
 .have-questions {

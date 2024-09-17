@@ -6,16 +6,16 @@
 // tweak: { "type" : "value", "title" : "General Padding", "min" : 0, "max" : 5, "category" : "General Styles" }
 @padding: 1.5rem;
 
-// tweak: { "type" : "value", "title" : "Text Padding X", "min" : 0, "max" : 5, "category" : "Text Padding" }
+// tweak: { "type" : "value", "title" : "Text Padding X", "min" : 0, "max" : 5, "category" : "Text Styles" }
 @text-padding-x: 1em;
-// tweak: { "type" : "value", "title" : "Text Padding Y", "min" : 0, "max" : 5, "category" : "Text Padding" }
+// tweak: { "type" : "value", "title" : "Text Padding Y", "min" : 0, "max" : 5, "category" : "Text Styles" }
 @text-padding-y: .5em;
 @text-padding: @text-padding-y @text-padding-x;
 
 // tweak: { "type" : "value", "title" : "Button Padding X", "min" : 0, "max" : 5, "category" : "Buttons & Links" }
-@button-padding-x: @text-padding-x;
+@button-padding-x: 1em;
 // tweak: { "type" : "value", "title" : "Button Padding Y", "min" : 0, "max" : 5, "category" : "Buttons & Links" }
-@button-padding-y: @text-padding-y;
+@button-padding-y: .5em;
 @button-padding: @button-padding-y @button-padding-x;
 
 // tweak: { "type" : "value", "title" : "Rounded Corner Radius", "min" : 0, "max" : 5, "category" : "General Styles" }
@@ -24,12 +24,12 @@
 @button-radius: .5rem;
 
 // tweak: { "type" : "value", "title" : "Maximum Central Content Width", "min" : 300, "max" : 2000, "step" : 50, "category" : "General Styles" }
-@main-content-width-px: 800px;
+@main-content-width-px: 1000px;
 @main-content-width: min(@main-content-width-px, 100%);
 
-// tweak: { "type" : "value", "title" : "Non User Initiated Animation Time", "min" : 0, "max" : 5 }
+// tweak: { "type" : "value", "title" : "Non User Initiated Animation Time", "min" : 0, "max" : 5, "category" : "Motion" }
 @transition-time: .5s;
-// tweak: { "type" : "value", "title" : "User Initiated Animation Time", "min" : 0, "max" : 5 }
+// tweak: { "type" : "value", "title" : "User Initiated Animation Time", "min" : 0, "max" : 5, "category" : "Motion" }
 @transition-time-user-init: .2s;
 
 // tweak: { "type" : "value", "title" : "Outline Width", "min" : 1, "max" : 10, "category": "Focus Styles" }
@@ -37,12 +37,31 @@
 // tweak: { "type" : "value", "title" : "Outline Offset", "min" : -1, "max" : 1, "category": "Focus Styles" }
 @focus-outline-offset: .2rem;
 
+
+/* This stores variables that may change during the cascade. */
 :root {
    font-size: 100%;
    font-family: sans-serif;
 
    --lightbox-height: (100vh - (2 * @padding));
    --lightbox-width: (100vw - (2 * @padding));
+   --background: @background;
+   --text-color: @text-color;
+
+   header, footer {
+      --background: @footer-header-color;
+      --text-color: @footer-header-text-color;
+   }
+}
+
+/* preference stuff */
+@media screen and (prefers-color-scheme:light) {}
+
+@media screen and (prefers-contrast:more) {}
+
+html {
+   background: var(--background);
+   color: var(--text-color);
 }
 
 * {
@@ -58,16 +77,6 @@
       transition: 0s !important;
    }
 }
-
-main {
-   display: grid;
-   grid-template-columns: 1fr @main-content-width 1fr;
-   > * {
-      grid-column: 2;
-      padding: @padding;
-   }
-}
-
 
 [hidden] {
    display: none;
@@ -87,7 +96,6 @@ main {
 :focus-visible {
    outline: @focus-outline-width solid @focus-color;
    outline-offset: @focus-outline-offset;
-
 }
 
 /* Text defaults */
@@ -197,8 +205,6 @@ img {
    object-fit: contain;
    object-position: center;
 }
-
-/* Heading classes. Meant to emulate a different heading size, if needed. */
 
 
 .a-mixin() {
@@ -354,9 +360,6 @@ button, a.button {
 
 /* Navigation menu in header */
 header {
-   background: @footer-header-color;
-   color: @footer-header-text-color;
-
    nav {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -416,6 +419,39 @@ header {
    }
 }
 
+
+/* Main content grid */
+.main-content-grid {
+   display: grid;
+   grid-template-columns: 1fr @main-content-width 1fr;
+   > * {
+      grid-column: 2;
+      padding: @padding;
+   }
+}
+
+main {
+   &:has(.full-section) [role="main"], 
+   &:not(:has(.full-section))  {
+      .main-content-grid();
+   }
+
+   [role='main']:has(> hr:last-child) {
+      padding-bottom: 0;
+   }
+}
+
+html:has(.modal-dialog[open]) {
+   overflow: hidden;
+}
+
+/* make things centered */
+.centered {
+   margin: 0 auto;
+   text-align: center;
+}
+
+
 dialog {
    width: clamp(100px, 30rem, var(--lightbox-width));
    max-height: var(--lightbox-height);
@@ -426,46 +462,42 @@ dialog {
    
    overflow: hidden;
    overscroll-behavior: contain;
-}
 
-html:has(.modal-dialog[open]) {
-   overflow: hidden;
-}
+   &::backdrop {
+      background: @shadow-color;
+      backdrop-filter: blur(2px);
+      overscroll-behavior: contain;
+   }
 
-dialog::backdrop {
-   background: @shadow-color;
-   backdrop-filter: blur(2px);
-   overscroll-behavior: contain;
-}
+   > div {
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      max-height: inherit;
+   }
 
-dialog > div {
-   overflow: hidden;
-   display: grid;
-   grid-template-rows: auto 1fr;
-   max-height: inherit;
-}
+   header {
+      position: sticky;
+      top: 0;
+   
+      padding: @text-padding;
+      width: 100%;
+      height: min-content;
+   
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: inherit;
+   }
 
-dialog header {
-   position: sticky;
-   top: 0;
+   .dialog-body {
+      padding: @padding;
+      overflow: auto;
+   }
 
-   padding: @text-padding;
-   width: 100%;
-   height: min-content;
-
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   background: inherit;
-}
-
-dialog .dialog-body {
-   padding: @padding;
-   overflow: auto;
-}
-
-dialog.modal-dialog {
-   margin: auto;
+   &.modal-dialog {
+      margin: auto;
+   }
 }
 
 /**
@@ -654,11 +686,4 @@ form:not([pristine]) .field-input:invalid:not(:focus):not(.error-override) {
 
 .address-fieldset .form-field[hidden] {
    display: none;
-}
-
-
-/* make things centered */
-.centered {
-   margin: 0 auto;
-   text-align: center;
 }
