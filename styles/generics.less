@@ -37,7 +37,6 @@
 // tweak: { "type" : "value", "title" : "Outline Offset", "min" : -1, "max" : 1, "category": "Focus Styles" }
 @focus-outline-offset: .2rem;
 
-
 /* This stores variables that may change during the cascade. */
 :root {
    font-size: 100%;
@@ -46,12 +45,17 @@
    --lightbox-height: (100vh - (2 * @padding));
    --lightbox-width: (100vw - (2 * @padding));
    --background: @background;
-   --text-color: @text-color;
+   .default-text(@background);
 
    header, footer {
       --background: @footer-header-color;
-      --text-color: @footer-header-text-color;
+      .default-text(@footer-header-color);
    }
+}
+
+.default-text(@background-color) {
+   --text-color: contrast(@footer-header-color, @text-color-dark, @text-color-light);
+   color: var(--text-color);
 }
 
 /* preference stuff */
@@ -61,7 +65,6 @@
 
 html {
    background: var(--background);
-   color: var(--text-color);
 }
 
 * {
@@ -109,7 +112,7 @@ html {
    letter-spacing: 0;
 
    margin: .5em 0;
-   color: @text-color;
+   color: var(--text-color);
 }
  
 p {
@@ -133,7 +136,7 @@ p {
 
    white-space: pre-line;
    margin-bottom: .2em;
-   color: @text-color;
+   color: var(--text-color);
 }
 
 // tweak: { "type" : "font", "title" : "Level 2", "category" : "Headings" }
@@ -147,7 +150,7 @@ p {
 
    white-space: pre-line;
    margin-bottom: .1em;
-   color: @text-color;
+   color: var(--text-color);
 }
 
 // tweak: { "type" : "font", "title" : "Level 3", "category" : "Headings" }
@@ -161,7 +164,7 @@ p {
 
    white-space: pre-line;
    margin-bottom: .1em;
-   color: @text-color;
+   color: var(--text-color);
 }
 
 // tweak: { "type" : "font", "title" : "Level 4", "category" : "Headings" }
@@ -174,7 +177,7 @@ p {
    letter-spacing: 0em;
 
    margin-bottom: .1em;
-   color: @text-color;
+   color: var(--text-color);
 }
 
 h1 { .heading-level1(); }
@@ -187,12 +190,12 @@ h4 { .heading-level4(); }
 
 h5 {
    line-height: 1.2em;
-   color: @text-color;
+   color: var(--text-color);
 }
 
 h6 {
    line-height: 1.2em;
-   color: @text-color;
+   color: var(--text-color);
 }
 
 address {
@@ -230,7 +233,7 @@ a.external::after {
    content: "";
    width: 1em;
    height: 1em;
-   background-color: @text-color;
+   background-color: var(--text-color);
    mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEwIDZINkM0Ljg5NTQzIDYgNCA2Ljg5NTQzIDQgOFYxOEM0IDE5LjEwNDYgNC44OTU0MyAyMCA2IDIwSDE2QzE3LjEwNDYgMjAgMTggMTkuMTA0NiAxOCAxOFYxNE0xNCA0SDIwTTIwIDRWMTBNMjAgNEwxMCAxNCIgc3Ryb2tlPSIjNEE1NTY4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIvPjwvc3ZnPg==");
    mask-size: contain;
    mask-repeat: no-repeat;
@@ -245,6 +248,8 @@ hr {
    .horizontal-rule();
 }
 
+
+
 /* Buttons */
 button, a.button {
    font: inherit;
@@ -258,41 +263,20 @@ button, a.button {
    align-items: center;
    gap: .3em;
 
-   background-color: @action;
-   color: @button-text-color;
    text-decoration: none;
+
+   transition: @transition-time-user-init ease-out;
+   --background: @action;
+   --text-color: @button-text-color;
 
    padding: @button-padding;
    border-radius: @button-radius;
    border: none;
    box-shadow: @shadow;
-   
-   transition: @transition-time-user-init ease-out;
-
-   &:not([disabled]):not([aria-disabled]) {
-      &:hover {
-         background-color: lighten(@action, @interactive-color-adjustment);
-         box-shadow: @shadow-hover;
-         color: inherit;
-      }
-   
-      &:active {
-         background-color: darken(@action, @interactive-color-adjustment);
-         box-shadow: @shadow-pressed;
-         color: inherit;
-      }
-   }
-
-   &[disabled], &[aria-disabled] {
-      pointer-events: none;
-      background-color: desaturate(@action, @interactive-color-adjustment);
-      box-shadow: none;
-      transition: 0s;
-   }
 
    &.secondary {
-      background-color: transparent;
-      color: @action;
+      --background: transparent;
+      --text-color: @action;
       box-shadow: inset 0 0 0 max(2px, .08em) @action;
    }
 
@@ -323,33 +307,53 @@ button, a.button {
    &.disclosure {
       gap: .5em;
 
-      &:not(.icon-button) {
-         &::after {
-            content:"❯";
-            transition: transform @transition-time-user-init ease-in-out;
-         }
-   
-         &[aria-expanded="false"]::after {
+      &:not(.icon-button)::after {
+         content: "❯";
+      }
+
+      &.icon-button, &:not(.icon-button)::after {
+         transition: transform @transition-time-user-init ease-in-out;
+      }
+
+      &[aria-expanded="false"] {
+         &:not(.icon-button)::after, &.icon-button .icon {
             transform: rotate(.25turn);
-         }
-   
-         &[aria-expanded="true"]::after {
-            transform: rotate(-.25turn);
          }
       }
 
-      &.icon-button {
-         transition: transform @transition-time-user-init ease-in-out;
-
-         &[aria-expanded="false"] .icon {
-            transform: rotate(.25turn);
-         }
-   
-         &[aria-expanded="true"] .icon {
+      &[aria-expanded="true"] {
+         &:not(.icon-button)::after, &.icon-button .icon {
             transform: rotate(-.25turn);
          }
       }
    }
+
+
+
+   &:not([disabled]):not([aria-disabled]) {
+      &:hover {
+         background-color: lighten(@action, @interactive-color-adjustment);
+         box-shadow: @shadow-hover;
+         color: inherit;
+      }
+   
+      &:active {
+         background-color: darken(@action, @interactive-color-adjustment);
+         box-shadow: @shadow-pressed;
+         color: inherit;
+      }
+   }
+
+   &[disabled], &[aria-disabled] {
+      pointer-events: none;
+      --background: desaturate(@action, @interactive-color-adjustment);
+      --text-color: desaturate(@button-text-color, @interactive-color-adjustment);
+      box-shadow: none;
+      transition: 0s;
+   }
+
+   background: var(--background);
+   color: var(--text-color);
 }
 
 .button-set {
@@ -389,7 +393,7 @@ header {
 
             &[aria-current="page"] {
                text-decoration: underline;
-               color: darken(@text-color, @color-contrast-adjustment);
+               color: var(--text-color);
                text-underline-offset: .2em;
             }
 
@@ -451,18 +455,36 @@ html:has(.modal-dialog[open]) {
    text-align: center;
 }
 
+// tweak: { "type" : "color", "title" : "Dialog Color", "category" : "Dialog" }
+@dialog-color: hsl(217, 0, 100%);
 
-dialog {
+// tweak: { "type" : "color", "title" : "Dialog Backdrop Color", "category" : "Dialog" }
+@dialog-backdrop-color: hsla(217, 0, 0, 20%);
+
+
+.modal-dialog {
    width: clamp(100px, 30rem, var(--lightbox-width));
    max-height: var(--lightbox-height);
+   margin: auto;
+
+   background: @dialog-color;
+   color: contrast(@dialog-color, @text-color-dark, @text-color-light);
 
    border:none;
    border-radius: @radius;
-   box-shadow: @shadow; 
-   
+   box-shadow: @shadow;
+
    overflow: hidden;
    overscroll-behavior: contain;
 
+   &::backdrop {
+      background: @dialog-backdrop-color;
+   }
+}
+
+
+dialog {
+   .dialog();
    &::backdrop {
       background: @shadow-color;
       backdrop-filter: blur(2px);
@@ -493,10 +515,6 @@ dialog {
    .dialog-body {
       padding: @padding;
       overflow: auto;
-   }
-
-   &.modal-dialog {
-      margin: auto;
    }
 }
 
