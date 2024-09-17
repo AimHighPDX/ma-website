@@ -451,7 +451,7 @@ function beltPromotionInit() {
  */
 function updateBeltPromotion(program) {
    let form = document.getElementById("belt-promotion-form");
-   for (let field of form.getElementsByClassName("form-field")) {
+   for (let field of Array.from(form.getElementsByClassName("form-field"))) {
       let input = field.querySelector(".field-input");
       input.value = "";
       input.toggleAttribute("disabled", !field.dataset.category.split(",").some(c => c === program));
