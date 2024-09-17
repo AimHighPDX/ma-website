@@ -22,7 +22,176 @@
          </header>
          <div class="dialog-body">
             <squarespace:query collection="contact-us-form">
-               {@|apply form.list}
+               <form id="{collection.urlId}-form" pristine novalidate>
+                  <div class="form-error">Whoops, the whole form is wrong!</div>
+                  {.repeated section items}
+                     {.var @id id}
+                     {.var @empty nothing}
+                     {.equal? customContent.customType "form-hidden"}
+                        <input id="{@id}-input" data-category="{categories}" type="hidden" name="{customContent.name}">
+                     {.or}
+                        {.equal? customContent.customType "form-checkbox"}
+                           <fieldset class="fieldset-checkbox" aria-describedby="{@id}-fieldset-error{.section description} {@id}-fieldset-description{.end}" 
+                              {.equal? customContent.min 0}
+                                 data-required="false"
+                              {.or}
+                                 data-required="true"
+                              {.end}
+                              data-min="{customContent.min}" data-max="{customContent.max}">
+                              <legend>
+                                 {title}
+                                 <span class="field-required" aria-hidden="true">*</span>
+                                 {.equal? required true}
+                                    <span class="visually-hidden">required</span>
+                                 {.end}
+                              </legend>
+                              {.section description}
+                                 <p id="{@id}-fieldset-description" class="small-text">{@}</p>
+                              {.end}
+                              <template id="{@id}-body">{body}</template>
+                              <script id="{@id}-script">
+                                 (function(){
+                                    let template = document.getElementById("{@id}-body");
+                                    let result = document.createDocumentFragment();
+                                    let i = 1;
+                                    for (let opt of template.content.querySelectorAll("p")) {
+                                       let div = document.createElement("div");
+                                       let label = document.createElement("label");
+                                       let input = document.createElement("input")
+                                       input.name = "{title}";
+                                       input.id = "{@id}-field-input-" + i;
+                                       input.className = "field-input";
+                                       input.type = "checkbox";
+                                       input.value = opt.textContent.trim();
+                                       label.className = "field-label";
+                                       label.htmlFor = input.id;
+                                       div.className = "form-field";
+                                       label.append(input, opt.textContent.trim());
+                                       div.append(label);
+                                       result.append(div);
+                                       i++;
+                                    }
+                                    template.replaceWith(result);
+                                    document.getElementById("{@id}-script").remove();
+                                 }());
+               
+                              </script>
+                              <p id="{@id}-fieldset-error" class="fieldset-error"></p>
+                           </fieldset>
+                        {.or}
+                           <div class="form-field" data-category="{categories}">
+                              <label class="field-label" for="{@id}-input">
+                                 {title}
+                                 <span class="field-required" aria-hidden="true">*</span>
+                              </label>
+               
+                              {.var @body body}
+                              {.section customContent}
+                                 {.section description}
+                                    <p id="{@id}-description" class="small-text">{@}</p>
+                                 {.end}
+                                 {.equal? customType "form-text"}
+                                    <input id="{@id}-input" class="field-input" type="text" name="{name}" 
+                                       {.section pattern}
+                                          pattern="{pattern}"
+                                       {.end}
+                                       {.section title}
+                                          title="{title}"
+                                       {.end}
+                                       {.section autocomplete}
+                                          autocomplete="{@}"
+                                       {.end}
+                                       {.equal? required true}
+                                          required
+                                       {.end} 
+                                       aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
+                                       pristine>
+                                 {.end}
+                                 {.equal? customType "form-number"}
+                                    <input id="{@id}-input" class="field-input" type="tel" name="{name}" 
+                                       {.section pattern}
+                                          pattern="{pattern}"
+                                       {.end}
+                                       {.section title}
+                                          title="{title}"
+                                       {.end}
+                                       {.section autocomplete}
+                                          autocomplete="{@}"
+                                       {.end}
+                                       {.equal? required true}
+                                          required
+                                       {.end} 
+                                       aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
+                                       pristine>
+                                 {.end}
+                                 {.equal? customType "form-email"}
+                                    <input id="{@id}-input" class="field-input" type="email" name="{name}" 
+                                       {.section pattern}
+                                          pattern="{pattern}"
+                                       {.end}
+                                       {.section title}
+                                          title="{title}"
+                                       {.end}
+                                       {.section autocomplete}
+                                          autocomplete="{@}"
+                                       {.end}
+                                       {.equal? required true}
+                                          required
+                                       {.end}
+                                       aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
+                                       pristine>
+                                 {.end}
+                                 {.equal? customType "form-phone"}
+                                    <input id="{@id}-input" class="field-input" type="tel" name="{name}"
+                                       pattern=".*?\d{3}[^\d\w]*\d{3}[^\d\w]*\d{4}(?!\d).*?$"
+                                       title="Please enter a valid US phone number"
+                                       onblur="forcePhoneFormat(this);"
+                                       {.section autocomplete}
+                                          autocomplete="{@}"
+                                       {.end}
+                                       {.equal? required true}
+                                          required
+                                       {.end}
+                                       aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
+                                       pristine>
+                                 {.end}
+                                 {.equal? customType "form-select"}
+                                    <select id="{@id}-input" class="field-input" name="{name}"
+                                       {.section autocomplete}
+                                          autocomplete="{@}"
+                                       {.end}
+                                       {.equal? required true}
+                                          required
+                                       {.end} 
+                                       aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
+                                       pristine>
+                                       <option value="" disabled selected>Choose one...</option>
+                                       {@body}
+                                    </select>
+                                 {.end}
+                                 {.equal? customType "form-textarea"}
+                                    <textarea id="{@id}-input" class="field-input" name="{name}" rows="5"
+                                    {.section autocomplete}
+                                       autocomplete="{@}"
+                                    {.end}
+                                    {.equal? required true}
+                                       required
+                                    {.end} 
+                                    aria-describedBy="{@id}-error{.section description} {@id}-description{.end}"
+                                    pristine></textarea>
+                                 {.end}
+                              {.end}
+                              <p id="{@id}-error" class="field-error"></p>
+                           </div>
+                        {.end}
+                     {.end}
+                  {.end}
+               
+                  <div>
+                     <button id="{collection.id}-submit" type="submit" aria-describedby="submit-status">Submit</button>
+                     <p id="{collection.id}-submit-status"></p>
+                  </div>
+               </form>
             </squarespace:query>
          </div>
       </div>
