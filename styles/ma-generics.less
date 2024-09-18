@@ -1,80 +1,71 @@
 /* These are ma-specific styles.
 Not for color changes; these are for structural changes.
  */
-.hero-banner {
-   width: 100%;
-   height: min(15rem, 40vh);
+
+.full-grid-row {
    grid-column-start: 1;
    grid-column-end: -1;
-
-   display: grid;
-   grid-template-columns: inherit;
-   grid-template-rows: 1fr auto 1rem;
-
+}
+.full-grid-column {
+   grid-row-start: 1;
+   grid-row-end: -1;
+}
+.full-grid {
    padding: 0;
+   .full-grid-row();
+   .full-grid-column();
+}
+
+// tweak: { "type" : "value", "title" : "Homepage Banner Height", "min" : 10, "max" : 90, "step" : 1, "category" : "Banner" }
+@home-banner-height: 75vh;
+// tweak: { "type" : "value", "title" : "Standard Banner Height", "min" : 10, "max" : 50, "step" : 1, "category" : "Banner" }
+@banner-height: 40vh;
+// tweak: { "type" : "value", "title" : "Static Banner Height", "min" : 0, "max" : 30, "step" : 1, "category" : "Banner" }
+@static-banner-height: 15rem;
+
+.hero-banner {
+   width: 100%;
+   height: min(@static-banner-height, @banner-height);
+   &.homepage-banner {
+      height: max(@static-banner-height, @home-banner-height);
+
+      .banner-filter {
+         .full-grid();
+         pointer-events: none;
+         background-image: linear-gradient(0deg, @black, transparent);
+         background-blend-mode: normal;
+         opacity: .7;
+      }
+
+      .banner-text {
+         width: max-content;
+         justify-self: end;
+      }
+   }
+
+   .full-grid-row();
+   .main-content-grid();
+   grid-template-rows: 1fr auto 2rem;
+
    margin-bottom: (2 * @padding);
    background-color: @primary-dark; //if image not provided
 
-   .banner-filter {
-      grid-column-start: 1;
-      grid-column-end: -1;
-      grid-row-start: 1;
-      grid-row-end: -1;
-
-      pointer-events: none;
-   }
-
    > img {
-      grid-column-start: 1;
-      grid-column-end: -1;
-      grid-row-start: 1;
-      grid-row-end: -1;
-
+      .full-grid();
       width: 100%;
       height: 100%;
       object-fit: cover;
    }
 
    .banner-text {
-      img {
-         height: 3em;
-         width: auto;
-      }
-
-      h1 {
-         margin-top: 0;
-      }
-
       z-index: 10;
-      grid-row-start: 2;
-      grid-column-start: 2;
-      padding: @padding;
-   }
-}
-
-.homepage .hero-banner {
-   height: 75vh;
-   grid-template-rows: 1fr auto 2rem;
-
-   .banner-filter {
-      background-image: linear-gradient(0deg, @black, transparent);
-      background-blend-mode: normal;
-      opacity: .7;
-   }
-
-   .banner-text {
-      width: max-content;
-      justify-self: end;
-      
-      h1, p {
-         text-shadow: @shadow;
-      }
+      grid-row: 2;
+      grid-column: 2;
    }
 }
 
 .centered-section {
    text-align: center;
-
    .button-set {
       justify-content: center;
    }
@@ -82,50 +73,44 @@ Not for color changes; these are for structural changes.
 
  
 /* full width container with 2 cols. */
+// tweak: { "type" : "color", "title" : "Border Color", "category" : "Full Width Section" }
+@fw-section-border-color: hsl(217, 67%, 38%);
+// tweak: { "type" : "value", "title" : "Border Width", "min" : 0, "max" : 30, "step" : 1, "category" : "Full Width Section" }
+@fw-section-border-stroke: 2px;
+// tweak: { "type" : "color", "title" : "Background Color", "category" : "Full Width Section" }
+@fw-section-background-color: hsl(217, 0, 0);
+
 .full-section {
    width: 100%;
    
-   border: max(2px, .08rem) solid @primary-dark;
+   border: max(@fw-section-border-stroke, .08rem) solid @fw-section-border-color;
    border-left: none;
    border-right: none;
    box-shadow: 0 0 1rem .1rem @black;
 
-   background: @black;
+   .default-color-scheme(@fw-section-background-color);
+   .full-grid-row();
+   .main-content-grid();
 
-   grid-column-start: 1;
-   grid-column-end: -1;
-
-   display: grid;
-   grid-template-columns: inherit;
    padding: 0;
    margin: @padding 0;
 
    > div {
       grid-column: 2;
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(max(18rem, 45%), 1fr));
       justify-content: center;
-      gap: 1.5rem;
-      grid-template-columns: repeat(auto-fill, max(18rem, 45%));
 
-      > * {
-         height: 100%;
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
-      }
-
-      .padded {
-         padding: @padding;
+      .full-section-right, .full-section-left {
+         justify-self: center;
+         align-self: center;
+         margin: 0 @padding;
       }
       
       @media only screen and (max-width:40rem) {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-
          > div:has(img) {
             order: -1;
-            * {
+            img {
                max-height: 15rem;
             }
          }
@@ -141,7 +126,7 @@ Not for color changes; these are for structural changes.
    }
 }
 
-/* Item */
+/* For class pages */
 .staff-standalone {
    display: grid;
    grid-template-columns: 1fr 1fr;
@@ -350,101 +335,6 @@ Not for color changes; these are for structural changes.
    }
 }
 
-/* Student resources page */
-#curriculum {
-   *[role="tablist"] button {
-      flex-grow: 0;
-      padding: 1.5rem 1rem;
-   }
-
-   button.disclosure {
-      width: 100%;
-      border-radius: 0;
-      box-shadow: none;
-      background: transparent;
-      padding: .5rem 1rem;
-      border-top: 2px solid @primary-dark;
-
-      justify-content: space-between;
-
-      &:first-of-type {
-         margin-top: 1.5rem;
-      }
-
-      &:last-of-type {
-         transition: border-bottom 0s;
-      }
-
-      &:last-of-type[aria-expanded="false"], &:last-of-type + div {
-         border-bottom: 2px solid @primary-dark;
-      }
-
-      + div {
-         padding: 1rem;
-         padding-top: 0;
-      }
-   }
-
-   .curriculum-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, 80px);
-      grid-auto-rows: 80px;
-      gap: 1rem;
-
-      margin: .8rem 0 1rem 0;
-      list-style-type: none;
-
-      button[role="tab"] {
-         padding: 1.5em 1em;
-         flex-grow: 0;
-      }
-
-      .curriculum-item {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-
-         height: 100%;
-         width: 100%;
-
-         background-size: cover;
-         border-radius: 50%;
-         box-shadow: @shadow;
-         text-decoration: none;
-         font-weight: bold;
-         text-align: center;
-         padding: .2em;
-
-         transition: .2s;
-
-         &:not(.black) {
-            color: @white;
-
-            &:hover {
-               color: hsla(217, 5%, lightness(@white), .6);
-            }
-         }
-
-         &.black-text {
-            color: @black;
-         
-            &:hover {
-               color: hsla(217, 5%, lightness(@black), .6);
-            }
-         }
-
-         &:active {
-            transform: unset;
-            box-shadow: inset @shadow;
-         }
-      }
-   }
-
-   ul:not(.curriculum-list) {
-      padding: .5rem 1.5rem;
-      line-height: 1.5em;
-   }
-}
 
 #resource-exercises .row .col {
    display: grid;
@@ -557,6 +447,103 @@ Not for color changes; these are for structural changes.
    padding-top: 0;
 }
 
+
+/* Student resources page */
+#curriculum {
+   *[role="tablist"] button {
+      flex-grow: 0;
+      padding: 1.5rem 1rem;
+   }
+
+   button.disclosure {
+      width: 100%;
+      border-radius: 0;
+      box-shadow: none;
+      background: transparent;
+      padding: .5rem 1rem;
+      border-top: 2px solid @primary-dark;
+
+      justify-content: space-between;
+
+      &:first-of-type {
+         margin-top: 1.5rem;
+      }
+
+      &:last-of-type {
+         transition: border-bottom 0s;
+      }
+
+      &:last-of-type[aria-expanded="false"], &:last-of-type + div {
+         border-bottom: 2px solid @primary-dark;
+      }
+
+      + div {
+         padding: 1rem;
+         padding-top: 0;
+      }
+   }
+
+   .curriculum-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 80px);
+      grid-auto-rows: 80px;
+      gap: 1rem;
+
+      margin: .8rem 0 1rem 0;
+      list-style-type: none;
+
+      button[role="tab"] {
+         padding: 1.5em 1em;
+         flex-grow: 0;
+      }
+
+      .curriculum-item {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         height: 100%;
+         width: 100%;
+
+         background-size: cover;
+         border-radius: 50%;
+         box-shadow: @shadow;
+         text-decoration: none;
+         font-weight: bold;
+         text-align: center;
+         padding: .2em;
+
+         transition: .2s;
+
+         &:not(.black) {
+            color: @white;
+
+            &:hover {
+               color: hsla(217, 5%, lightness(@white), .6);
+            }
+         }
+
+         &.black-text {
+            color: @black;
+         
+            &:hover {
+               color: hsla(217, 5%, lightness(@black), .6);
+            }
+         }
+
+         &:active {
+            transform: unset;
+            box-shadow: inset @shadow;
+         }
+      }
+   }
+
+   ul:not(.curriculum-list) {
+      padding: .5rem 1.5rem;
+      line-height: 1.5em;
+   }
+}
+
 /* Homepage */
 #program-tabs {
    --tab-color-foreground: @primary-light;
@@ -603,15 +590,5 @@ Not for color changes; these are for structural changes.
 
          filter: drop-shadow(0, 0, 3px, @shadow-color);
       }
-   }
-}
-
-#hompage-summary-section {
-   display: flex;
-   flex-direction: column;
-   gap: 5rem;
-
-   > div {
-      max-width: 550px;
    }
 }

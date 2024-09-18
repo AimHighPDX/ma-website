@@ -12,20 +12,22 @@
       Define the hue and the default saturation and lightness levels.
    */
 
-@white: hsl(217, 100%, 98%);
-@gray: hsl(217, 5%, 50%);
-@darkgray: hsl(217, 5%, 20%);
-@black: hsl(217, 100%, 3%);
+// tweak: { "type" : "value", "title" : "Hover color difference", "min" : 0, "max" : 20, "step" : 1, "category" : "Buttons & Links" }
+@interactive-color-adjustment: 10%;
+// tweak: { "type" : "value", "title" : "Color Contrast amound", "min" : 0, "max" : 20, "step" : 1, "category" : "General Styles" }
+@color-contrast-adjustment: 10%;
 
-// tweak: { "type" : "color", "title" : "Base Color", "category" : "Main Color" }
+
+
+// tweak: { "type" : "color", "title" : "Base Color", "category" : "Primary Color" }
 @primary: hsl(217, 67%, 38%);
-// tweak: { "type" : "value", "title" : "Lighten Amount", "min" : 5, "max" : 50, "step" : 5, "category" : "Main Color" }
+// tweak: { "type" : "value", "title" : "Lighten Amount", "min" : 5, "max" : 50, "step" : 5, "category" : "Primary Color" }
 @primary-light-adjustment: 10%;
-// tweak: { "type" : "value", "title" : "Desaturate Light", "min" : -50, "max" : 50, "step" : 5, "category" : "Main Color" }
+// tweak: { "type" : "value", "title" : "Desaturate Light", "min" : -50, "max" : 50, "step" : 5, "category" : "Primary Color" }
 @primary-light-desaturate-adjustment: 15%;
-// tweak: { "type" : "value", "title" : "Darken Amount", "min" : 5, "max" : 50, "step" : 5, "category" : "Main Color" }
+// tweak: { "type" : "value", "title" : "Darken Amount", "min" : 5, "max" : 50, "step" : 5, "category" : "Primary Color" }
 @primary-dark-adjustment: 15%;
-// tweak: { "type" : "value", "title" : "Saturate Dark", "min" : -50, "max" : 50, "step" : 5, "category" : "Main Color" }
+// tweak: { "type" : "value", "title" : "Saturate Dark", "min" : -50, "max" : 50, "step" : 5, "category" : "Primary Color" }
 @primary-dark-saturate-adjustment: 5%;
 
 @primary-light: desaturate(lighten(@primary, @primary-light-adjustment), @primary-light-desaturate-adjustment);
@@ -58,24 +60,32 @@
 @shadow-pressed: inset @shadow-offset @shadow-size @shadow-color;
 
 
-// tweak: { "type" : "color", "title" : "Header & Footer Color", "category" : "Header and Footer" }
-@footer-header-color: hsl(217, 0, 0%);
-// tweak: { "type" : "color", "title" : "Header & Footer Text Color", "category" : "Header and Footer" }
-@footer-header-text-color: hsl(217, 0, 100%);
 
-// tweak: { "type" : "color", "title" : "Background Color", "category" : "General Styles" }
+
+// tweak: { "type" : "color", "title" : "Header & Footer Color", "category" : "Light Color Scheme" }
+@footer-header-color: hsl(217, 0, 0%);
+// tweak: { "type" : "color", "title" : "Background Color", "category" : "Light Color Scheme" }
 @background: hsl(217,50%,5%);
-// tweak: { "type" : "color", "title" : "Text Color for Dark Background", "category" : "General Styles" }
-@text-color-light: hsl(217,0,100%);
-// tweak: { "type" : "color", "title" : "Text Color for Light Backgrounds", "category" : "General Styles" }
+// tweak: { "type" : "color", "title" : "Lighter Text Color", "category" : "Light Color Scheme" }
+@text-color-light: hsl(217,0, 99%);
+// tweak: { "type" : "color", "title" : "Darker Text Color", "category" : "Light Color Scheme" }
 @text-color-dark: hsl(217,50%,5%);
 
-
-
-// tweak: { "type" : "color", "title" : "Error Color", "category" : "General Styles" }
-@error-color: hsl(0, 75%, 50%);
-
-// tweak: { "type" : "value", "title" : "Hover color difference", "min" : 0, "max" : 20, "step" : 1, "category" : "Buttons & Links" }
-@interactive-color-adjustment: 10%;
-// tweak: { "type" : "value", "title" : "Color Contrast amound", "min" : 0, "max" : 20, "step" : 1, "category" : "General Styles" }
-@color-contrast-adjustment: 10%;
+#color-scheme() {
+   .light() {
+      base: @white;
+      midtone: @gray;
+      contrast: @black;
+      primary: @primary;
+      accent: @primary-dark;
+      action: @action;
+   }
+   .dark() {
+      base: @black;
+      midtone: @darkgray;
+      contrast: @white;
+      primary: @primary;
+      accent: @primary-light;
+      action: @action;
+   }
+}

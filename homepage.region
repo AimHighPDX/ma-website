@@ -11,7 +11,7 @@
    
    <main class="homepage">
       <!-- Main image Banner, some differences from general banner -->
-      <section class="hero-banner">
+      <section class="hero-banner homepage-banner">
          <div class="banner-filter"></div>
          {.section collection}
             {.section mainImage}

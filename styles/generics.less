@@ -45,9 +45,7 @@
    --lightbox-height: (100vh - (2 * @padding));
    --lightbox-width: (100vw - (2 * @padding));
 
-   .default-color-scheme(@background);
-
-   header, footer {
+   body > header, body > footer {
       .default-color-scheme(@footer-header-color);
    }
 }
@@ -118,6 +116,7 @@ p {
 // tweak: { "type" : "value", "title" : "Small Text Size", "min" : 50, "max" : 100, "category" : "Body Text" }
 @small-text-reduction: 80%;
 .small-text {
+   .paragraph();
    font-size: (1rem * (@small-text-reduction / 100));
 }
 
@@ -200,7 +199,7 @@ img {
 }
 
 
-.a-mixin() {
+.link-style {
    color: @action;
    text-decoration: underline;
    border-radius: 1px;
@@ -215,14 +214,18 @@ img {
 }
 
 a:not(.button) {
-   .a-mixin();
+   .link-style();
 }
 
 a.external::after {
-   display: block;
+   display: inline-block;
    content: "";
    width: 1em;
    height: 1em;
+   position: relative;
+   margin-left: .3em;
+   bottom: -.1em;
+
    background-color: @action;
    mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEwIDZINkM0Ljg5NTQzIDYgNCA2Ljg5NTQzIDQgOFYxOEM0IDE5LjEwNDYgNC44OTU0MyAyMCA2IDIwSDE2QzE3LjEwNDYgMjAgMTggMTkuMTA0NiAxOCAxOFYxNE0xNCA0SDIwTTIwIDRWMTBNMjAgNEwxMCAxNCIgc3Ryb2tlPSIjNEE1NTY4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIvPjwvc3ZnPg==");
    mask-size: contain;
@@ -407,21 +410,25 @@ header {
    }
 }
 
+body {
+   .default-color-scheme(@background);
+}
+
 
 /* Main content grid */
 .main-content-grid {
    display: grid;
    grid-template-columns: 1fr @main-content-width 1fr;
-   > * {
-      grid-column: 2;
-      padding: @padding;
-   }
 }
 
 main {
    &:has(.full-section) [role="main"], 
    &:not(:has(.full-section))  {
       .main-content-grid();
+      > *:not(.full-section) {
+         grid-column: 2;
+         padding: @padding;
+      }
    }
 
    [role='main']:has(> hr:last-child) {
@@ -433,6 +440,14 @@ html:has(.modal-dialog[open]) {
    overflow: hidden;
 }
 
+.component {
+   padding: @padding;
+   border-radius: @radius;
+   box-shadow: @shadow;
+   overflow: hidden;
+   overscroll-behavior: contain;
+}
+
 /* make things centered */
 .centered {
    margin: 0 auto;
@@ -440,7 +455,7 @@ html:has(.modal-dialog[open]) {
 }
 
 // tweak: { "type" : "color", "title" : "Dialog Color", "category" : "Dialog" }
-@dialog-color: hsl(217, 0, 100%);
+@dialog-color: hsl(217, 0, 99%);
 // tweak: { "type" : "color", "title" : "Backdrop Color", "category" : "Dialog" }
 @dialog-backdrop-color: hsla(217, 0, 0, 20%);
 // tweak: { "type" : "value", "title" : "Backdrop Blur", "min" : 0, "max" : 10, "step" : 1, "category" : "Dialog" }
@@ -452,13 +467,7 @@ html:has(.modal-dialog[open]) {
    margin: auto;
 
    .default-color-scheme(@dialog-color);
-
-   border:none;
-   border-radius: @radius;
-   box-shadow: @shadow;
-
-   overflow: hidden;
-   overscroll-behavior: contain;
+   .component();
 
    &::backdrop {
       background: @dialog-backdrop-color;
@@ -497,7 +506,6 @@ html:has(.modal-dialog[open]) {
    }
 }
 
-
 dialog {
    .modal-dialog();
 }
@@ -505,6 +513,9 @@ dialog {
 /**
  * Form fields defaults.
 **/
+
+// tweak: { "type" : "color", "title" : "Error Color", "category" : "Form Styling" }
+@error-color: hsl(0, 75%, 50%);
 
 /* Reset stylings */
 select, input, textarea {
