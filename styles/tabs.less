@@ -11,6 +11,139 @@
 // Make a tweak later.
 @tabs-height: 15em;
 
+
+/**
+ * By default, tabs will have buttons and have the tab buttons not be full width.
+ * Below are mixins to enable different styles
+**/
+// tweak: { "type" : "dropdown", "title" : "Tabs Style", "options" : [ "Buttons", "Tabs" ], "default" : "Buttons", "category" : "Tabs" }
+.tabs-style-buttons .tabs {
+   [role="tablist"] {
+      flex-wrap: wrap;
+      gap: .8em;
+
+      [role="tab"] {
+         border-radius: 100em;
+         width: auto;
+
+         &[aria-selected="true"] {
+            background: none;
+            box-shadow: none;
+         }
+      }
+   }
+}
+
+.tabs-style-tabs .tabs {
+   .default-color-scheme(@tabs-foreground-color);
+   .component();
+   padding: 0;
+
+   [role="tablist"] {
+      padding: .8em;
+      border-bottom: 1px solid @tabs-background-color;
+      border-radius: 0;
+
+      [role="tab"][aria-selected="true"] {
+         .default-color-scheme(@tabs-foreground-color);
+         text-decoration: none;
+         box-shadow: 0 0 5px @shadow-color;
+         z-index: 5;
+      }
+   }
+
+   [role="tabpanel"] {
+      padding: @padding;
+      outline-offset: -.5rem;
+      border-radius: 1rem;
+   }
+}
+
+// tweak: { "type" : "checkbox", "title" : "Tablist Style Full Width", "active" : false, "category" : "Tabs" }
+.tablist-style-full-width .tabs {
+   [role=tablist] {
+      .default-color-scheme(@tabs-background-color);
+      padding: 0;
+      gap: 0;
+
+      border: none;
+      border-radius: 1000em;
+
+      flex-wrap: nowrap;
+      overflow: hidden;
+
+      &[aria-orientation="vertical"] {
+         border-radius: @radius;
+      }
+
+      [role="tab"] {
+         outline-offset: -.2rem;
+
+         background: transparent;
+         border-radius: 0;
+         box-shadow: none;
+         text-decoration: underline;
+
+         flex-grow: 1;
+         justify-content: center;
+
+         &:hover {
+            .default-color-scheme(@tabs-action-color-lighter);
+            box-shadow: none;
+         }
+
+         &:active {
+            .default-color-scheme(@tabs-action-color-darker);
+            box-shadow: none;
+         }
+
+         &[aria-selected="true"],
+         &[aria-selected="true"]:hover,
+         &[aria-selected="true"]:active  {
+            .default-color-scheme(@tabs-foreground-color);
+            text-decoration: none;
+            box-shadow: 0 0 5px @shadow-color;
+            z-index: 5;
+         }
+      }
+   }
+}
+
+
+// tweak: { "type" : "checkbox", "title" : "Tabs Alternate Alignment", "active" : false, "category" : "Tabs" }
+.tabs-alternate-alignment .tabs {
+   &:has([aria-orientation="horizontal"]) {
+      grid-template-areas: "panels" "tabs";
+   }
+   &:has([aria-orientation="vertical"]) {
+      grid-template-columns: 1fr auto;
+      grid-template-areas: "panels tabs";
+   }
+}
+
+.tabs-style-tabs.tablist-style-full-width {
+   &.alternate-alignment .tabs {
+      [role="tablist"][aria-orientation="vertical"] [role="tab"] {
+         border-radius: 0 @radius @radius 0;
+      }
+
+      [role="tablist"][aria-orientation="horizontal"] [role="tab"] {
+         border-radius: 0 0 @radius @radius;
+      }
+   }
+
+   .tabs {
+      [role="tablist"][aria-orientation="vertical"] [role="tab"] {
+         border-radius: @radius 0 0 @radius;
+      }
+
+      [role="tablist"][aria-orientation="horizontal"] [role="tab"] {
+         border-radius: @radius @radius 0 0;
+      }
+   }
+}
+
+
 .tabs {
    display: grid;
    margin: @padding 0 @padding 0;
@@ -18,67 +151,14 @@
    [role="tablist"] {
       display: flex;
       grid-area: tabs;
-      flex-wrap: wrap;
-      gap: .8em;
 
       [role="tab"] {
          color: inherit;
-         border-radius: 100em;
-         width: auto;
-
-         &[aria-selected="true"],
-         &[aria-selected="true"]:hover,
-         &[aria-selected="true"]:active {
-            background: none;
-            box-shadow: none;
-         }
       }
+   }
 
-      &.tablist-style-full {
-         .default-color-scheme(@tabs-background-color);
-         padding: 0;
-         gap: 0;
-
-         border-radius: 1000em;
-
-         flex-wrap: nowrap;
-         overflow: hidden;
-
-         &[aria-orientation="vertical"] {
-            border-radius: @radius;
-         }
-
-         [role="tab"] {
-            outline-offset: -.2rem;
-
-            background: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            text-decoration: underline;
-
-            flex-grow: 1;
-            justify-content: center;
-
-            &:hover {
-               .default-color-scheme(@tabs-action-color-lighter);
-               box-shadow: none;
-            }
-
-            &:active {
-               .default-color-scheme(@tabs-action-color-darker);
-               box-shadow: none;
-            }
-
-            &[aria-selected="true"],
-            &[aria-selected="true"]:hover,
-            &[aria-selected="true"]:active  {
-               .default-color-scheme(@tabs-foreground-color);
-               text-decoration: none;
-               box-shadow: 0 0 5px @shadow-color;
-               z-index: 5;
-            }
-         }
-      }
+   [role="tabpanel"] {
+      grid-area: panels;
    }
 
    [role="tab"]:focus-visible, 
@@ -86,23 +166,11 @@
       outline-offset: 0;
    }
 
-   [role="tabpanel"] {
-      grid-area: panels;
-   }
-
    /* Horizontal */
    &:has([role="tablist"][aria-orientation="horizontal"]) {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
       grid-template-areas: "tabs" "panels";
-
-      &.alt-alignment {
-         grid-template-areas: "panels" "tabs";
-
-         &.tabs-style-component .tablist-style-full [role="tab"]{
-            border-radius: 0 0 @radius @radius;
-         }
-      }
 
       [role="tablist"] {
          flex-direction: row;
@@ -115,48 +183,8 @@
       grid-template-rows: 1fr;
       grid-template-areas: "tabs panels";
 
-      &.alt-alignment {
-         grid-template-columns: 1fr auto;
-         grid-template-areas: "panels tabs";
-
-         &.tabs-style-component .tablist-style-full [role="tab"] {
-            border-radius: 0 @radius @radius 0;
-         }
-      }
-
-      &.tabs-style-component .tablist-style-full [role="tab"] {
-         border-radius: @radius 0 0 @radius;
-      }
-
       [role="tablist"] {
          flex-direction: column;
-      }
-   }
-
-   &.tabs-style-component {
-      .default-color-scheme(@tabs-foreground-color);
-      .component();
-      padding: 0;
-
-      [role="tablist"] {
-         padding: .8em;
-         border-bottom: 1px solid @tabs-background-color;
-      }
-
-      .tablist-style-full[role="tablist"] {
-         padding: 0;
-         border: none;
-         border-radius: 0;
-
-         &[aria-orientation="horizontal"] [role="tab"] {
-            border-radius: @radius @radius 0 0;
-         }
-      }
-
-      [role="tabpanel"] {
-         padding: @padding;
-         outline-offset: -.5rem;
-         border-radius: 1rem;
       }
    }
 

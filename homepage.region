@@ -6,7 +6,7 @@
    <squarespace:script src="aria.js" />
 </head>
 
-<body>
+<body class="{squarespace.page-classes}">
    <squarespace:navigation navigationId="maNav" template="header" />
    
    <main class="homepage">

@@ -11,7 +11,7 @@
 
 <section>
    <h2>By Program</h2>
-   <section id="curriculum" class="tabs tabs-style-component" data-start="0" data-orientation="vertical" data-style="tablist-style-full">
+   <section id="curriculum" class="tabs" data-start="0" data-orientation="vertical">
       <squarespace:query collection="program">
          {.repeated section items}
             <div id="{id}-curriculum" data-js="tabpanel" data-title="{title}">

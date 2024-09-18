@@ -10,7 +10,7 @@
 </section>
 
 <section>
-   <div id="program-tabs" class="tabs tabs-style-component" data-start="0" data-orientation="horizontal" data-style="tablist-style-full">
+   <div id="program-tabs" class="tabs" data-start="0" data-orientation="horizontal">
       <squarespace:query collection="program">
          {.repeated section items}
             <div id="{id}-excerpt" data-js="tabpanel" data-title="{title}">

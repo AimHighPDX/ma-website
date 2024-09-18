@@ -7,7 +7,7 @@
    <squarespace:script src="form-replacement.js" />
 </head>
 
-<body>
+<body class="{squarespace.page-classes}">
    <squarespace:navigation navigationId="maNav" template="header" />
    <main>
       {@|apply banner.block}

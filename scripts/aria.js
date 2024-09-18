@@ -57,7 +57,6 @@ function initTabs() {
    let tabsContainer = document.getElementsByClassName("tabs");
    for (let tabs of tabsContainer) {
       let tablist = document.createElement("div");
-      tablist.classList.add(tabs.dataset.style);
       tablist.setAttribute("aria-orientation", tabs.dataset.orientation);
       tablist.setAttribute("role", "tablist");
       tablist.setAttribute("aria-label", "");
