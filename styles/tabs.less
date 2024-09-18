@@ -1,11 +1,11 @@
-// tweak: { "type" : "color", "title" : "Interactive Color", "category" : "Tabs Component" }
+// tweak: { "type" : "color", "title" : "Interactive Color", "category" : "Tabs" }
 @tabs-action-color: hsl(191, 60%, 60%);
 @tabs-action-color-lighter: lighten(@tabs-action-color, @color-contrast-adjustment);
 @tabs-action-color-darker: darken(@tabs-action-color, @color-contrast-adjustment);
 
-// tweak: { "type" : "color", "title" : "Foreground Color", "category" : "Tabs Component" }
+// tweak: { "type" : "color", "title" : "Foreground Color", "category" : "Tabs" }
 @tabs-foreground-color: hsl(217, 63%, 52%);
-// tweak: { "type" : "color", "title" : "Background Color", "category" : "Tabs Component" }
+// tweak: { "type" : "color", "title" : "Background Color", "category" : "Tabs" }
 @tabs-background-color: hsl(217, 82%, 17%);
 
 
@@ -24,7 +24,6 @@
    [role="tablist"] {
       [role="tab"] {
          width: auto;
-
          &[aria-selected="true"] {
             background: none;
             box-shadow: none;
@@ -68,8 +67,12 @@
       border: none;
       border-radius: @tabs-tab-radius;
 
-      &[aria-orientation="vertical"] {
-         border-radius: @radius;
+      &[aria-orientation="vertical"] [role="tab"] {
+         width: 100%;
+      }
+
+      &[aria-orientation="horizontal"] [role="tab"] {
+         flex-grow: 1;         
       }
 
       [role="tab"] {
@@ -80,7 +83,6 @@
          box-shadow: none;
          text-decoration: underline;
 
-         flex-grow: 1;
          justify-content: center;
 
          &:hover {
@@ -117,7 +119,7 @@
 }
 
 .tabs-style-tabs.tablist-style-full-width {
-   [role="tab-list"] {
+   [role="tablist"] {
       border-radius: 0;
    }
 
@@ -142,6 +144,15 @@
    }
 }
 
+.tabs-style-buttons.tablist-style-full-width {
+   [role="tablist"] {
+      height: min-content;
+      &[aria-orientation="vertical"] {
+         border-radius: @radius;
+      }
+   }
+}
+
 
 
 .tabs {
@@ -153,6 +164,7 @@
       flex-wrap: wrap;
       gap: .8em;
       grid-area: tabs;
+      overflow: hidden;
 
       [role="tab"] {
          color: inherit;

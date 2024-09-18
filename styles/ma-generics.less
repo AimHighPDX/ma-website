@@ -544,7 +544,48 @@ Not for color changes; these are for structural changes.
    }
 }
 
-/* Homepage 
+#program-tabs {
+   background-image: linear-gradient(15deg, lighten(@tabs-background-color, 5%) 30%, transparent 30%), 
+      linear-gradient(-15deg, lighten(@tabs-background-color, 15%) 50%, transparent 50%);
+}
+
+#program-tabs [role="tabpanel"]:not([hidden]) {
+   padding: 0;
+   display: flex;
+   flex-wrap: wrap-reverse;
+   position: relative;
+
+   .text {
+      padding: @padding;
+      justify-self: end;
+      width: 250px;
+      flex-grow: 1;
+   }
+
+   img:not(.logo) {
+      align-self: end;
+      max-height: 350px;
+      max-width: clamp(100px, 50%, 350px);
+      object-position: bottom;
+      flex-grow: 1;
+   }
+
+   img.logo {
+      align-self: end;
+      justify-self: end;
+      filter: drop-shadow(0 0 3px @shadow-color);
+      max-height: 3rem;
+      max-width: 6rem;
+      margin: @padding;
+
+      position: absolute;
+      bottom: 0;
+      right: 0;
+   }
+}
+
+/* Homepage
+
 #program-tabs {
    --tab-color-foreground: @primary-light;
    --tab-color-background: @primary-dark;
@@ -588,7 +629,7 @@ Not for color changes; these are for structural changes.
          max-width: 100px;
          max-height: 70px;
 
-         filter: drop-shadow(0, 0, 3px, @shadow-color);
+         
       }
    }
 }*/
