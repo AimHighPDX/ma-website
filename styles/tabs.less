@@ -8,8 +8,10 @@
 // tweak: { "type" : "color", "title" : "Background Color", "category" : "Tabs Component" }
 @tabs-background-color: hsl(217, 82%, 17%);
 
-// Make a tweak later.
-@tabs-height: 15em;
+
+// tweak: { "type" : "value", "title" : "Tab Radius", "min" : 0, "max" : 10, "category" : "Tabs" }
+@tabs-tab-radius: 10rem;
+
 
 
 /**
@@ -18,12 +20,9 @@
 **/
 // tweak: { "type" : "dropdown", "title" : "Tabs Style", "options" : [ "Buttons", "Tabs" ], "default" : "Buttons", "category" : "Tabs" }
 .tabs-style-buttons .tabs {
+   gap: 1rem;
    [role="tablist"] {
-      flex-wrap: wrap;
-      gap: .8em;
-
       [role="tab"] {
-         border-radius: 100em;
          width: auto;
 
          &[aria-selected="true"] {
@@ -46,8 +45,8 @@
 
       [role="tab"][aria-selected="true"] {
          .default-color-scheme(@tabs-foreground-color);
+         box-shadow: none;
          text-decoration: none;
-         box-shadow: 0 0 5px @shadow-color;
          z-index: 5;
       }
    }
@@ -55,7 +54,7 @@
    [role="tabpanel"] {
       padding: @padding;
       outline-offset: -.5rem;
-      border-radius: 1rem;
+      border-radius: inherit;
    }
 }
 
@@ -67,10 +66,7 @@
       gap: 0;
 
       border: none;
-      border-radius: 1000em;
-
-      flex-wrap: nowrap;
-      overflow: hidden;
+      border-radius: @tabs-tab-radius;
 
       &[aria-orientation="vertical"] {
          border-radius: @radius;
@@ -109,7 +105,6 @@
    }
 }
 
-
 // tweak: { "type" : "checkbox", "title" : "Tabs Alternate Alignment", "active" : false, "category" : "Tabs" }
 .tabs-alternate-alignment .tabs {
    &:has([aria-orientation="horizontal"]) {
@@ -122,6 +117,10 @@
 }
 
 .tabs-style-tabs.tablist-style-full-width {
+   [role="tab-list"] {
+      border-radius: 0;
+   }
+
    &.alternate-alignment .tabs {
       [role="tablist"][aria-orientation="vertical"] [role="tab"] {
          border-radius: 0 @radius @radius 0;
@@ -144,16 +143,20 @@
 }
 
 
+
 .tabs {
    display: grid;
    margin: @padding 0 @padding 0;
 
    [role="tablist"] {
       display: flex;
+      flex-wrap: wrap;
+      gap: .8em;
       grid-area: tabs;
 
       [role="tab"] {
          color: inherit;
+         border-radius: @tabs-tab-radius;
       }
    }
 
@@ -186,13 +189,5 @@
       [role="tablist"] {
          flex-direction: column;
       }
-   }
-
-   &.panel-max-content [role="tabpanel"] {
-      display: block;
-   }
-   &.panel-scroll [role="tabpanel"] {
-      height: @tabs-height;
-      overflow-y: auto;
    }
 }
