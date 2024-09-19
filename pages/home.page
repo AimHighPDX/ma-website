@@ -10,7 +10,20 @@
 </section>
 
 <section>
-   <div id="program-tabs" class="" data-start="0" data-orientation="horizontal">
+   <div id="program-tabs" class="tabs" data-start="0" data-orientation="horizontal"></div>
+      <div id="warriors-excerpt" data-js="tabpanel" data-title="Warriors">
+         <div class="image">
+            <squarespace:block-field id="warriors-tab-panel-left" label="Warriors Image" columns="1"/>
+         </div>
+         <div class="text">
+            <squarespace:block-field id="warriors-tab-panel-right" label="Warriors Excerpt" columns="1"/>
+            <a class="button" href="/programs/warriors">Warriors program</a>
+         </div>
+         <div class="logo">
+            <squarespace:block-field id="warriors-tab-panel-logo" label="Warriors Logo" columns="1"/>
+         </div>
+      </div>
+
       <div id="mma-excerpt" data-js="tabpanel" data-title="MMA">
          <div class="image">
             <squarespace:block-field id="mma-tab-panel-left" label="MMA Image" columns="1"/>
@@ -21,19 +34,6 @@
          </div>
          <div class="logo">
             <squarespace:block-field id="mma-tab-panel-logo" label="MMA Logo" columns="1"/>
-         </div>
-      </div>
-
-      <div id="taekwondo-excerpt" data-js="tabpanel" data-title="Taekwondo">
-         <div class="image">
-            <squarespace:block-field id="taekwondo-tab-panel-left" label="Taekwondo Image" columns="1"/>
-         </div>
-         <div class="text">
-            <squarespace:block-field id="taekwondo-tab-panel-right" label="Taekwondo Excerpt" columns="1"/>
-            <a class="button" href="/programs/taekwondo">Taekwondo program</a>
-         </div>
-         <div class="logo">
-            <squarespace:block-field id="taekwondo-tab-panel-logo" label="Taekwondo Logo" columns="1"/>
          </div>
       </div>
 
@@ -50,6 +50,19 @@
          </div>
       </div>
 
+      <div id="taekwondo-excerpt" data-js="tabpanel" data-title="Taekwondo">
+         <div class="image">
+            <squarespace:block-field id="taekwondo-tab-panel-left" label="Taekwondo Image" columns="1"/>
+         </div>
+         <div class="text">
+            <squarespace:block-field id="taekwondo-tab-panel-right" label="Taekwondo Excerpt" columns="1"/>
+            <a class="button" href="/programs/taekwondo">Taekwondo program</a>
+         </div>
+         <div class="logo">
+            <squarespace:block-field id="taekwondo-tab-panel-logo" label="Taekwondo Logo" columns="1"/>
+         </div>
+      </div>
+
       <div id="kickboxing-excerpt" data-js="tabpanel" data-title="Kickboxing">
          <div class="image">
             <squarespace:block-field id="kickboxing-tab-panel-left" label="Kickboxing Image" columns="1"/>
@@ -60,19 +73,6 @@
          </div>
          <div class="logo">
             <squarespace:block-field id="kickboxing-tab-panel-logo" label="Kickboxing Logo" columns="1"/>
-         </div>
-      </div>
-
-      <div id="warriors-excerpt" data-js="tabpanel" data-title="Warriors">
-         <div class="image">
-            <squarespace:block-field id="warriors-tab-panel-left" label="Warriors Image" columns="1"/>
-         </div>
-         <div class="text">
-            <squarespace:block-field id="warriors-tab-panel-right" label="Warriors Excerpt" columns="1"/>
-            <a class="button" href="/programs/warriors">Warriors program</a>
-         </div>
-         <div class="logo">
-            <squarespace:block-field id="warriors-tab-panel-logo" label="Warriors Logo" columns="1"/>
          </div>
       </div>
    </div>

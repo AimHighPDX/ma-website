@@ -559,8 +559,8 @@ Not for color changes; these are for structural changes.
 }
 
 #program-tabs {
-   //background-image: linear-gradient(15deg, lighten(@tabs-background-color, 5%) 30%, transparent 30%), 
-   //   linear-gradient(-15deg, lighten(@tabs-background-color, 15%) 50%, transparent 50%);
+   background-image: linear-gradient(15deg, lighten(@tabs-background-color, 5%) 30%, transparent 30%), 
+      linear-gradient(-15deg, lighten(@tabs-background-color, 15%) 50%, transparent 50%);
 }
 
 #program-tabs [role="tabpanel"]:not([hidden]) {
@@ -574,6 +574,10 @@ Not for color changes; these are for structural changes.
       justify-self: end;
       width: 250px;
       flex-grow: 1;
+
+      > * {
+         margin: @padding 0;
+      }
    }
 
    .image {
@@ -581,6 +585,7 @@ Not for color changes; these are for structural changes.
       max-height: 350px;
       max-width: clamp(100px, 50%, 350px);
       object-position: bottom;
+      width: 100%;
       flex-grow: 1;
    }
 
@@ -588,6 +593,9 @@ Not for color changes; these are for structural changes.
       align-self: end;
       justify-self: end;
       filter: drop-shadow(0 0 3px @shadow-color);
+
+      width: 100%;
+      height: 100%;
       max-height: 3rem;
       max-width: 6rem;
       margin: @padding;
@@ -595,6 +603,21 @@ Not for color changes; these are for structural changes.
       position: absolute;
       bottom: 0;
       right: 0;
+
+      /* This is icky Squarespace styling unsetting */
+      display: grid;
+      align-items: end;
+
+      * {
+         height: inherit;
+         width: inherit;
+         padding: 0 !important;
+      }
+
+      img {
+         object-fit: contain !important;
+         object-position: bottom right !important;
+      }
    }
 }
 
