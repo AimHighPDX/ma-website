@@ -17,17 +17,28 @@
                <img src="{assetUrl}" alt="{title}">
             {.end}
             <div class="banner-text">
-               <squarespace:query collection="program" limit="1" category="{navigationTitle}">
-                  {.repeated section items}
-                     <img src="{customContent.logo.assetUrl}" alt="{title}">
-                  {.end}
-               </squarespace:query>
+               <div class="logo">
+                  <squarespace:block-field id="{navigationTitle|slugify}-tab-panel-logo" label="Class Logo" columns="1"/>
+               </div>
                <h1>{collection.title}</h1>
             </div>
          {.end}
       </section>
 
-      {@|apply class-section.block}
+      <section class="full-section class-summary">
+         <div>
+            <div class="full-section-left">
+               <squarespace:block-field id="{collection.id}-left" columns="1"/>
+            </div>
+            <div class="full-section-right">
+               <h2>Overview</h2>
+               <squarespace:block-field id="{collection.id}-right" columns="1"/>
+               <a href="/intro" class="button">
+                  Enroll Now
+               </a>
+            </div>
+         </div>
+      </section>
 
       <section class="centered-section">
          <h2>Classes</h2>
