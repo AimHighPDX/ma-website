@@ -421,17 +421,14 @@ body {
    grid-template-columns: 1fr @main-content-width 1fr;
 }
 
-main {
-   &:has(.full-section) [role="main"], 
-   &:not(:has(.full-section))  {
-      .main-content-grid();
-      > *:not(.full-section) {
-         grid-column: 2;
-         padding: @padding;
-      }
+[role="main"] {
+   .main-content-grid();
+   > *:not(.full-section) {
+      grid-column: 2;
+      padding: @padding;
    }
 
-   [role='main']:has(> hr:last-child) {
+   &:has(> hr:last-child) {
       padding-bottom: 0;
    }
 }
@@ -468,6 +465,7 @@ html:has(.modal-dialog[open]) {
 
    .default-color-scheme(@dialog-color);
    .component();
+   padding: 0;
 
    &::backdrop {
       background: @dialog-backdrop-color;
@@ -486,7 +484,7 @@ html:has(.modal-dialog[open]) {
       position: sticky;
       top: 0;
    
-      padding: @text-padding;
+      padding: @radius;
       width: 100%;
       height: min-content;
    
@@ -497,6 +495,8 @@ html:has(.modal-dialog[open]) {
 
       button {
          background: @dialog-color;
+         box-shadow: none;
+         border-radius: 2rem;
       }
    }
 
@@ -572,6 +572,7 @@ fieldset {
    transition: .2s, visibility 0s;
    visibility: hidden;
    height: 0;
+   margin: 0;
 }
 
 

@@ -38,6 +38,7 @@ Not for color changes; these are for structural changes.
       }
 
       .banner-text {
+         padding: @padding;
          width: max-content;
          justify-self: end;
       }
@@ -58,9 +59,22 @@ Not for color changes; these are for structural changes.
    }
 
    .banner-text {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+      
       z-index: 10;
       grid-row: 2;
       grid-column: 2;
+
+      h1 {
+         margin: 0;
+      }
+
+      img {
+         max-height: 3.5rem;
+         max-width: 3.5rem;
+      }
    }
 }
 
