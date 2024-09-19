@@ -13,7 +13,7 @@
 
 
    {.repeated section items}
-      <button type="button" class="disclosure heading-level4" aria-controls="{item.id}-videos-wrapper" aria-expanded="false">
+      <button type="button" class="disclosure heading-level4" aria-controls="{item.id}-wrapper" aria-expanded="false">
          <span>{title}</span>
       </button>
       <div id="{item.id}-wrapper">
