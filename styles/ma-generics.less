@@ -559,114 +559,63 @@ Not for color changes; these are for structural changes.
 }
 
 #program-tabs {
-   background-image: linear-gradient(15deg, lighten(@tabs-background-color, 5%) 30%, transparent 30%), 
-      linear-gradient(-15deg, lighten(@tabs-background-color, 15%) 50%, transparent 50%);
-}
+   background-image: linear-gradient(.15turn, lighten(@tabs-background-color, 5%) 30%, transparent 30%), linear-gradient(-.15turn, lighten(@tabs-background-color, 15%) 50%, transparent 50%);
 
-#program-tabs [role="tabpanel"]:not([hidden]) {
-   padding: 0;
-   display: flex;
-   flex-wrap: wrap-reverse;
-   position: relative;
-
-   .text {
-      padding: @padding;
-      justify-self: end;
-      width: 250px;
-      flex-grow: 1;
-
-      > * {
-         margin: @padding 0;
-      }
-   }
-
-   .image {
-      align-self: end;
-      max-height: 350px;
-      max-width: clamp(100px, 50%, 350px);
-      object-position: bottom;
-      width: 100%;
-      flex-grow: 1;
-   }
-
-   .logo {
-      align-self: end;
-      justify-self: end;
-      filter: drop-shadow(0 0 3px @shadow-color);
-
-      width: 100%;
-      height: 100%;
-      max-height: 3rem;
-      max-width: 6rem;
-      margin: @padding;
-
-      position: absolute;
-      bottom: 0;
-      right: 0;
-
-      /* This is icky Squarespace styling unsetting */
-      display: grid;
-      align-items: end;
-
-      * {
-         height: inherit;
-         width: inherit;
-         padding: 0 !important;
-      }
-
-      img {
-         object-fit: contain !important;
-         object-position: bottom right !important;
-      }
-   }
-}
-
-/* Homepage
-
-#program-tabs {
-   --tab-color-foreground: @primary-light;
-   --tab-color-background: @primary-dark;
-
-   div[role="tabpanel"]:not([hidden]) {
-      height: fit-content;
-      display: grid;
-      grid-template-columns: auto;
-      grid-template-rows: 1fr minmax(50px, 1fr);
-
+   [role="tabpanel"]:not([hidden]) {
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap-reverse;
+      position: relative;
+   
       .text {
-         grid-column-end: -1;
-         grid-row: 1;
-         width: clamp(50%, 200px, 25em);
+         padding: @padding;
          justify-self: end;
+         width: 250px;
+         flex-grow: 1;
+   
+         > * {
+            margin: @padding 0;
+         }
       }
-
-      img:not(.logo) {
-         grid-column-start: 1;
-         grid-column-end: -1;
-         grid-row-start: 1;
-         grid-row-end: -1;
+   
+      .image {
          align-self: end;
-         justify-self: start;
-
-         max-height: 300px;
-         width: 70%;
-         object-position: bottom left;
-
-         position: relative;
-         left: -@padding;
-         bottom: -@padding;
+         max-height: 350px;
+         max-width: clamp(100px, 50%, 350px);
+         object-position: bottom;
+         width: 100%;
+         flex-grow: 1;
       }
-
-      img.logo {
-         grid-column-end: -1;
-         grid-row: 2;
+   
+      .logo {
          align-self: end;
          justify-self: end;
-
-         max-width: 100px;
-         max-height: 70px;
-
-         
+         filter: drop-shadow(0 0 3px @shadow-color);
+   
+         width: 100%;
+         height: 100%;
+         max-height: 3rem;
+         max-width: 6rem;
+         margin: @padding;
+   
+         position: absolute;
+         bottom: 0;
+         right: 0;
+   
+         /* This is icky Squarespace styling unsetting */
+         display: grid;
+         align-items: end;
+   
+         * {
+            height: inherit;
+            width: inherit;
+            padding: 0 !important;
+         }
+   
+         img {
+            object-fit: contain !important;
+            object-position: bottom right !important;
+         }
       }
    }
-}*/
+}

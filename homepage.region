@@ -18,7 +18,7 @@
                <img src="{assetUrl}" alt="{title}" {@|image-meta}>
             {.end}
             <div class="banner-text">
-               <squarespace:block-field id="{collection.id}-hero-text" columns="1"/>
+               <squarespace:block-field id="{collection.id}-hero-text" label="Banner Text" columns="1"/>
             </div>      
          {.end}
       </section>
