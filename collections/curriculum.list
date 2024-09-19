@@ -1,3 +1,24 @@
+{.var @id collection.id}
+{.var @items items.0}
+
+<section id="{@id}-curriculum" class="" data-start="0" data-orientation="vertical">
+   {.repeated section collection.categories}
+      <div id="{@id}-curriculum" data-js="tabpanel" data-title="{@}">
+         <h3>{@}</h3>
+         <p>Find gear requirements and more on the <a href="">{@} program page.</a></p>
+         <div>
+            <squarespace:block-field id="{@id}-{@index}-summary" label="{@} Summary" columns="1"/>
+         </div>
+         <!-- {@items} -->
+         {.repeated section @items}
+            {@index}
+         {.end}
+      </div>
+   {.end}
+</section>
+
+
+
 <ul>
    {.repeated section items}
       <li>
