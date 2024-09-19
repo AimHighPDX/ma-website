@@ -1,7 +1,6 @@
 {.var @id collection.id}
-{.var @items items.0}
 
-<section id="{@id}-curriculum" class="" data-start="0" data-orientation="vertical">
+<section id="{@id}-curriculum">
    {.repeated section collection.categories}
       <div id="{@id}-curriculum" data-js="tabpanel" data-title="{@}">
          <h3>{@}</h3>
@@ -9,15 +8,34 @@
          <div>
             <squarespace:block-field id="{@id}-{@index}-summary" label="{@} Summary" columns="1"/>
          </div>
-         <!-- {@items} -->
-         {.repeated section @items}
-            {@index}
+      </div>
+   {.end}
+
+
+   {.repeated section items}
+      <button type="button" class="disclosure heading-level4" aria-controls="{item.id}-videos-wrapper" aria-expanded="false">
+         <span>{title}</span>
+      </button>
+      <div id="{item.id}-wrapper">
+         {.equal? customContent.customType "curriculum"}
+            <div id="{item.id}-curriculum">
+               {body}
+            </div>
+            <script>
+               let items = document.getElementById("{item.id}-curriculum").getElementsByTagName("li");
+               for (let item of items) {
+                  let data = item.querySelector("data");
+                  item.className = "curriculum-item";
+                  item.style.backgroundImage = data.value;
+                  data.remove();
+               }
+            </script>
+         {.or}
+            {body}
          {.end}
       </div>
    {.end}
 </section>
-
-
 
 <ul>
    {.repeated section items}
