@@ -10,7 +10,7 @@
 </section>
 
 <section>
-   <div id="program-tabs" class="tabs" data-start="0" data-orientation="horizontal"></div>
+   <div id="program-tabs" class="tabs" data-start="0" data-orientation="horizontal">
       <div id="warriors-excerpt" data-js="tabpanel" data-title="Warriors">
          <div class="image">
             <squarespace:block-field id="warriors-tab-panel-left" label="Warriors Image" columns="1"/>
