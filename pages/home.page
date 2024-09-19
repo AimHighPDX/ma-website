@@ -10,7 +10,7 @@
 </section>
 
 <section>
-   <div id="program-tabs" class="tabs" data-start="0" data-orientation="horizontal">
+   <div id="program-tabs" class="" data-start="0" data-orientation="horizontal">
       <div id="mma-excerpt" data-js="tabpanel" data-title="MMA">
          <div class="image">
             <squarespace:block-field id="mma-tab-panel-left" label="MMA Image" columns="1"/>
