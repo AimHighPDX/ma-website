@@ -36,11 +36,3 @@
       </div>
    {.end}
 </section>
-
-<ul>
-   {.repeated section items}
-      <li>
-         <a href="{sourceUrl}">{title}</a>
-      </li>
-   {.end}
-</ul>
