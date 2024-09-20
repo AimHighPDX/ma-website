@@ -1,38 +1,43 @@
-{.var @id collection.id}
-
-<section id="{@id}-curriculum">
+<section id="{collection.id}-curriculum" class="tabs" data-start="0" data-orientation="vertical">
    {.repeated section collection.categories}
-      <div id="{@id}-curriculum" data-js="tabpanel" data-title="{@}">
-         <h3>{@}</h3>
-         <p>Find gear requirements and more on the <a href="">{@} program page.</a></p>
+      <div id="{@|slugify}-tabpanel" data-js="tabpanel" data-title="{@}">
+         <h3>{title}</h3>
+         <p>Find gear requirements and more on the <a href="">{title} program page.</a></p>
          <div>
-            <squarespace:block-field id="{@id}-{@index}-summary" label="{@} Summary" columns="1"/>
+            <squarespace:block-field id="{@|slugify}-summary" label="{@} Summary" columns="1"/>
          </div>
       </div>
    {.end}
 
-
    {.repeated section items}
-      <button type="button" class="disclosure heading-level4" aria-controls="{item.id}-wrapper" aria-expanded="false">
-         <span>{title}</span>
-      </button>
-      <div id="{item.id}-wrapper">
-         {.equal? customContent.customType "curriculum"}
-            <div id="{item.id}-curriculum">
+      <div class="curriculum-content" data-category="{categories.0|slugify}">
+         <button type="button" class="disclosure heading-level4" aria-controls="{id}-wrapper" aria-expanded="false">
+            <span>{title}</span>
+         </button>
+         <div id="{id}-wrapper">
+            {.equal? customContent.customType "curriculum"}
+               <div class="curriculum">{body}</div>
+            {.or}
                {body}
-            </div>
-            <script>
-               let items = document.getElementById("{item.id}-curriculum").getElementsByTagName("li");
-               for (let item of items) {
-                  let data = item.querySelector("data");
-                  item.className = "curriculum-item";
-                  item.style.backgroundImage = data.value;
-                  data.remove();
-               }
-            </script>
-         {.or}
-            {body}
-         {.end}
+            {.end}
+         </div>
       </div>
    {.end}
 </section>
+
+
+<script id="{collection.id}-script">
+   let sections = document.getElementById("{collection.id}-curriculum").getElementsByClassName("curriculum-content");
+   for (let section of sections) {
+      document.getElementById(section.dataset.category + "-tabpanel").append(section);
+   }
+
+   let items  = document.getElementById("{collection.id}-curriculum").querySelectorAll(".curriculum li");
+   for (let item of items) {
+      let data = item.querySelector("data");
+      item.className = "curriculum-item";
+      item.style.background = data.value;
+      data.remove();
+   }
+   document.getElementById("{collection.id}-script").remove();
+</script>

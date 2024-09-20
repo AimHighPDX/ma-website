@@ -12,46 +12,68 @@
 <section>
    <h2>By Program</h2>
    <section id="curriculum" class="tabs" data-start="0" data-orientation="vertical">
-      <squarespace:query collection="program">
-         {.repeated section items}
-            <div id="{id}-curriculum" data-js="tabpanel" data-title="{title}">
-               <h3>{title}</h3>
-               <p>Find gear requirements and more on the <a href="{sourceUrl}">{customContent.program} program page.</a></p>
+      <squarespace:category collection="curriculum">
+         {.repeated section categories}
+            <div id="{name|slugify}-tabpanel" data-js="tabpanel" data-title="{name}">
+               <h3>{name}</h3>
+               <p>Find gear requirements and more on the <a href="">{name} program page.</a></p>
                <div>
-                  <squarespace:block-field id="{id}-summary" label="{title} Summary" columns="1"/>
+                  <squarespace:block-field id="{name|slugify}-summary" label="{name} Summary" columns="1"/>
                </div>
-               {.equal? customContent.has-curriculum true}
-                  <button type="button" class="disclosure heading-level4" aria-controls="{id}-curriculum-wrapper" aria-expanded="false">
-                     <span>
-                        Curriculum
-                     </span>
-                  </button>
-                  <div id="{id}-curriculum-wrapper">
-                     <squarespace:block-field id="{id}-curriculum" label="{title} Curriculum" columns="1"/>
-                  </div>
-               {.end}
-               {.equal? customContent.has-videos true}
-               <button type="button" class="disclosure heading-level4" aria-controls="{id}-videos-wrapper" aria-expanded="false">
-                  <span>
-                     Videos
-                  </span>
-               </button>
-               <div id="{id}-videos-wrapper">
-                  <squarespace:block-field id="{id}-videos" label="{title} Videos" columns="1"/>
-               </div>
-               {.end}
-               {.equal? customContent.has-add-info true}
-               <button type="button" class="disclosure heading-level4" aria-controls="{id}-add-info-wrapper" aria-expanded="false">
-                  <span>
-                     Additional Information
-                  </span>
-               </button>
-               <div id="{id}-add-info-wrapper">
-                  <squarespace:block-field id="{id}-add-info" label="{title} Additional Information" columns="1"/>
-               </div>
-               {.end}
             </div>
          {.end}
+      </squarespace:category>
+      <squarespace:query collection="curriculum">
+         {.repeated section items}
+            <div class="curriculum-content" data-category="{categories.0|slugify}">
+               <button type="button" class="disclosure heading-level4" aria-controls="{id}-wrapper" aria-expanded="false">
+                  <span>{title}</span>
+               </button>
+               <div id="{id}-wrapper">
+                  {.equal? customContent.customType "curriculum"}
+                     <div class="curriculum">{body}</div>
+                  {.or}
+                     {body}
+                  {.end}
+               </div>
+            </div>
+         {.end}
+         <script id="{collection.id}-script">
+            (function(){
+               'use strict';
+               window.addEventListener("load", () => {
+                  let sections = document.getElementById("curriculum").getElementsByClassName("curriculum-content");
+                  for (let section of sections) {
+                     document.getElementById(section.dataset.category + "-tabpanel").append(section);
+                  }
+               
+                  let items  = document.getElementById("curriculum").querySelectorAll(".curriculum li");
+                  for (let item of items) {
+                     item.className = "curriculum-item";
+
+                     let data = item.querySelector("data");
+                     let lightness = [...data.value.matchAll(/hsl\(\s*?\d\d?\d?\s*?,\s*?\d\d?\d?\%\s*?,\s*?(\d\d?\d?)\%\s*?\)/gi)];
+                     if ((lightness.map(m => parseInt(m[1])).reduce((a,b) => {return a + b;}, 0) / lightness.length) < 43) {
+                        item.style.color = "white";
+                     } else {
+                        item.style.color = "black";
+                     }
+                     item.style.background = data.value;
+
+                     let adjustment = Y.Squarespace.Template.getTweakValue('interactive-color-adjustment');
+
+                     for (let match of lightness) {
+                        item.style.setProperty("--lighter-color", "white");
+                        item.style.setProperty("--darker-color", "black");
+                        //match[0].replace(match[1], parseInt(match[1]) + adjustment)
+                     }
+                     
+                     data.remove();
+                  }
+                  document.getElementById("{collection.id}-script").remove();
+               }, {once:true});
+            }());
+         </script>
       </squarespace:query>
    </section>
 </section>
