@@ -505,12 +505,13 @@ Not for color changes; these are for structural changes.
       list-style-type: none;
 
       .curriculum-item {
-         --lighter-color: @gray;
+         --background: @gray;
+         --lighter-color: @white;
          --darker-color: @darkgray;
+         background: var(--background);
          height: 100%;
          width: 100%;
 
-         text-decoration: none;
          transition: @transition-time-user-init ease-out;
          box-shadow: @shadow;
 
@@ -520,20 +521,26 @@ Not for color changes; these are for structural changes.
 
          font-weight: bold;
 
-
          > * {
+            height: 100%;
+            text-align: center;
             color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: inherit;
          }
 
          &:not([disabled]):not([aria-disabled]) {
             &:hover {
-               background-color: var(--lighter-color);
+               background: var(--lighter-color);
                box-shadow: @shadow-hover;
                color: inherit;
             }
          
             &:active {
-               background-color: var(--darker-color);
+               background: var(--darker-color);
                box-shadow: @shadow-pressed;
                color: inherit;
             }
@@ -541,7 +548,7 @@ Not for color changes; these are for structural changes.
       
          &[disabled], &[aria-disabled] {
             pointer-events: none;
-            background-color: @gray;
+            background: @gray;
             box-shadow: none;
             transition: 0s;
          }

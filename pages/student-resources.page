@@ -48,25 +48,32 @@
                   }
                
                   let items  = document.getElementById("curriculum").querySelectorAll(".curriculum li");
+                  let adjustment = parseInt(Y.Squarespace.Template.getTweakValue('interactive-color-adjustment'));
                   for (let item of items) {
                      item.className = "curriculum-item";
-
                      let data = item.querySelector("data");
-                     let lightness = [...data.value.matchAll(/hsl\(\s*?\d\d?\d?\s*?,\s*?\d\d?\d?\%\s*?,\s*?(\d\d?\d?)\%\s*?\)/gi)];
-                     if ((lightness.map(m => parseInt(m[1])).reduce((a,b) => {return a + b;}, 0) / lightness.length) < 43) {
+                     let colors = [...data.value.matchAll(/hsl\(\s*?(?<hue>\d\d?\d?)\s*?,\s*?(?<saturation>\d\d?\d?)\%\s*?,\s*?(?<light>\d\d?\d?)\%\s*?\)/gi)];
+                     if ((colors.map(m => parseInt(m.groups.light)).reduce((a,b) => {return a + b;}, 0) / colors.length) < 43) {
                         item.style.color = "white";
                      } else {
                         item.style.color = "black";
                      }
-                     item.style.background = data.value;
+                     item.style.setProperty("--background", data.value);
 
-                     let adjustment = Y.Squarespace.Template.getTweakValue('interactive-color-adjustment');
-
-                     for (let match of lightness) {
-                        item.style.setProperty("--lighter-color", "white");
-                        item.style.setProperty("--darker-color", "black");
-                        //match[0].replace(match[1], parseInt(match[1]) + adjustment)
+                     let lighter = data.value;
+                     let darker = data.value;
+                     for (let match of colors) {
+                        let h = parseInt(match.groups.hue);
+                        let s = parseInt(match.groups.saturation);
+                        let l = parseInt(match.groups.light);
+                     
+                        lighter = lighter.replace(match[0], "hsl(" + [h, s + "%", Math.min(100, (l + adjustment)) + "%"].join(",") + ")");
+                        darker = darker.replace(match[0], "hsl(" + [h, s + "%", Math.max(0, (l - adjustment))].join(",") + "%)");
+                        match.input.substring(0, match.index) + Math.min(100, (l + adjustment)) + match.input.substring(match.index + match.groups.light.length, -1);
                      }
+
+                     item.style.setProperty("--lighter-color", lighter);
+                     item.style.setProperty("--darker-color", darker);
                      
                      data.remove();
                   }
